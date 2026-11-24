@@ -1,9 +1,10 @@
-"""Subspace execution for explicitly selected Grover witness models.
+"""Execute Grover witness models using factored density matrices.
 
-Each independent component carries a basis for a set of possible states.  The
-initial subspace contains the all-zero input; unitary updates preserve this
-inclusion.  Runtime units hold reduced support spaces, with no probabilities
-or coefficients for a particular quantum state.
+Each component starts in the normalized projector onto its initial witness
+space. Unitary evolution of this representative preserves the entire input
+space, including the all-zero input. Each unit stores the partial trace of the
+representative as F F†. Its rows follow the unit's qubit order, and its
+orthogonal columns have squared norms equal to the nonzero eigenvalues.
 """
 
 from __future__ import annotations
@@ -22,6 +23,7 @@ from qamc.runtime.transition_edge import TransitionEdge
 MAX_COMPONENT_QUBITS = 12
 SUPPORT_TOLERANCE = 1e-12
 SUMMARY_KIND = "grover_subspace"
+DENSITY_FACTOR_KIND = "density_factor"
 
 
 def _readonly(array: np.ndarray) -> np.ndarray:
@@ -34,31 +36,68 @@ def _orthonormal_support(columns: np.ndarray) -> np.ndarray:
     return _readonly(left[:, singular_values > SUPPORT_TOLERANCE])
 
 
-def reduced_support_basis(
-    basis: np.ndarray,
+def _environment_columns(
+    columns: np.ndarray,
     qubit_order: tuple[str, ...],
     scope: tuple[str, ...],
 ) -> np.ndarray:
-    """Return an orthonormal basis for the support on an ordered subsystem.
-
-    Slicing each spanning vector along its environment indices gives vectors
-    spanning the reduced support.  Their column space also covers every
-    superposition and mixture represented by the input subspace.
-    """
+    """Arrange one column for each environment index and input column."""
     if len(set(qubit_order)) != len(qubit_order):
-        raise ValueError("Subspace qubit order contains duplicate qubits.")
+        raise ValueError("Factor qubit order contains duplicate qubits.")
     if len(set(scope)) != len(scope) or not set(scope).issubset(qubit_order):
-        raise ValueError("Subspace observation must use distinct retained qubits.")
-    columns = np.asarray(basis, dtype=complex)
+        raise ValueError("The observation must use distinct retained qubits.")
+    columns = np.asarray(columns, dtype=complex)
     if columns.ndim != 2 or columns.shape[0] != 2 ** len(qubit_order):
-        raise ValueError("Subspace basis dimensions do not match its qubit order.")
+        raise ValueError("Factor dimensions do not match its qubit order.")
     selected = tuple(qubit_order.index(qubit) for qubit in scope)
     environment = tuple(index for index in range(len(qubit_order)) if index not in selected)
     tensor = columns.reshape((2,) * len(qubit_order) + (columns.shape[1],))
-    slices = tensor.transpose(selected + environment + (len(qubit_order),)).reshape(
+    return tensor.transpose(selected + environment + (len(qubit_order),)).reshape(
         2 ** len(scope), -1,
     )
+
+
+def reduced_density_matrix(
+    factor: np.ndarray, qubit_order: tuple[str, ...], scope: tuple[str, ...],
+) -> np.ndarray:
+    """Form the ordered partial trace of F F† from its environment slices."""
+    slices = _environment_columns(factor, qubit_order, scope)
+    return slices @ slices.conj().T
+
+
+def reduced_support_basis(
+    basis: np.ndarray, qubit_order: tuple[str, ...], scope: tuple[str, ...],
+) -> np.ndarray:
+    """Return the support on the ordered scope from a retained factor or basis."""
+    # Unit factors contain orthogonal columns. Each retained direction
+    # contributes to containment regardless of its representative weight.
+    columns = np.asarray(basis, dtype=complex)
+    if columns.ndim != 2 or columns.shape[0] != 2 ** len(qubit_order):
+        raise ValueError("Factor dimensions do not match its qubit order.")
+    scales = np.max(np.abs(columns), axis=0)
+    nonzero = scales > 0
+    directions = columns[:, nonzero].copy()
+    directions.real /= scales[nonzero]
+    directions.imag /= scales[nonzero]
+    directions /= np.linalg.norm(directions, axis=0)
+    slices = _environment_columns(directions, qubit_order, scope)
+    if len(scope) == len(qubit_order):
+        gram = slices.conj().T @ slices
+        if np.allclose(gram, np.eye(slices.shape[1]), rtol=0, atol=SUPPORT_TOLERANCE):
+            return _readonly(slices)
     return _orthonormal_support(slices)
+
+
+def _reduced_density_factor(
+    component_basis: np.ndarray, qubit_order: tuple[str, ...], scope: tuple[str, ...],
+) -> np.ndarray:
+    # B has r orthonormal columns, so the component represents B B† / r.
+    # Apply the support tolerance to the unweighted witness directions.
+    slices = _environment_columns(component_basis, qubit_order, scope)
+    left, singular_values, _ = np.linalg.svd(slices, full_matrices=False)
+    keep = singular_values > SUPPORT_TOLERANCE
+    weights = singular_values[keep] / np.sqrt(component_basis.shape[1])
+    return _readonly(left[:, keep] * weights)
 
 
 def _acted_qubits(gate: GateSpec) -> tuple[str, ...]:
@@ -126,10 +165,11 @@ def _search_groups(model: QAMModel) -> tuple[frozenset[str], ...]:
 def run_grover_subspace(
     model: QAMModel, execution_id: str | None = None,
 ) -> ExecutionContext:
-    """Execute a deterministic chain with Grover subspace unit summaries.
+    """Execute a deterministic chain and retain local density factors.
 
     The supported initial abstraction is the span of the zero and uniform
     search-register vectors, with the other component qubits initially zero.
+    The normalized projector gives equal weight to its orthonormal directions.
     Components are bounded independently, so allocation depends on component
     size rather than the total number of model qubits.
     """
@@ -259,9 +299,9 @@ def run_grover_subspace(
             else:
                 payloads[unit.id] = UnitPayload(
                     unit_id=unit.id,
-                    summary_kind=SUMMARY_KIND,
+                    summary_kind=DENSITY_FACTOR_KIND,
                     qubits=unit.qubits,
-                    data=reduced_support_basis(workspaces[key], components[key], unit.qubits),
+                    data=_reduced_density_factor(workspaces[key], components[key], unit.qubits),
                 )
         return payloads
 

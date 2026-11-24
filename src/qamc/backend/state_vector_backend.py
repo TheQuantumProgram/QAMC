@@ -6,6 +6,7 @@ import numpy as np
 
 from qamc.backend.density_matrix_backend import DensityMatrixBackend, MeasurementResult
 from qamc.backend.unit_ops import (
+    apply_hadamard,
     apply_local_operator_to_state_vector,
     named_gate_matrix,
     reorder_state_vector,
@@ -73,13 +74,13 @@ class StateVectorBackend:
                 raise ValueError(
                     f"Gate {gate.name!r} acts on qubit {qubit!r} outside payload {payload.unit_id!r}."
                 )
-        local_operator = named_gate_matrix(gate.name, gate.params)
-        updated = apply_local_operator_to_state_vector(
-            np.asarray(payload.data, dtype=complex),
-            payload.qubits,
-            local_operator,
-            acted_qubits,
-        )
+        state = np.asarray(payload.data, dtype=complex)
+        if gate.name.upper() == "H":
+            qubit, = acted_qubits
+            updated = apply_hadamard(state, payload.qubits, qubit)
+        else:
+            local_operator = named_gate_matrix(gate.name, gate.params)
+            updated = apply_local_operator_to_state_vector(state, payload.qubits, local_operator, acted_qubits)
         return UnitPayload(
             unit_id=payload.unit_id,
             summary_kind="state_vector",
@@ -202,9 +203,8 @@ class StateVectorBackend:
         state = np.asarray(payload.data, dtype=complex)
         basis_name = basis.upper()
         if basis_name == "X":
-            h_gate = named_gate_matrix("H")
             for qubit in qubits:
-                state = apply_local_operator_to_state_vector(state, payload.qubits, h_gate, (qubit,))
+                state = apply_hadamard(state, payload.qubits, qubit)
         elif basis_name != "Z":
             raise ValueError(f"Unsupported basis: {basis!r}")
         return state_vector_distribution(state, payload.qubits, qubits)

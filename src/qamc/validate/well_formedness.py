@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from qamc.ir.enums import AnchorKind, BranchKind, PropertyKind, ScopeKind
+from qamc.ir.enums import AnchorKind, BranchKind, ClassicalType, PropertyKind, ScopeKind
 from qamc.ir.model import (
     BranchSpec,
     ExecutionSpec,
@@ -462,6 +462,15 @@ def _validate_trace(trace: TraceSpec, system_model: SystemModel, report: Validat
             report.error("trace.terminal.has_successor", f"Terminal position {anchor.id!r} has a successor.", location)
 
 
+def _matches_classical_type(value: object, type_name: ClassicalType) -> bool:
+    if type_name is ClassicalType.BOOL:
+        return isinstance(value, bool)
+    # The parser distinguishes integer literals from Boolean literals and floats.
+    if type(value) is not int:
+        return False
+    return type_name is ClassicalType.INT or (type_name is ClassicalType.BIT and value in (0, 1))
+
+
 def _validate_execution(execution: ExecutionSpec, model: QAMModel, report: ValidationReport) -> None:
     location = f"execution:{execution.id}"
     if execution.trace_id not in model.traces:
@@ -510,7 +519,7 @@ def _validate_execution(execution: ExecutionSpec, model: QAMModel, report: Valid
         )
     else:
         state_class = model.system_model.state_class(binding.state_class_id)
-        for var_name in binding.program_values:
+        for var_name, value in binding.program_values.items():
             if var_name not in state_class.classical_profile.program_vars:
                 report.error(
                     "execution.initial_binding.unknown_program_value",
@@ -519,6 +528,23 @@ def _validate_execution(execution: ExecutionSpec, model: QAMModel, report: Valid
                         f"{var_name!r} for state class {state_class.id}."
                     ),
                     location,
+                )
+                continue
+            declaration = model.system_model.program_classical_vars.get(var_name)
+            if declaration is None:
+                continue  # The state class already reports undeclared variables.
+            value_location = f"{location}.initial_binding.program_values[{var_name!r}]"
+            if not _matches_classical_type(value, declaration.type_name):
+                report.error(
+                    "execution.initial_binding.program_value_type",
+                    f"Initial value {value!r} for {var_name!r} must have type {declaration.type_name.value!r}.",
+                    value_location,
+                )
+            elif declaration.domain is not None and value not in declaration.domain:
+                report.error(
+                    "execution.initial_binding.program_value_domain",
+                    f"Initial value {value!r} for {var_name!r} is outside its declared domain {declaration.domain!r}.",
+                    value_location,
                 )
         for var_name in binding.measurement_values:
             if var_name not in state_class.classical_profile.measurement_vars:

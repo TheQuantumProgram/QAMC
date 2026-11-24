@@ -3,9 +3,11 @@
 from __future__ import annotations
 
 import argparse
+import sys
 from pathlib import Path
 
 from qamc.checker import run_qam_file
+from qamc.engine.transition_executor import JointStateUnavailableError
 from qamc.external_properties.loader import load_qprop_path
 
 
@@ -35,12 +37,16 @@ def main(argv: list[str] | None = None) -> int:
     external_properties = None
     if args.properties_path is not None:
         external_properties = load_qprop_path(args.properties_path)
-    result = run_qam_file(
-        args.path,
-        execution_id=args.execution_id,
-        validate=not args.no_validate,
-        external_properties=external_properties,
-    )
+    try:
+        result = run_qam_file(
+            args.path,
+            execution_id=args.execution_id,
+            validate=not args.no_validate,
+            external_properties=external_properties,
+        )
+    except JointStateUnavailableError as exc:
+        print(f"Cannot execute {args.path}: {exc}", file=sys.stderr)
+        return 1
 
     print(f"Model: {args.path}")
     if args.properties_path is not None:

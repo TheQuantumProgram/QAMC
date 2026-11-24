@@ -7,6 +7,7 @@ from collections import defaultdict
 import numpy as np
 
 from qamc.backend import DensityMatrixBackend
+from qamc.engine.grover_subspace import DENSITY_FACTOR_KIND, reduced_density_matrix, reduced_support_basis
 from qamc.ir.property import ObservableSpec
 from qamc.runtime.state_node import StateNode, UnitPayload
 
@@ -19,17 +20,16 @@ class SubspaceInconclusiveError(ValueError):
     """
 
 
-def _require_numerical_payloads(payloads: list[UnitPayload]) -> None:
-    if any(payload.summary_kind == "grover_subspace" for payload in payloads):
-        raise ValueError("A subspace summary provides support information, not a density matrix or probabilities.")
+def _require_probability_payloads(payloads: list[UnitPayload]) -> None:
+    if any(payload.summary_kind in {"grover_subspace", DENSITY_FACTOR_KIND} for payload in payloads):
+        raise ValueError("The Grover subspace represents a family of states with unspecified outcome probabilities.")
 
 
 def quantum_support_basis(node: StateNode, observable: ObservableSpec) -> np.ndarray:
     """Return an orthonormal basis for an abstract observation's support."""
     payload = _payload_covering_qubits(node, observable.qubits)
-    if payload is None or payload.summary_kind != "grover_subspace":
-        raise ValueError("A subspace observation requires a covering subspace unit.")
-    from qamc.engine.grover_subspace import reduced_support_basis
+    if payload is None or payload.summary_kind not in {"grover_subspace", DENSITY_FACTOR_KIND}:
+        raise ValueError("A subspace observation requires a covering unit representing that subspace.")
     return reduced_support_basis(payload.data, payload.qubits, observable.qubits)
 
 
@@ -53,7 +53,7 @@ def quantum_distribution(
                 f"Observable qubits {observable.qubits!r} are not covered by any runtime payload."
             )
         return combined_quantum_distribution(payloads, observable.qubits, observable.basis or "Z", backend)
-    _require_numerical_payloads([payload])
+    _require_probability_payloads([payload])
     return backend.observe_distribution(payload, observable.qubits, basis=observable.basis or "Z")
 
 
@@ -68,7 +68,10 @@ def quantum_density_matrix(
             "State observables currently require one runtime payload covering "
             f"{observable.qubits!r}."
         )
-    _require_numerical_payloads([payload])
+    if payload.summary_kind == DENSITY_FACTOR_KIND:
+        return reduced_density_matrix(payload.data, payload.qubits, observable.qubits)
+    if payload.summary_kind == "grover_subspace":
+        raise ValueError("An unweighted subspace basis does not specify a density matrix.")
     reduced = backend.partial_trace_payload(payload, observable.qubits)
     if reduced.summary_kind == "state_vector":
         vector = np.asarray(reduced.data, dtype=complex).reshape(-1)
@@ -109,7 +112,7 @@ def combined_quantum_distribution(
       separator-normalized product, avoiding runtime payload merging.
     """
 
-    _require_numerical_payloads(payloads)
+    _require_probability_payloads(payloads)
     relevant_payloads = []
     for payload in payloads:
         scope = tuple(qubit for qubit in target_qubits if qubit in payload.qubits)

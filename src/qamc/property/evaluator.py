@@ -7,6 +7,7 @@ from dataclasses import dataclass
 import numpy as np
 
 from qamc.backend import DensityMatrixBackend
+from qamc.engine.grover_subspace import DENSITY_FACTOR_KIND
 from qamc.ir.enums import EvaluationMode, PropertyKind
 from qamc.ir.property import ObservableSpec, PropertySpec
 from qamc.property.observables import (
@@ -152,7 +153,7 @@ class PropertyEvaluator:
         property_spec: PropertySpec,
         selected_nodes: list[StateNode],
     ) -> tuple[bool, object]:
-        if any(payload.summary_kind == "grover_subspace"
+        if any(payload.summary_kind in {"grover_subspace", DENSITY_FACTOR_KIND}
                for node in selected_nodes for payload in node.unit_payloads.values()):
             return self._evaluate_subspace_relation(property_spec, selected_nodes)
         matrices = [
@@ -197,6 +198,13 @@ class PropertyEvaluator:
                 f"Property {property_spec.id!r} is not proved by the abstract subspace; "
                 "refinement is required to determine a concrete violation."
             )
+        if selected_nodes and all(
+            payload.summary_kind == DENSITY_FACTOR_KIND
+            for node in selected_nodes for payload in node.unit_payloads.values()
+        ):
+            matrices = tuple(quantum_density_matrix(node, property_spec.observable, self.backend)
+                             for node in selected_nodes)
+            return True, {"summary_kind": DENSITY_FACTOR_KIND, "representative_density_matrices": matrices}
         return True, {"summary_kind": "grover_subspace", "support_bases": tuple(bases)}
 
     def _evaluate_reachability(

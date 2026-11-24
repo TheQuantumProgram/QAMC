@@ -13,7 +13,7 @@ conditional on such records are undefined rather than fabricated.
 
 from __future__ import annotations
 
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
 from typing import TYPE_CHECKING
 
 import numpy as np
@@ -136,8 +136,11 @@ def evaluate_reference(
     )
     result.nodes[root.id] = root
     result.bindings[binding.anchor_id] = [root.id]
+    incoming_rotations: dict[str, tuple[GateSpec, ReferenceNode]] = {}
     for step in trace.steps:
         transition = model.system_model.transition_class(step.transition_class)
+        gate = transition.gate
+        rotation = gate.name.upper() in {"P", "CP", "RBS"} and len(gate.params) == 1
         targets: list[str] = []
         for source in result.nodes_at(step.source_anchor):
             is_measurement = transition.gate.is_measurement()
@@ -145,7 +148,20 @@ def evaluate_reference(
                 _validate_measurement(transition.gate, qubits)
                 updated = source.state_vector
             else:
-                updated = _apply_gate(source.state_vector, qubits, transition.gate)
+                initial = source.state_vector
+                effective_gate = gate
+                if rotation and source.id in incoming_rotations:
+                    previous, parent = incoming_rotations[source.id]
+                    previous_args = previous.controls + previous.targets + previous.extra_qargs
+                    arguments = gate.controls + gate.targets + gate.extra_qargs
+                    angle, last_angle = float(gate.params[0]), float(previous.params[0])
+                    if (previous.name.upper() == gate.name.upper() and previous_args == arguments
+                            and (angle < 0) != (last_angle < 0)):
+                        # Compose opposing rotations on the full vector before the pair.
+                        # The intermediate vector remains available at its own trace position.
+                        initial = parent.state_vector
+                        effective_gate = replace(gate, params=(last_angle + angle,))
+                updated = _apply_gate(initial, qubits, effective_gate)
             for branch in transition.branches:
                 if is_measurement and branch.kind is not BranchKind.MEASUREMENT:
                     continue
@@ -173,6 +189,8 @@ def evaluate_reference(
                     None if branch_vector is None else branch_vector.copy(),
                 )
                 result.nodes[node.id] = node
+                if rotation and branch.kind is BranchKind.DETERMINISTIC:
+                    incoming_rotations[node.id] = (gate, source)
                 result.edges.append(ReferenceEdge(
                     source.id, transition.id, branch.id, node.id, local_probability,
                 ))
@@ -244,12 +262,12 @@ def _apply_gate(
             result[zero_one] = np.cos(theta) * vector[zero_one] + np.sin(theta) * vector[one_zero]
             result[one_zero] = -np.sin(theta) * vector[zero_one] + np.cos(theta) * vector[one_zero]
     else:
-        angle = {"Z": np.pi, "CZ": np.pi, "S": np.pi / 2, "SDG": -np.pi / 2,
-                 "T": np.pi / 4, "TDG": -np.pi / 4}.get(name, theta)
+        exact_phases = {"Z": -1, "CZ": -1, "S": 1j, "SDG": -1j}
+        angle = {"T": np.pi / 4, "TDG": -np.pi / 4}.get(name, theta)
         condition = np.ones(vector.size, dtype=bool)
         for mask in masks:
             condition &= (indices & mask) != 0
-        result[condition] *= np.exp(1j * angle)
+        result[condition] *= exact_phases[name] if name in exact_phases else np.exp(1j * angle)
     return result
 
 
@@ -390,10 +408,17 @@ def compare_context(
         elif set(actual.unit_payloads) != set(state_class.unit_ids()):
             issues.append(f"{actual_id}: unit payload identifiers differ from the state class")
         reach_error = max(reach_error, _scalar_error(actual.reach_probability, expected.reach_probability))
+        if (actual.reach_probability > 0) != (expected.reach_probability > 0):
+            issues.append(f"{actual_id}: positive reach differs from the reference")
         if expected.state_vector is None:
             skipped_zero += 1
             continue
         for unit in actual.unit_payloads.values():
+            if unit.summary_kind in {"density_factor", "grover_subspace"}:
+                raise ReferenceUnsupported(
+                    "The reference vector represents one input. Comparing a Grover input subspace "
+                    "requires support containment or a reference mixture over its initial span."
+                )
             expected_matrix = expected.reduced_density(unit.qubits)
             matrix = np.asarray(unit.data, dtype=complex)
             if unit.summary_kind == "state_vector":
@@ -426,6 +451,8 @@ def compare_context(
             skipped_edges += 1
             continue
         branch_error = max(branch_error, _scalar_error(edge.local_probability, expected_edge.local_probability))
+        if (edge.local_probability > 0) != (expected_edge.local_probability > 0):
+            issues.append(f"{key!r}: positive branch probability differs from the reference")
         compared_edges += 1
     if len(seen_edges) != len(reference.edges):
         issues.append("The runtime and reference edge sets differ")

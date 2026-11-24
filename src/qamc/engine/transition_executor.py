@@ -14,6 +14,10 @@ from qamc.runtime.state_node import StateNode, UnitPayload
 from qamc.runtime.transition_edge import TransitionEdge
 
 
+class JointStateUnavailableError(NotImplementedError):
+    """The retained quantum information does not determine a supported joint workspace."""
+
+
 @dataclass(slots=True)
 class BranchOutcome:
     """One runtime branch successor."""
@@ -126,15 +130,31 @@ class TransitionExecutor:
                 for branch in transition.measurement_branches()
             }
 
-        if source_node.reach_probability > 0:
-            self._check_overlap_consistency(affected, context_label=f"Measurement transition {transition.id}")
+        if source_node.reach_probability == 0:
+            # No conditional probabilities are defined at an unreachable source.
+            return {branch.outcome: (0.0, {}) for branch in transition.measurement_branches()}
+        self._check_overlap_consistency(affected, context_label=f"Measurement transition {transition.id}")
         results: dict[object, tuple[float, dict[str, UnitPayload]]] = {}
-        for payload in affected:
+        for payload in sorted(affected, key=lambda item: (len(item.qubits), item.unit_id)):
             for result in self.backend.measure_payload(payload, qubit, basis="Z"):
-                # All compatible marginals give the same probability for this outcome.
-                _, updates = results.setdefault(result.outcome, (result.probability, {}))
+                probability, updates = results.setdefault(result.outcome, (result.probability, {}))
+                if updates:
+                    self._check_measurement_probability(
+                        probability, result.probability, transition.id, result.outcome,
+                    )
                 updates[payload.unit_id] = result.post_payload
         return results
+
+    @staticmethod
+    def _check_measurement_probability(
+        expected: float, actual: float, transition_id: str, outcome: object,
+    ) -> None:
+        # Agreement to absolute tolerance cannot make zero and positive reach interchangeable.
+        if (expected == 0) != (actual == 0) or not np.isclose(expected, actual, rtol=0, atol=1e-12):
+            raise ValueError(
+                f"Measurement transition {transition_id}, outcome {outcome}: "
+                f"the retained units disagree on its probability ({expected!r}, {actual!r})."
+            )
 
     def _guard_holds(self, source_node: StateNode, branch: BranchSpec) -> bool:
         if branch.guard_expr is None:
@@ -163,14 +183,27 @@ class TransitionExecutor:
         if branch.kind is BranchKind.MEASUREMENT and transition.gate.record_as is not None:
             measurement_classical[transition.gate.record_as] = branch.outcome
 
-        target_payloads = self._rebuild_payloads(
-            source_node=source_node,
-            target_state=target_state,
-            system_model=context.system_model,
-            transition=transition,
-            branch=branch,
-            measured_payloads=measured_payloads,
-        )
+        reach_probability = source_node.reach_probability * local_probability
+        if reach_probability == 0:
+            target_payloads = {}
+            for unit in target_state.units:
+                placeholder = self.backend.initialize_unit_payload(
+                    unit_id=unit.id, qubits=unit.qubits,
+                    summary_kind=unit.resolved_summary_kind(context.system_model.defaults).value,
+                    initializer=context.execution.initial_binding.payload_initializer,
+                )
+                placeholder.data.fill(0)
+                target_payloads[unit.id] = placeholder
+        elif measured_payloads:
+            target_payloads = self._conditioned_targets(
+                source_node.unit_payloads, measured_payloads, target_state, transition,
+                branch.outcome, local_probability,
+            )
+        else:
+            target_payloads = self._rebuild_payloads(
+                source_node=source_node, target_state=target_state,
+                system_model=context.system_model, transition=transition, branch=branch,
+            )
 
         return StateNode(
             id=context.new_node_id(),
@@ -179,8 +212,68 @@ class TransitionExecutor:
             program_classical=program_classical,
             measurement_classical=measurement_classical,
             unit_payloads=target_payloads,
-            reach_probability=source_node.reach_probability * local_probability,
+            reach_probability=reach_probability,
         )
+
+    def _conditioned_targets(
+        self,
+        sources: dict[str, UnitPayload],
+        measured: dict[str, UnitPayload],
+        target_state: StateClassSpec,
+        transition: TransitionClassSpec,
+        outcome: object,
+        local_probability: float,
+    ) -> dict[str, UnitPayload]:
+        """Condition retained overlaps before exposing the branch to observations."""
+        qubit, = transition.gate.targets
+        context_label = f"Measurement transition {transition.id}, outcome {outcome}"
+        targets: dict[str, UnitPayload] = {}
+        for unit in target_state.units:
+            covering = self._payload_covering_qubits(measured, unit.qubits)
+            if covering is not None:
+                value = self.backend.partial_trace_payload(covering, unit.qubits)
+            elif self._measurement_changes_overlap(sources, measured, unit.qubits):
+                # Derive this unit from a joint state *before* conditioning. Its
+                # old matrix and a new shared marginal alone cannot fix it.
+                region = tuple(dict.fromkeys((qubit, *unit.qubits)))
+                workspace = self._joint_payload(sources, region, context_label=context_label)
+                selected = next(
+                    result for result in self.backend.measure_payload(workspace, qubit)
+                    if result.outcome == outcome
+                )
+                self._check_measurement_probability(
+                    local_probability, selected.probability, transition.id, outcome,
+                )
+                value = self.backend.partial_trace_payload(selected.post_payload, unit.qubits)
+            else:
+                value = self._joint_payload(sources, unit.qubits, context_label=context_label)
+            value.unit_id = unit.id
+            targets[unit.id] = value
+
+        # An indirectly conditioned unit may also overlap another target. Do
+        # not return two conflicting answers for an observation on their overlap.
+        try:
+            self._check_overlap_consistency(list(targets.values()), context_label=context_label)
+        except ValueError as exc:
+            raise JointStateUnavailableError(
+                f"{exc} Retain a joint source unit for the measurement and the overlapping targets."
+            ) from exc
+        return targets
+
+    def _measurement_changes_overlap(
+        self,
+        sources: dict[str, UnitPayload],
+        measured: dict[str, UnitPayload],
+        qubits: tuple[str, ...],
+    ) -> bool:
+        for unit_id, after in measured.items():
+            shared = tuple(q for q in qubits if q in after.qubits)
+            if shared and not self._same_density(
+                self.backend.partial_trace_payload(sources[unit_id], shared),
+                self.backend.partial_trace_payload(after, shared),
+            ):
+                return True
+        return False
 
     def _rebuild_payloads(
         self,
@@ -190,22 +283,9 @@ class TransitionExecutor:
         system_model: SystemModel,
         transition: TransitionClassSpec,
         branch: BranchSpec,
-        measured_payloads: dict[str, UnitPayload] | None = None,
     ) -> dict[str, UnitPayload]:
         rebuilt: dict[str, UnitPayload] = {}
-        # Prefer the conditioned units when a renamed or smaller target can be
-        # obtained from several source units, including an unmeasured one.
-        base_payloads = dict(measured_payloads or {})
-        for unit_id, payload in source_node.unit_payloads.items():
-            if unit_id in base_payloads:
-                continue
-            covering = self._payload_covering_qubits(measured_payloads, payload.qubits) if measured_payloads else None
-            if covering is None:
-                base_payloads[unit_id] = payload.copy()
-            else:
-                reduced = self.backend.partial_trace_payload(covering, payload.qubits)
-                reduced.unit_id = unit_id
-                base_payloads[unit_id] = reduced
+        base_payloads = {name: payload.copy() for name, payload in source_node.unit_payloads.items()}
 
         if not transition.gate.is_measurement() and transition.gate.name.upper() != "NOOP":
             self._apply_gate_to_base_payloads(
@@ -295,8 +375,8 @@ class TransitionExecutor:
         """Obtain a supported joint summary without inventing correlations.
 
         Disjoint source units retain the model's product assumption. Overlapping
-        units can only be combined here when one available marginal plus pure
-        complementary marginals determines a product extension. A pure marginal
+        units can be combined when each product extension has a pure factor
+        (the additional subsystem or the state constructed so far). A pure marginal
         is independent of its complement in every compatible quantum state.
         General reconstruction from overlapping mixed marginals is unsupported.
         """
@@ -305,7 +385,7 @@ class TransitionExecutor:
         available = set().union(*(payload.qubits for payload in sources))
         missing = required - available
         if missing:
-            raise NotImplementedError(
+            raise JointStateUnavailableError(
                 f"{context_label} has no retained information for qubits {sorted(missing)!r}."
             )
         covering = self._payload_covering_qubits(payloads, qubits)
@@ -330,12 +410,15 @@ class TransitionExecutor:
                 remaining = tuple(q for q in candidate.qubits if q not in covered)
                 if not remaining:
                     continue
-                complement = self._normalized_pure_payload(
-                    self.backend.partial_trace_payload(candidate, remaining),
-                )
-                if complement is not None:
-                    factors.append(complement)
-                    covered.update(remaining)
+                marginal = self.backend.partial_trace_payload(candidate, remaining)
+                complement = self._normalized_pure_payload(marginal)
+                if complement is None:
+                    if any(self._normalized_pure_payload(factor) is None for factor in factors):
+                        continue
+                    # A pure seed is independent of a mixed complement too.
+                    complement = marginal
+                factors.append(complement)
+                covered.update(remaining)
             if covered != required:
                 continue
             joint = self.backend.merge_unit_payloads(factors, qubits)
@@ -346,9 +429,9 @@ class TransitionExecutor:
                 for candidate in candidates
             ):
                 return joint
-        raise NotImplementedError(
-            f"{context_label} requires a joint summary on {qubits!r}; overlapping "
-            "summaries do not supply a covering matrix or pure complementary factors."
+        raise JointStateUnavailableError(
+            f"{context_label} requires a joint summary on {qubits!r}; "
+            "retain a unit covering these qubits or supply marginals that determine a product extension."
         )
 
     def _check_overlap_consistency(
@@ -377,9 +460,12 @@ class TransitionExecutor:
         return data
 
     def _same_density(self, left: UnitPayload, right: UnitPayload) -> bool:
-        return bool(np.allclose(
-            self._density_array(left), self._density_array(right), rtol=0, atol=1e-12,
-        ))
+        left_matrix = self._density_array(left)
+        right_matrix = self._density_array(right)
+        # Each positive basis weight admits an outcome, however small it is.
+        if not np.array_equal(left_matrix.diagonal().real > 0, right_matrix.diagonal().real > 0):
+            return False
+        return bool(np.allclose(left_matrix, right_matrix, rtol=0, atol=1e-12))
 
     def _normalized_pure_payload(self, payload: UnitPayload) -> UnitPayload | None:
         """Recognize a pure complement and remove only normalization roundoff."""

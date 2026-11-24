@@ -2,11 +2,12 @@
 
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 
 import numpy as np
 
 from qamc.backend.unit_ops import (
+    apply_hadamard,
     apply_local_operator,
     expand_local_operator,
     int_to_bits,
@@ -64,9 +65,13 @@ class DensityMatrixBackend:
                 raise ValueError(
                     f"Gate {gate.name!r} acts on qubit {qubit!r} outside payload {payload.unit_id!r}."
                 )
-        local_operator = named_gate_matrix(gate.name, gate.params)
         rho = np.asarray(payload.data, dtype=complex)
-        updated = apply_local_operator(rho, payload.qubits, local_operator, acted_qubits)
+        if gate.name.upper() == "H":
+            qubit, = acted_qubits
+            updated = apply_hadamard(rho, payload.qubits, qubit)
+        else:
+            local_operator = named_gate_matrix(gate.name, gate.params)
+            updated = apply_local_operator(rho, payload.qubits, local_operator, acted_qubits)
         return UnitPayload(
             unit_id=payload.unit_id,
             summary_kind=payload.summary_kind,
@@ -79,6 +84,12 @@ class DensityMatrixBackend:
             raise ValueError(f"Qubit {qubit!r} not present in payload {payload.unit_id!r}.")
 
         rho = np.asarray(payload.data, dtype=complex)
+        if basis.upper() == "X":
+            rotated = replace(payload, data=apply_hadamard(rho, payload.qubits, qubit))
+            results = self.measure_payload(rotated, qubit, basis="Z")
+            for result in results:
+                result.post_payload.data = apply_hadamard(result.post_payload.data, payload.qubits, qubit)
+            return results
         projector0, projector1 = single_qubit_projectors(basis)
         projectors = (projector0, projector1)
         results: list[MeasurementResult] = []
@@ -183,9 +194,8 @@ class DensityMatrixBackend:
         reduced = self.partial_trace_payload(payload, qubits)
         rho = np.asarray(reduced.data, dtype=complex)
         if basis.upper() == "X":
-            h_gate = named_gate_matrix("H")
             for qubit in qubits:
-                rho = apply_local_operator(rho, qubits, h_gate, (qubit,))
+                rho = apply_hadamard(rho, qubits, qubit)
         elif basis.upper() != "Z":
             raise ValueError(f"Unsupported basis: {basis!r}")
 

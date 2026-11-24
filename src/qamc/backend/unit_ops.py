@@ -123,6 +123,47 @@ def expand_local_operator(
     return full
 
 
+def apply_hadamard(data: np.ndarray, qubits: tuple[str, ...], qubit: str) -> np.ndarray:
+    """Take the Hadamard sum and difference before applying their common scale."""
+    n = len(qubits)
+    axis = qubits.index(qubit)
+    tensor = data.reshape((2,) * (n * data.ndim))
+
+    def butterfly(values: np.ndarray, target: int) -> np.ndarray:
+        left, right = np.moveaxis(values, target, 0)
+        return np.stack((left + right, left - right), axis=target)
+
+    result = butterfly(tensor, axis)
+    if data.ndim == 1:
+        return (result / sqrt(2)).reshape(data.shape)
+    result = (butterfly(result, n + axis) * 0.5).reshape(data.shape)
+
+    # For each pair of computational-basis indices, the smaller output
+    # population is (a+b)/2 - |Re c| for input diagonal a,b and coherence c.
+    # When the two terms nearly cancel, evaluate it as a sum of nonnegative
+    # terms so that e.g. H P(theta) H retains sin(theta/2)^2 for small theta.
+    indices = np.arange(data.shape[0]).reshape((2,) * n)
+    zero, one = np.moveaxis(indices, axis, 0).reshape(2, -1)
+    a, b = data[zero, zero].real, data[one, one].real
+    c = data[zero, one]
+    destructive = (np.abs(c.real) > 0.25 * (a + b)) & (a > 0) & (b > 0)
+    if np.any(destructive):
+        a, b, c = a[destructive], b[destructive], c[destructive]
+        magnitude = np.abs(c)
+        # sqrt(a*b) >= |c| by positivity, independent of whether the state is pure.
+        larger, smaller = np.maximum(a, b), np.minimum(a, b)
+        mixed = np.maximum(0, larger * np.sqrt(smaller / larger) - magnitude)
+        difference = (a - b) / (np.sqrt(a) + np.sqrt(b))
+        phase = c.imag * (c.imag / (magnitude + np.abs(c.real)))
+        small = 0.5 * difference**2 + mixed + phase
+        zero, one = zero[destructive], one[destructive]
+        small_indices = np.where(c.real > 0, one, zero)
+        large_indices = np.where(c.real > 0, zero, one)
+        result[small_indices, small_indices] = small
+        result[large_indices, large_indices] = a + b - small
+    return result
+
+
 def apply_local_operator(
     rho: np.ndarray,
     qubit_order: tuple[str, ...],
