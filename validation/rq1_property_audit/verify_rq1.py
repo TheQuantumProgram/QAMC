@@ -86,6 +86,8 @@ def check_row(case: dict) -> dict:
     details = []
     for prop in props:
         actual = evaluator.evaluate(context, prop)
+        if actual.passed is None:
+            raise ValueError(f"{prop.id}: {actual.diagnostic}")
         expected_observation = reference_observation(reference, prop)
         expected_judgment = reference_judgment(prop, expected_observation)
         details.append({

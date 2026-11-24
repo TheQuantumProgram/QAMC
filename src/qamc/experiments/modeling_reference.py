@@ -30,6 +30,10 @@ class ReferenceUnsupported(ValueError):
     """The independent reference does not implement the requested construct."""
 
 
+class UndefinedReferenceObservation(ReferenceUnsupported):
+    """The selected instances have no positive reach for an aggregate."""
+
+
 @dataclass(slots=True)
 class ReferenceNode:
     id: str
@@ -274,12 +278,7 @@ def _measure(
 
 
 def reference_observation(reference: ReferenceExecution, property_spec: PropertySpec) -> object:
-    """Independently compute the observation shape returned by PropertyEvaluator.
-
-    This evaluates observations only, not expectation predicates. Quantum
-    pointwise checks selecting zero-reach records are explicitly unsupported;
-    aggregate observations omit their zero contribution.
-    """
+    """Compute an observation over the positive-reach instances at the selected positions."""
     if property_spec.scope_kind is ScopeKind.ANCHORS:
         anchors = tuple(property_spec.scope_value)
     elif property_spec.scope_kind is ScopeKind.INTERVAL:
@@ -288,7 +287,10 @@ def reference_observation(reference: ReferenceExecution, property_spec: Property
         anchors = order[order.index(first):order.index(last) + 1]
     else:
         raise ReferenceUnsupported(f"Reference scope {property_spec.scope_kind!r} is unsupported.")
-    nodes = [node for anchor in anchors for node in reference.nodes_at(anchor)]
+    nodes = [node for anchor in anchors for node in reference.nodes_at(anchor)
+             if node.reach_probability > 0]
+    if not nodes and property_spec.mode is EvaluationMode.AGGREGATE:
+        raise UndefinedReferenceObservation("An aggregate with zero total reach has no normalized observation.")
     observable = property_spec.observable
     if observable.kind == "classical":
         values = [tuple(node.all_classical().get(name) for name in observable.classical_vars) for node in nodes]
@@ -299,8 +301,6 @@ def reference_observation(reference: ReferenceExecution, property_spec: Property
     else:
         if observable.kind not in {"quantum", "state", "quantum_state"}:
             raise ReferenceUnsupported(f"Reference observable {observable.kind!r} is unsupported.")
-        if property_spec.mode is EvaluationMode.AGGREGATE:
-            nodes = [node for node in nodes if node.state_vector is not None]
         if observable.kind in {"state", "quantum_state"}:
             observations = [node.reduced_density(observable.qubits) for node in nodes]
         else:
@@ -308,14 +308,13 @@ def reference_observation(reference: ReferenceExecution, property_spec: Property
     if property_spec.mode is not EvaluationMode.AGGREGATE:
         return tuple(observations)
     total = sum(node.reach_probability for node in nodes)
-    if not total:
-        raise ReferenceUnsupported("An aggregate with zero total reach has no normalized observation.")
+    weights = [node.reach_probability / total for node in nodes]
     if observable.kind in {"state", "quantum_state"}:
-        return sum(node.reach_probability * value for node, value in zip(nodes, observations)) / total
+        return sum(weight * value for weight, value in zip(weights, observations))
     aggregate: dict[object, float] = {}
-    for node, distribution in zip(nodes, observations):
+    for weight, distribution in zip(weights, observations):
         for outcome, probability in distribution.items():
-            aggregate[outcome] = aggregate.get(outcome, 0.0) + node.reach_probability * probability / total
+            aggregate[outcome] = aggregate.get(outcome, 0.0) + weight * probability
     return aggregate
 
 

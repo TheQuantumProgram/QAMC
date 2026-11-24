@@ -15,6 +15,8 @@ qam-check examples/ghz_ccx_measure_control.qam
 
 The six-qubit example in Section 3.5 checks that the first three qubits have equal measurement outcomes and that the output pair has probabilities (5/8, 1/8, 1/8, 1/8) in computational basis order. Both assertions should print `PASS`. To install the checker alone, use `python -m pip install .`.
 
+An assertion evaluates the instances with positive reach probability at the named positions. If this set is empty, `pointwise_all` is true, `pointwise_any` is false, and `aggregate` is undefined. The checker reports an undefined check as `UNDEFINED` and exits with status 3.
+
 ## Run the paper experiments
 
 Run the following commands from the repository root with the environment activated.

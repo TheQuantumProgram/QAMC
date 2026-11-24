@@ -33,7 +33,13 @@ class TemporalPropertyEvaluationResult:
 
     property_id: str
     operator: str
-    passed: bool
+    passed: bool | None
     selected_anchor_ids: tuple[str, ...]
     selected_node_ids: tuple[str, ...]
     observed: object
+
+    @property
+    def diagnostic(self) -> str | None:
+        if self.passed is None:
+            return "An aggregate operand has no selected state instance with positive reach probability."
+        return None

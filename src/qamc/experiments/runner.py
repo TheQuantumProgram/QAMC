@@ -37,7 +37,7 @@ class ModelMeasurement:
     nonempty_source_lines: int
     time_ms: float
     retained_array_mib: float
-    satisfied: bool
+    satisfied: bool | None
     expected_satisfied: bool
 
 
@@ -72,7 +72,7 @@ def measure_paper_models(root: Path) -> list[ModelMeasurement]:
             nonempty_source_lines=_source_line_count(path),
             time_ms=time_ms,
             retained_array_mib=_context_payload_mib(result.context),
-            satisfied=result.ok,
+            satisfied=None if result.has_undefined else result.ok,
             expected_satisfied=expected,
         ))
     return rows
@@ -86,7 +86,7 @@ def render_model_measurements(rows: list[ModelMeasurement]) -> str:
     for row in rows:
         writer.writerow((row.question, row.row, row.model, row.qubits, row.gates,
                          row.nonempty_source_lines, f"{row.time_ms:.6f}", f"{row.retained_array_mib:.6f}",
-                         "satisfied" if row.satisfied else "violated",
+                         {True: "satisfied", False: "violated", None: "undefined"}[row.satisfied],
                          "satisfied" if row.expected_satisfied else "violated"))
     return output.getvalue().rstrip()
 

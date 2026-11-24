@@ -28,6 +28,10 @@ class CheckerRunResult:
     temporal_results: list[TemporalPropertyEvaluationResult]
 
     @property
+    def has_undefined(self) -> bool:
+        return any(result.passed is None for result in (*self.property_results, *self.temporal_results))
+
+    @property
     def ok(self) -> bool:
         return (
             self.validation.ok

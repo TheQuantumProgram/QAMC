@@ -256,18 +256,19 @@ def _measure_model_once(benchmark: RQ4BenchmarkSpec, qubit_count: int) -> RQ4Lar
         )
     check_time_ms = (time.perf_counter() - check_start) * 1000.0
     ok = all(result.passed for result in property_results)
+    undefined = [result.diagnostic for result in property_results if result.passed is None]
     return RQ4LargeScaleRow(
         benchmark_id=benchmark.id,
         benchmark_label=benchmark.label,
         qubit_count=qubit_count,
         gate_count=gate_count,
         line_count=line_count,
-        status="ok" if ok else "failed",
+        status="undefined" if undefined else ("ok" if ok else "failed"),
         ok=ok,
         run_time_ms=run_time_ms,
         check_time_ms=check_time_ms,
         payload_mib=_context_payload_mib(context),
-        note="" if ok else _failed_property_note(property_results),
+        note="; ".join(undefined) if undefined else _failed_property_note(property_results),
     )
 
 

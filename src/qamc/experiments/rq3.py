@@ -472,7 +472,7 @@ def _measure_model(
         measurements.append(_measure_model_once(benchmark, qubit_count, style))
         gc.collect()
 
-    first_error = next((row for row in measurements if row.status in {"error", "failed"}), None)
+    first_error = next((row for row in measurements if row.status != "ok"), None)
     if first_error is not None:
         return first_error
 
@@ -537,13 +537,18 @@ def _measure_model_once(
     tracemalloc.stop()
     elapsed_ms = (time.perf_counter() - start) * 1000.0
     context = result.context
+    status = "ok" if result.ok else "failed"
+    note = "" if result.ok else "; ".join(diag.message for diag in result.validation.diagnostics)
+    if result.has_undefined:
+        status = "undefined"
+        note = "; ".join(r.diagnostic for r in (*result.property_results, *result.temporal_results) if r.diagnostic)
     return RQ3ScalabilityRow(
         benchmark_id=benchmark.id,
         benchmark_label=benchmark.label,
         style=style,
         qubit_count=qubit_count,
         gate_count=_execution_quantum_gate_count(model),
-        status="ok" if result.ok else "failed",
+        status=status,
         ok=result.ok,
         wall_time_ms=elapsed_ms,
         payload_mib=_context_payload_mib(context),
@@ -554,7 +559,7 @@ def _measure_model_once(
         repeat_count=1,
         wall_time_min_ms=elapsed_ms,
         wall_time_max_ms=elapsed_ms,
-        note="" if result.ok else "; ".join(diag.message for diag in result.validation.diagnostics),
+        note=note,
     )
 
 

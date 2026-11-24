@@ -13,7 +13,7 @@ from qamc.property.observables import (
     SubspaceInconclusiveError, classical_observation, quantum_density_matrix,
     quantum_distribution, quantum_support_basis,
 )
-from qamc.property.scopes import ScopeSelection, ScopeSelector
+from qamc.property.scopes import ScopeSelector
 from qamc.runtime.execution_context import ExecutionContext
 from qamc.runtime.state_node import StateNode
 
@@ -23,10 +23,11 @@ class PropertyEvaluationResult:
     """Result of evaluating one property."""
 
     property_id: str
-    passed: bool
+    passed: bool | None
     selected_anchor_ids: tuple[str, ...]
     selected_node_ids: tuple[str, ...]
     observed: object
+    diagnostic: str | None = None
 
 
 class PropertyEvaluator:
@@ -43,7 +44,18 @@ class PropertyEvaluator:
 
     def evaluate(self, context: ExecutionContext, property_spec: PropertySpec) -> PropertyEvaluationResult:
         selection = self.scope_selector.select(context, property_spec)
-        selected_nodes = [context.node(node_id) for node_id in selection.node_ids]
+        bound_nodes = (context.node(node_id) for node_id in selection.node_ids)
+        selected_nodes = [node for node in bound_nodes if node.reach_probability > 0]
+
+        if not selected_nodes and property_spec.mode is EvaluationMode.AGGREGATE:
+            return PropertyEvaluationResult(
+                property_id=property_spec.id,
+                passed=None,
+                selected_anchor_ids=selection.anchor_ids,
+                selected_node_ids=(),
+                observed=None,
+                diagnostic="No selected state instance has positive reach probability.",
+            )
 
         if property_spec.kind is PropertyKind.ASSERTION:
             passed, observed = self._evaluate_assertion(property_spec, selected_nodes)
@@ -60,7 +72,7 @@ class PropertyEvaluator:
             property_id=property_spec.id,
             passed=passed,
             selected_anchor_ids=selection.anchor_ids,
-            selected_node_ids=selection.node_ids,
+            selected_node_ids=tuple(node.id for node in selected_nodes),
             observed=observed,
         )
 
@@ -177,12 +189,9 @@ class PropertyEvaluator:
                    for basis in bases]
         if property_spec.mode is EvaluationMode.POINTWISE_ANY:
             proved = any(matches)
-        elif property_spec.mode is EvaluationMode.POINTWISE_ALL:
-            proved = all(matches)
         else:
-            # A positive weighted sum of states has the union of their supports.
-            positive = [match for node, match in zip(selected_nodes, matches) if node.reach_probability > 0]
-            proved = bool(positive) and all(positive)
+            # A mixture of positive-weight states has the span of their supports.
+            proved = all(matches)
         if not proved:
             raise SubspaceInconclusiveError(
                 f"Property {property_spec.id!r} is not proved by the abstract subspace; "
@@ -216,30 +225,23 @@ class PropertyEvaluator:
         distributions: list[dict[object, float]],
     ) -> dict[object, float]:
         weighted: dict[object, float] = {}
-        total_mass = 0.0
+        total_mass = sum(node.reach_probability for node in nodes)
         for node, distribution in zip(nodes, distributions):
-            total_mass += node.reach_probability
+            weight = node.reach_probability / total_mass
             for outcome, probability in distribution.items():
-                weighted[outcome] = weighted.get(outcome, 0.0) + node.reach_probability * probability
-        if total_mass == 0:
-            return weighted
-        return {outcome: probability / total_mass for outcome, probability in weighted.items()}
+                weighted[outcome] = weighted.get(outcome, 0.0) + weight * probability
+        return weighted
 
     def _aggregate_density_matrices(
         self,
         nodes: list[StateNode],
         matrices: list[np.ndarray],
     ) -> np.ndarray:
-        if not matrices:
-            return np.asarray([], dtype=complex)
         weighted = np.zeros_like(matrices[0], dtype=complex)
-        total_mass = 0.0
+        total_mass = sum(node.reach_probability for node in nodes)
         for node, matrix in zip(nodes, matrices):
-            total_mass += node.reach_probability
-            weighted += node.reach_probability * matrix
-        if total_mass == 0:
-            return weighted
-        return weighted / total_mass
+            weighted += (node.reach_probability / total_mass) * matrix
+        return weighted
 
     def _assertion_matches(self, observation: object, expectation: object) -> bool:
         if callable(expectation):

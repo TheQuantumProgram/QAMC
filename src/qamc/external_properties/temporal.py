@@ -2,7 +2,9 @@
 
 from __future__ import annotations
 
+from collections.abc import Callable, Iterable
 from dataclasses import replace
+from itertools import chain
 
 from qamc.external_properties.formula import (
     AnchorFormula,
@@ -27,6 +29,35 @@ from qamc.ir.enums import ScopeKind
 from qamc.ir.property import PropertySpec
 from qamc.property import PropertyEvaluationResult, PropertyEvaluator
 from qamc.runtime.execution_context import ExecutionContext
+
+
+def _negate(value: bool | None) -> bool | None:
+    return None if value is None else not value
+
+
+def _all_true(values: Iterable[bool | None]) -> bool | None:
+    """A false operand settles a conjunction even if another is undefined."""
+    result: bool | None = True
+    for value in values:
+        if value is None:
+            result = None
+        elif not value:
+            return False
+    return result
+
+
+def _any_true(values: Iterable[bool | None]) -> bool | None:
+    return _negate(_all_true(_negate(value) for value in values))
+
+
+def _until(
+    indices: range, left: Callable[[int], bool | None], right: Callable[[int], bool | None],
+) -> bool | None:
+    def witness_at(index: int) -> bool | None:
+        preceding = (left(i) for i in range(indices.start, index))
+        return _all_true(chain((right(index),), preceding))
+
+    return _any_true(witness_at(i) for i in indices)
 
 
 class TemporalPropertyEvaluator:
@@ -117,7 +148,7 @@ class TemporalPropertyEvaluator:
         index: int,
         property_map: dict[str, PropertySpec],
         cache: dict[tuple[str, str], PropertyEvaluationResult],
-    ) -> bool:
+    ) -> bool | None:
         if isinstance(formula, TrueFormula):
             return True
         if isinstance(formula, AtomFormula):
@@ -135,15 +166,11 @@ class TemporalPropertyEvaluator:
                 cache,
             )
         if isinstance(formula, NotFormula):
-            return not self._evaluate_formula(context, formula.operand, anchor_ids, index, property_map, cache)
+            return _negate(self._evaluate_formula(context, formula.operand, anchor_ids, index, property_map, cache))
         if isinstance(formula, AndFormula):
-            return self._evaluate_formula(context, formula.left, anchor_ids, index, property_map, cache) and self._evaluate_formula(
-                context,
-                formula.right,
-                anchor_ids,
-                index,
-                property_map,
-                cache,
+            return _all_true(
+                self._evaluate_formula(context, operand, anchor_ids, index, property_map, cache)
+                for operand in (formula.left, formula.right)
             )
         if isinstance(formula, NextFormula):
             return index + 1 < len(anchor_ids) and self._evaluate_formula(
@@ -155,23 +182,21 @@ class TemporalPropertyEvaluator:
                 cache,
             )
         if isinstance(formula, EventuallyFormula):
-            return any(
+            return _any_true(
                 self._evaluate_formula(context, formula.operand, anchor_ids, candidate, property_map, cache)
                 for candidate in range(index, len(anchor_ids))
             )
         if isinstance(formula, AlwaysFormula):
-            return all(
+            return _all_true(
                 self._evaluate_formula(context, formula.operand, anchor_ids, candidate, property_map, cache)
                 for candidate in range(index, len(anchor_ids))
             )
         if isinstance(formula, UntilFormula):
-            for witness in range(index, len(anchor_ids)):
-                if self._evaluate_formula(context, formula.right, anchor_ids, witness, property_map, cache) and all(
-                    self._evaluate_formula(context, formula.left, anchor_ids, earlier, property_map, cache)
-                    for earlier in range(index, witness)
-                ):
-                    return True
-            return False
+            return _until(
+                range(index, len(anchor_ids)),
+                lambda i: self._evaluate_formula(context, formula.left, anchor_ids, i, property_map, cache),
+                lambda i: self._evaluate_formula(context, formula.right, anchor_ids, i, property_map, cache),
+            )
         raise TypeError(f"Unsupported temporal formula: {formula!r}")
 
     def _resolve_formula_anchor(self, context: ExecutionContext, anchor_id: str) -> str:
@@ -229,7 +254,7 @@ class TemporalPropertyEvaluator:
             temporal_property,
             anchor_ids,
             local_results,
-            all(result.passed for result in local_results),
+            _all_true(result.passed for result in local_results),
         )
 
     def _evaluate_eventually(
@@ -248,7 +273,7 @@ class TemporalPropertyEvaluator:
             temporal_property,
             anchor_ids,
             local_results,
-            any(result.passed for result in local_results),
+            _any_true(result.passed for result in local_results),
         )
 
     def _evaluate_until(
@@ -273,7 +298,9 @@ class TemporalPropertyEvaluator:
         witness_indices = [
             index for index, rhs_result in enumerate(rhs_results) if rhs_result.passed
         ]
-        passed = any(all(lhs_results[j].passed for j in range(index)) for index in witness_indices)
+        passed = _until(
+            range(len(anchor_ids)), lambda i: lhs_results[i].passed, lambda i: rhs_results[i].passed,
+        )
         observed = {
             "lhs": tuple((anchor_ids[i], lhs_results[i].passed) for i in range(len(anchor_ids))),
             "rhs": tuple((anchor_ids[i], rhs_results[i].passed) for i in range(len(anchor_ids))),
@@ -335,7 +362,7 @@ class TemporalPropertyEvaluator:
         temporal_property: TemporalPropertySpec,
         anchor_ids: tuple[str, ...],
         local_results: tuple[PropertyEvaluationResult, ...],
-        passed: bool,
+        passed: bool | None,
     ) -> TemporalPropertyEvaluationResult:
         return TemporalPropertyEvaluationResult(
             property_id=temporal_property.id,

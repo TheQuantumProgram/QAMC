@@ -60,31 +60,23 @@ def main(argv: list[str] | None = None) -> int:
         print("Validation failed.")
         return 1
 
-    if result.property_results:
-        print("Properties:")
-        for prop_result in result.property_results:
-            status = "PASS" if prop_result.passed else "FAIL"
-            print(
-                f"  [{status}] {prop_result.property_id} "
-                f"anchors={prop_result.selected_anchor_ids} "
-                f"nodes={prop_result.selected_node_ids} "
-                f"observed={prop_result.observed!r}"
-            )
-    else:
+    if not result.property_results:
         print("No properties declared.")
-
-    if result.temporal_results:
-        print("Temporal properties:")
-        for temporal_result in result.temporal_results:
-            status = "PASS" if temporal_result.passed else "FAIL"
+    status_names = {True: "PASS", False: "FAIL", None: "UNDEFINED"}
+    for title, checks in (("Properties", result.property_results), ("Temporal properties", result.temporal_results)):
+        if checks:
+            print(f"{title}:")
+        for check in checks:
+            operator = f"operator={check.operator} " if hasattr(check, "operator") else ""
+            diagnostic = f" ({check.diagnostic})" if check.diagnostic else ""
             print(
-                f"  [{status}] {temporal_result.property_id} "
-                f"operator={temporal_result.operator} "
-                f"anchors={temporal_result.selected_anchor_ids} "
-                f"nodes={temporal_result.selected_node_ids} "
-                f"observed={temporal_result.observed!r}"
+                f"  [{status_names[check.passed]}] {check.property_id} {operator}"
+                f"anchors={check.selected_anchor_ids} nodes={check.selected_node_ids} "
+                f"observed={check.observed!r}{diagnostic}"
             )
 
+    if result.has_undefined:
+        return 3
     return 0 if result.ok else 2
 
 

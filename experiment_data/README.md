@@ -9,7 +9,7 @@ The 22 correctness models and six hybrid programs are under `models/`. Adjacent 
 | `rq3_scalability.csv` | 128 configurations, covering four circuit families, two representations and sizes 5–20. Each timing row summarizes five runs. |
 | `rq4_large_scale.csv` | One measurement per configuration for five circuit families at 50, 100, 200, 300, 400 and 500 qubits |
 
-The retained-array memory columns measure quantum arrays stored across generated state instances. Timings depend on the hardware and software used. The archived Grover timings precede the current implementation of the witness-subspace check.
+The retained-array memory columns measure quantum arrays stored across generated state instances. The RQ4 data come from a single run of QAMC over all 30 configurations. The Grover models check terminal local witness-subspace membership and store bases for the local subspaces. Timings depend on the hardware and software used.
 
 The IQFT model requires each output bit to match the corresponding bit of `1000100001` with probability greater than 0.997.
 
