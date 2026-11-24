@@ -1,0 +1,2233 @@
+{
+  "checked_at_utc": "2026-11-24T10:39:53.217022+00:00",
+  "scope": "Checker and independent full-state judgments for the properties of the 22 RQ1 models.",
+  "manifest_sha256": "6734d10536b4b1f8bca285c51f6053b6fd264c9fe0e1a7d24411e874de50c87c",
+  "code_sha256": {
+    "src/qamc/__init__.py": "29e114e99cfbe54eadefd7b2a13f523c8d78b93ff17d23f4b9df7c538291da9b",
+    "src/qamc/backend/__init__.py": "d45f33245fd120cb596b9ff3aed1bace6aca4942729d92d09a6b0cdf6c7cc966",
+    "src/qamc/backend/density_matrix_backend.py": "66a32095ef9ff73a06d03cdb04ae759976385f7e1a3ffbc2d5009b0bf2ef6700",
+    "src/qamc/backend/state_vector_backend.py": "8a68ab3160ce26095ee5ea8648faa59e6b68a495b7c4274d6bab7cc78d913794",
+    "src/qamc/backend/unit_ops.py": "b642ecbf489ec439ff628e649df96b09d1abe52c8376ac516cebb770c28e162d",
+    "src/qamc/checker/__init__.py": "aac454105b2130dabd34fc8a3a4b15a60a887f9bc6c8583187e6923dbd882f43",
+    "src/qamc/checker/pipeline.py": "6ea260aa89fceddcbd9bc85e7502458db3c3d3371af0c5ec4a5b1150d5f80d81",
+    "src/qamc/cli/__init__.py": "33712f2dbcb882c756d3dab0fde3cf6d60961193d35f01594a072983a2b6474c",
+    "src/qamc/cli/experiments.py": "99afb11ec2d1417f619bc25ff41bf38f34f6dfb69b4accefc39fe1fc5a958a19",
+    "src/qamc/cli/main.py": "253bf41fd506c93ce1ba831212a76b2cb7be9d1f4846138ea76bd60cfbdf0013",
+    "src/qamc/engine/__init__.py": "35f550e6a525c8f088889e5858a7e32a5e219d0d31eee2cde68ff50531c09e16",
+    "src/qamc/engine/grover_subspace.py": "401d8bac00a867794a53edf58ab2825623ff8f04d7b85fa8d413abc070d37120",
+    "src/qamc/engine/trace_executor.py": "7e7883db8385733d33a5a3886703579d7e5cdd87b4cb7c41de17a2069e5434bc",
+    "src/qamc/engine/transition_executor.py": "5c8cbc4908b224b5184e6e11f2aaac0c7abef040feceeda2410b78763dd9b9bf",
+    "src/qamc/experiments/__init__.py": "e7bbe1f38fdf54a72461e76f62a30d6d1f55b9dbeccfa429f5fcc163f9e2422e",
+    "src/qamc/experiments/modeling_audit.py": "256189339656fe2206284dfd5ef788a96ce039796b8b31ae3e0075335c835e5f",
+    "src/qamc/experiments/modeling_reference.py": "5da33d053e8a27cb0e27a34d76e344d8a004e37976289db14a6b242be681e413",
+    "src/qamc/experiments/rq3.py": "99521004c7fb8671243709fc7cf8425b37920dd1b4b96310fe101cbd9baa1e46",
+    "src/qamc/experiments/rq4.py": "a8cac275ad3a906f222ef3b6340a22f173e43b4f881c2330f8e0a3e7e5cf1dbe",
+    "src/qamc/experiments/runner.py": "5034871e807318a2a6e98a0dea7f0a852e93c0cfd8a3f5fb94c265d124d6cdfd",
+    "src/qamc/external_properties/__init__.py": "a46780a77291930480724f4360e29f6e9c3268ce059b95946874e0a402537d22",
+    "src/qamc/external_properties/formula.py": "74a3632e30cf6efbe209c279acaa656741e7b7fa8b5a1cf2c2b648f342d73095",
+    "src/qamc/external_properties/inline_atoms.py": "f10ba3c9b715ecbc5702442a015f36041ca3386d395c994e6c3ccc546103d93c",
+    "src/qamc/external_properties/loader.py": "0122f38ea7c55d2a54ff2d379648947c9e24bac92053624fbf44fef365b13e6f",
+    "src/qamc/external_properties/model.py": "ec445b6538a6f9d44d79e4de18e23b01106243b10cc39e6d7636e49612e220b3",
+    "src/qamc/external_properties/temporal.py": "7c933d8ce52c901ecb15e079b6d46de7bb51468a450d29abbeca6149a551589d",
+    "src/qamc/ir/__init__.py": "b2442685e434c489f101bcc3a5edbe9c7397891e168f321b8f0f31f4a8422419",
+    "src/qamc/ir/enums.py": "a75eb92f70ecbff6a8ec9d78abc9d75342528abfe2ed2190234fb3040d1d6e6e",
+    "src/qamc/ir/model.py": "d939e68a963dd81073fabd677065e9b5873fbab4af8baaefc05b22fd822f454e",
+    "src/qamc/ir/property.py": "4dfa986a56763fb4abc46e7799944762d16388fc0f6a485628aa5af9b08161f5",
+    "src/qamc/loader/__init__.py": "d05a115fcada8257497fe20ab9caef98ccb0cf98488deada352fbd3ea4d73cae",
+    "src/qamc/loader/normalize.py": "fee151d670f84b1a3ca8db03061ff7a7a754c301ecd3f266280ca23881b8de62",
+    "src/qamc/loader/qam_loader.py": "990f0e8d828e71004692f094339cf26626cc50b631725b1ea7077a4c21d03d8e",
+    "src/qamc/loader/qam_toml.py": "532d2748d3f816d0adb5c9abe67c26118ce0fb712725972bb26b2966d5c3adc2",
+    "src/qamc/property/__init__.py": "e8c745c7be60bf07f69248f87e6a13416af75bae69e9ef15e08cc905399d8d27",
+    "src/qamc/property/evaluator.py": "0913910113b34c464b2b99dab408325214fa267a59f9934b607e6fac614ac888",
+    "src/qamc/property/observables.py": "311cd0ff068b4488652cc4e7f578bf719053b0a742e1291c0f83b294914126e7",
+    "src/qamc/property/scopes.py": "9d06ff137ed07f52014736db91613a0d044dccdf00b7aa025bc2901e0bc1d20e",
+    "src/qamc/runtime/__init__.py": "d2a00c35a9d1df29684c8b327404b523ed341c8590b994ef5d2e05b4a3371c3c",
+    "src/qamc/runtime/anchor_store.py": "ac8348ba965ca68e6406275902141c2739242d5e5b6d4dc1b1970c418d0226ac",
+    "src/qamc/runtime/execution_context.py": "0ef72264a78c39a8320c26a6f6094e70d81fcfef0c5de0180693a32eec3ca1d5",
+    "src/qamc/runtime/state_node.py": "41b3dde059c32c29ad61cf768b3159dfa92c6a9cb94fe91e03cb139daa0cefa7",
+    "src/qamc/runtime/transition_edge.py": "0a8f18a357b894997d660e39480ad7dc90f4cd33841de078d036ae14be7c171b",
+    "src/qamc/surface/__init__.py": "cd15ea5ceecbe1397df4e07cf2eeb2038c2a674a95b77bc7bc2f51430d2c6045",
+    "src/qamc/surface/parser.py": "e5282907d4adf314fa915058f15f755bd3dc6990a2235e65dd77c84d6fc58bbf",
+    "src/qamc/validate/__init__.py": "1d092b7fd73e1e961be15d96dcdc7b70c4963191870693ec15fa7e8676eda715",
+    "src/qamc/validate/diagnostics.py": "d1023adaf41a107fd01d68df6eb8b805f4c0789079b565afc27a70cf0f19068d",
+    "src/qamc/validate/well_formedness.py": "4c736842afdc9cd97c18e25512b28f58aa73edfd88e8362e82bdf88594fd38ad"
+  },
+  "validation_script_sha256": "c7c049e9165919525ef38d215896ded0ad14fa8b375220cf7904bf89005b9608",
+  "cases": [
+    {
+      "row": 1,
+      "model_label": "GHZ",
+      "model": "experiment_data/models/GHZ/ghz_10_staircase.qam",
+      "expected_satisfied": true,
+      "checker_satisfied": true,
+      "reference_satisfied": true,
+      "matches_expected": true,
+      "all_property_judgments_agree": true,
+      "source_files": [
+        {
+          "path": "experiment_data/models/GHZ/ghz_10_staircase.qam",
+          "sha256": "b310fc601cdff5078e99f4d0cb1098f45227ccc75868628f260569d3e5c2a47f"
+        },
+        {
+          "path": "experiment_data/models/GHZ/ghz_10_staircase.qprop",
+          "sha256": "9544d5d839cd373a830f17be78dac3ea597d028e91343ebdb6cc3683dd9ed271"
+        }
+      ],
+      "properties": [
+        {
+          "property_id": "paper_ghz_invariant",
+          "selected_positions": [
+            "a2",
+            "a3",
+            "a4",
+            "a5",
+            "a6",
+            "a7",
+            "a8",
+            "a9",
+            "f10"
+          ],
+          "checker_satisfied": true,
+          "reference_satisfied": true,
+          "judgments_agree": true,
+          "checker_observation": [
+            {
+              "(0, 0)": 0.5,
+              "(1, 1)": 0.5
+            },
+            {
+              "(0, 0)": 0.5,
+              "(1, 1)": 0.5
+            },
+            {
+              "(0, 0)": 0.5,
+              "(1, 1)": 0.5
+            },
+            {
+              "(0, 0)": 0.5,
+              "(1, 1)": 0.5
+            },
+            {
+              "(0, 0)": 0.5,
+              "(1, 1)": 0.5
+            },
+            {
+              "(0, 0)": 0.5,
+              "(1, 1)": 0.5
+            },
+            {
+              "(0, 0)": 0.5,
+              "(1, 1)": 0.5
+            },
+            {
+              "(0, 0)": 0.5,
+              "(1, 1)": 0.5
+            },
+            {
+              "(0, 0)": 0.5,
+              "(1, 1)": 0.5
+            }
+          ],
+          "reference_observation": [
+            {
+              "(0, 0)": 0.4999999999999999,
+              "(1, 1)": 0.4999999999999999
+            },
+            {
+              "(0, 0)": 0.4999999999999999,
+              "(1, 1)": 0.4999999999999999
+            },
+            {
+              "(0, 0)": 0.4999999999999999,
+              "(1, 1)": 0.4999999999999999
+            },
+            {
+              "(0, 0)": 0.4999999999999999,
+              "(1, 1)": 0.4999999999999999
+            },
+            {
+              "(0, 0)": 0.4999999999999999,
+              "(1, 1)": 0.4999999999999999
+            },
+            {
+              "(0, 0)": 0.4999999999999999,
+              "(1, 1)": 0.4999999999999999
+            },
+            {
+              "(0, 0)": 0.4999999999999999,
+              "(1, 1)": 0.4999999999999999
+            },
+            {
+              "(0, 0)": 0.4999999999999999,
+              "(1, 1)": 0.4999999999999999
+            },
+            {
+              "(0, 0)": 0.4999999999999999,
+              "(1, 1)": 0.4999999999999999
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "row": 2,
+      "model_label": "Adder",
+      "model": "experiment_data/models/Adder/adder_10.qam",
+      "expected_satisfied": true,
+      "checker_satisfied": true,
+      "reference_satisfied": true,
+      "matches_expected": true,
+      "all_property_judgments_agree": true,
+      "source_files": [
+        {
+          "path": "experiment_data/models/Adder/adder_10.qam",
+          "sha256": "b49ace70d53a57153ffa8963cdb794d76dd6d9795ac80070e6c707bc5cab4ac3"
+        }
+      ],
+      "properties": [
+        {
+          "property_id": "paper_adder_output",
+          "selected_positions": [
+            "f29"
+          ],
+          "checker_satisfied": true,
+          "reference_satisfied": true,
+          "judgments_agree": true,
+          "checker_observation": [
+            {
+              "(0, 1, 0, 1, 0, 0, 0, 0, 1, 0)": 1.0
+            }
+          ],
+          "reference_observation": [
+            {
+              "(0, 1, 0, 1, 0, 0, 0, 0, 1, 0)": 1.0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "row": 3,
+      "model_label": "Bernstein--Vazirani",
+      "model": "experiment_data/models/BV/bv_10_sparse.qam",
+      "expected_satisfied": true,
+      "checker_satisfied": true,
+      "reference_satisfied": true,
+      "matches_expected": true,
+      "all_property_judgments_agree": true,
+      "source_files": [
+        {
+          "path": "experiment_data/models/BV/bv_10_sparse.qam",
+          "sha256": "d73d673bbcf729ab66e5f2390cc9ba7c196cf8f618061c15c0a3fb295f058af6"
+        }
+      ],
+      "properties": [
+        {
+          "property_id": "paper_bv_output",
+          "selected_positions": [
+            "f23"
+          ],
+          "checker_satisfied": true,
+          "reference_satisfied": true,
+          "judgments_agree": true,
+          "checker_observation": [
+            {
+              "(1, 0, 0, 0, 1, 0, 0, 0, 1)": 1.0
+            }
+          ],
+          "reference_observation": [
+            {
+              "(1, 0, 0, 0, 1, 0, 0, 0, 1)": 0.999999999999997
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "row": 4,
+      "model_label": "Deutsch--Jozsa~\\cite{DeutschJozsa1992}",
+      "model": "experiment_data/models/DeutschJozsa/deutsch_balanced.qam",
+      "expected_satisfied": true,
+      "checker_satisfied": true,
+      "reference_satisfied": true,
+      "matches_expected": true,
+      "all_property_judgments_agree": true,
+      "source_files": [
+        {
+          "path": "experiment_data/models/DeutschJozsa/deutsch_balanced.qam",
+          "sha256": "1413ef9bf1d4d8dc9fb63159f7b7234a07533ee6aedde354b2c80cdcc588b559"
+        }
+      ],
+      "properties": [
+        {
+          "property_id": "paper_dj_output",
+          "selected_positions": [
+            "f29"
+          ],
+          "checker_satisfied": true,
+          "reference_satisfied": true,
+          "judgments_agree": true,
+          "checker_observation": [
+            {
+              "(1, 1, 1, 1, 1, 1, 1, 1, 1)": 1.0
+            }
+          ],
+          "reference_observation": [
+            {
+              "(1, 1, 1, 1, 1, 1, 1, 1, 1)": 0.999999999999997
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "row": 5,
+      "model_label": "IQFT~\\cite{NielsenChuang2010}",
+      "model": "experiment_data/models/IQFT/iqft_10_w5.qam",
+      "expected_satisfied": true,
+      "checker_satisfied": true,
+      "reference_satisfied": true,
+      "matches_expected": true,
+      "all_property_judgments_agree": true,
+      "source_files": [
+        {
+          "path": "experiment_data/models/IQFT/iqft_10_w5.qam",
+          "sha256": "1f5f49b19fefe0d7a35e3f55449d23af244b6964a287034b7b3f1deebc1aeb10"
+        }
+      ],
+      "properties": [
+        {
+          "property_id": "p_recover_target_bits_q0",
+          "selected_positions": [
+            "f60"
+          ],
+          "checker_satisfied": true,
+          "reference_satisfied": true,
+          "judgments_agree": true,
+          "checker_observation": [
+            {
+              "0": 0.0006254035649050479,
+              "1": 0.9993745964350945
+            }
+          ],
+          "reference_observation": [
+            {
+              "0": 0.0006254035649050213,
+              "1": 0.9993745964350912
+            }
+          ]
+        },
+        {
+          "property_id": "p_recover_target_bits_q1",
+          "selected_positions": [
+            "f60"
+          ],
+          "checker_satisfied": true,
+          "reference_satisfied": true,
+          "judgments_agree": true,
+          "checker_observation": [
+            {
+              "0": 0.999344468208038,
+              "1": 0.0006555317919615557
+            }
+          ],
+          "reference_observation": [
+            {
+              "0": 0.9993444682080347,
+              "1": 0.0006555317919615274
+            }
+          ]
+        },
+        {
+          "property_id": "p_recover_target_bits_q2",
+          "selected_positions": [
+            "f60"
+          ],
+          "checker_satisfied": true,
+          "reference_satisfied": true,
+          "judgments_agree": true,
+          "checker_observation": [
+            {
+              "0": 0.9992050023567968,
+              "1": 0.0007949976432028978
+            }
+          ],
+          "reference_observation": [
+            {
+              "0": 0.9992050023567934,
+              "1": 0.0007949976432028685
+            }
+          ]
+        },
+        {
+          "property_id": "p_recover_target_bits_q3",
+          "selected_positions": [
+            "f60"
+          ],
+          "checker_satisfied": true,
+          "reference_satisfied": true,
+          "judgments_agree": true,
+          "checker_observation": [
+            {
+              "0": 0.9981362912566754,
+              "1": 0.001863708743324323
+            }
+          ],
+          "reference_observation": [
+            {
+              "0": 0.998136291256672,
+              "1": 0.0018637087433242632
+            }
+          ]
+        },
+        {
+          "property_id": "p_recover_target_bits_q4",
+          "selected_positions": [
+            "f60"
+          ],
+          "checker_satisfied": true,
+          "reference_satisfied": true,
+          "judgments_agree": true,
+          "checker_observation": [
+            {
+              "0": 0.002407636663901555,
+              "1": 0.9975923633360981
+            }
+          ],
+          "reference_observation": [
+            {
+              "0": 0.0024076366639015495,
+              "1": 0.9975923633360946
+            }
+          ]
+        },
+        {
+          "property_id": "p_recover_target_bits_q5",
+          "selected_positions": [
+            "f60"
+          ],
+          "checker_satisfied": true,
+          "reference_satisfied": true,
+          "judgments_agree": true,
+          "checker_observation": [
+            {
+              "0": 0.9999999999999998,
+              "1": 4.364188532557937e-34
+            }
+          ],
+          "reference_observation": [
+            {
+              "0": 0.9999999999999962,
+              "1": 1.2506217667840718e-32
+            }
+          ]
+        },
+        {
+          "property_id": "p_recover_target_bits_q6",
+          "selected_positions": [
+            "f60"
+          ],
+          "checker_satisfied": true,
+          "reference_satisfied": true,
+          "judgments_agree": true,
+          "checker_observation": [
+            {
+              "0": 1.0,
+              "1": 5.262353670976481e-34
+            }
+          ],
+          "reference_observation": [
+            {
+              "0": 0.9999999999999962,
+              "1": 1.0137971886456848e-32
+            }
+          ]
+        },
+        {
+          "property_id": "p_recover_target_bits_q7",
+          "selected_positions": [
+            "f60"
+          ],
+          "checker_satisfied": true,
+          "reference_satisfied": true,
+          "judgments_agree": true,
+          "checker_observation": [
+            {
+              "0": 1.0,
+              "1": 5.748248877523642e-34
+            }
+          ],
+          "reference_observation": [
+            {
+              "0": 0.9999999999999962,
+              "1": 6.065233437480242e-33
+            }
+          ]
+        },
+        {
+          "property_id": "p_recover_target_bits_q8",
+          "selected_positions": [
+            "f60"
+          ],
+          "checker_satisfied": true,
+          "reference_satisfied": true,
+          "judgments_agree": true,
+          "checker_observation": [
+            {
+              "0": 1.0,
+              "1": 1.8746997283273217e-33
+            }
+          ],
+          "reference_observation": [
+            {
+              "0": 0.9999999999999962,
+              "1": 3.4791977735292166e-33
+            }
+          ]
+        },
+        {
+          "property_id": "p_recover_target_bits_q9",
+          "selected_positions": [
+            "f60"
+          ],
+          "checker_satisfied": true,
+          "reference_satisfied": true,
+          "judgments_agree": true,
+          "checker_observation": [
+            {
+              "0": 3.749399456654644e-33,
+              "1": 1.0
+            }
+          ],
+          "reference_observation": [
+            {
+              "0": 4.444703733580672e-33,
+              "1": 0.9999999999999962
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "row": 6,
+      "model_label": "Simon~\\cite{Simon1997}",
+      "model": "experiment_data/models/Simon/simon_s10000_10.qam",
+      "expected_satisfied": true,
+      "checker_satisfied": true,
+      "reference_satisfied": true,
+      "matches_expected": true,
+      "all_property_judgments_agree": true,
+      "source_files": [
+        {
+          "path": "experiment_data/models/Simon/simon_s10000_10.qam",
+          "sha256": "fe0fb580fd7bdeaeb05fed21634ab485dd1b9be055998187b917e7e772dde28c"
+        }
+      ],
+      "properties": [
+        {
+          "property_id": "paper_simon_output",
+          "selected_positions": [
+            "f14"
+          ],
+          "checker_satisfied": true,
+          "reference_satisfied": true,
+          "judgments_agree": true,
+          "checker_observation": [
+            {
+              "0": 1.0
+            }
+          ],
+          "reference_observation": [
+            {
+              "0": 0.9999999999999983
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "row": 7,
+      "model_label": "Quantum walk",
+      "model": "experiment_data/models/QuantumWalk/coined_walk_10.qam",
+      "expected_satisfied": true,
+      "checker_satisfied": true,
+      "reference_satisfied": true,
+      "matches_expected": true,
+      "all_property_judgments_agree": true,
+      "source_files": [
+        {
+          "path": "experiment_data/models/QuantumWalk/coined_walk_10.qam",
+          "sha256": "3e83afc52aedd87b6c733869f1fa013e27cca66d1b4c60be3d687f55f72b4162"
+        },
+        {
+          "path": "experiment_data/models/QuantumWalk/coined_walk_10.qprop",
+          "sha256": "68df8375d8d37fcdb6f19fd53543d5f15b38c05c44fc7b52d1ee1b38ba3df75a"
+        }
+      ],
+      "properties": [
+        {
+          "property_id": "paper_walk_at_a3",
+          "selected_positions": [
+            "a3"
+          ],
+          "checker_satisfied": true,
+          "reference_satisfied": true,
+          "judgments_agree": true,
+          "checker_observation": [
+            {
+              "0": 0.5,
+              "1": 0.5
+            }
+          ],
+          "reference_observation": [
+            {
+              "0": 0.4999999999999999,
+              "1": 0.4999999999999999
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "row": 8,
+      "model_label": "W-state",
+      "model": "experiment_data/models/WState/w10_rbs.qam",
+      "expected_satisfied": true,
+      "checker_satisfied": true,
+      "reference_satisfied": true,
+      "matches_expected": true,
+      "all_property_judgments_agree": true,
+      "source_files": [
+        {
+          "path": "experiment_data/models/WState/w10_rbs.qam",
+          "sha256": "f617066401d8e57a371b511835166f866ae82fb07283070e45ba7612e38eb5de"
+        },
+        {
+          "path": "experiment_data/models/WState/w10_rbs.qprop",
+          "sha256": "a9cd425ad82c6efea76392ed519d1c2b04fd784c8d219352b6fea3b4db2e872b"
+        }
+      ],
+      "properties": [
+        {
+          "property_id": "paper_single_excitation",
+          "selected_positions": [
+            "a1",
+            "a2",
+            "a3",
+            "a4",
+            "a5",
+            "a6",
+            "a7",
+            "a8",
+            "a9",
+            "a10"
+          ],
+          "checker_satisfied": true,
+          "reference_satisfied": true,
+          "judgments_agree": true,
+          "checker_observation": [
+            {
+              "(1, 0, 0, 0, 0, 0, 0, 0, 0, 0)": 1.0
+            },
+            {
+              "(0, 1, 0, 0, 0, 0, 0, 0, 0, 0)": 0.8999999999999999,
+              "(1, 0, 0, 0, 0, 0, 0, 0, 0, 0)": 0.1
+            },
+            {
+              "(0, 0, 1, 0, 0, 0, 0, 0, 0, 0)": 0.8,
+              "(0, 1, 0, 0, 0, 0, 0, 0, 0, 0)": 0.09999999999999998,
+              "(1, 0, 0, 0, 0, 0, 0, 0, 0, 0)": 0.10000000000000003
+            },
+            {
+              "(0, 0, 0, 1, 0, 0, 0, 0, 0, 0)": 0.7000000000000001,
+              "(0, 0, 1, 0, 0, 0, 0, 0, 0, 0)": 0.10000000000000002,
+              "(0, 1, 0, 0, 0, 0, 0, 0, 0, 0)": 0.09999999999999998,
+              "(1, 0, 0, 0, 0, 0, 0, 0, 0, 0)": 0.10000000000000003
+            },
+            {
+              "(0, 0, 0, 0, 1, 0, 0, 0, 0, 0)": 0.6000000000000001,
+              "(0, 0, 0, 1, 0, 0, 0, 0, 0, 0)": 0.09999999999999998,
+              "(0, 0, 1, 0, 0, 0, 0, 0, 0, 0)": 0.09999999999999999,
+              "(0, 1, 0, 0, 0, 0, 0, 0, 0, 0)": 0.09999999999999995,
+              "(1, 0, 0, 0, 0, 0, 0, 0, 0, 0)": 0.1
+            },
+            {
+              "(0, 0, 0, 0, 0, 1, 0, 0, 0, 0)": 0.5000000000000001,
+              "(0, 0, 0, 0, 1, 0, 0, 0, 0, 0)": 0.09999999999999999,
+              "(0, 0, 0, 1, 0, 0, 0, 0, 0, 0)": 0.09999999999999998,
+              "(0, 0, 1, 0, 0, 0, 0, 0, 0, 0)": 0.09999999999999999,
+              "(0, 1, 0, 0, 0, 0, 0, 0, 0, 0)": 0.09999999999999995,
+              "(1, 0, 0, 0, 0, 0, 0, 0, 0, 0)": 0.1
+            },
+            {
+              "(0, 0, 0, 0, 0, 0, 1, 0, 0, 0)": 0.4000000000000001,
+              "(0, 0, 0, 0, 0, 1, 0, 0, 0, 0)": 0.10000000000000007,
+              "(0, 0, 0, 0, 1, 0, 0, 0, 0, 0)": 0.09999999999999999,
+              "(0, 0, 0, 1, 0, 0, 0, 0, 0, 0)": 0.09999999999999998,
+              "(0, 0, 1, 0, 0, 0, 0, 0, 0, 0)": 0.09999999999999999,
+              "(0, 1, 0, 0, 0, 0, 0, 0, 0, 0)": 0.09999999999999995,
+              "(1, 0, 0, 0, 0, 0, 0, 0, 0, 0)": 0.1
+            },
+            {
+              "(0, 0, 0, 0, 0, 0, 0, 1, 0, 0)": 0.30000000000000004,
+              "(0, 0, 0, 0, 0, 0, 1, 0, 0, 0)": 0.09999999999999994,
+              "(0, 0, 0, 0, 0, 1, 0, 0, 0, 0)": 0.10000000000000005,
+              "(0, 0, 0, 0, 1, 0, 0, 0, 0, 0)": 0.09999999999999996,
+              "(0, 0, 0, 1, 0, 0, 0, 0, 0, 0)": 0.09999999999999995,
+              "(0, 0, 1, 0, 0, 0, 0, 0, 0, 0)": 0.09999999999999996,
+              "(0, 1, 0, 0, 0, 0, 0, 0, 0, 0)": 0.09999999999999992,
+              "(1, 0, 0, 0, 0, 0, 0, 0, 0, 0)": 0.09999999999999998
+            },
+            {
+              "(0, 0, 0, 0, 0, 0, 0, 0, 1, 0)": 0.20000000000000007,
+              "(0, 0, 0, 0, 0, 0, 0, 1, 0, 0)": 0.10000000000000006,
+              "(0, 0, 0, 0, 0, 0, 1, 0, 0, 0)": 0.09999999999999996,
+              "(0, 0, 0, 0, 0, 1, 0, 0, 0, 0)": 0.10000000000000007,
+              "(0, 0, 0, 0, 1, 0, 0, 0, 0, 0)": 0.09999999999999999,
+              "(0, 0, 0, 1, 0, 0, 0, 0, 0, 0)": 0.09999999999999998,
+              "(0, 0, 1, 0, 0, 0, 0, 0, 0, 0)": 0.09999999999999999,
+              "(0, 1, 0, 0, 0, 0, 0, 0, 0, 0)": 0.09999999999999995,
+              "(1, 0, 0, 0, 0, 0, 0, 0, 0, 0)": 0.1
+            },
+            {
+              "(0, 0, 0, 0, 0, 0, 0, 0, 0, 1)": 0.10000000000000002,
+              "(0, 0, 0, 0, 0, 0, 0, 0, 1, 0)": 0.09999999999999999,
+              "(0, 0, 0, 0, 0, 0, 0, 1, 0, 0)": 0.10000000000000003,
+              "(0, 0, 0, 0, 0, 0, 1, 0, 0, 0)": 0.09999999999999994,
+              "(0, 0, 0, 0, 0, 1, 0, 0, 0, 0)": 0.10000000000000005,
+              "(0, 0, 0, 0, 1, 0, 0, 0, 0, 0)": 0.09999999999999996,
+              "(0, 0, 0, 1, 0, 0, 0, 0, 0, 0)": 0.09999999999999995,
+              "(0, 0, 1, 0, 0, 0, 0, 0, 0, 0)": 0.09999999999999996,
+              "(0, 1, 0, 0, 0, 0, 0, 0, 0, 0)": 0.09999999999999992,
+              "(1, 0, 0, 0, 0, 0, 0, 0, 0, 0)": 0.09999999999999998
+            }
+          ],
+          "reference_observation": [
+            {
+              "(1, 0, 0, 0, 0, 0, 0, 0, 0, 0)": 1.0
+            },
+            {
+              "(0, 1, 0, 0, 0, 0, 0, 0, 0, 0)": 0.8999999999999999,
+              "(1, 0, 0, 0, 0, 0, 0, 0, 0, 0)": 0.1
+            },
+            {
+              "(0, 0, 1, 0, 0, 0, 0, 0, 0, 0)": 0.7999999999999999,
+              "(0, 1, 0, 0, 0, 0, 0, 0, 0, 0)": 0.09999999999999994,
+              "(1, 0, 0, 0, 0, 0, 0, 0, 0, 0)": 0.1
+            },
+            {
+              "(0, 0, 0, 1, 0, 0, 0, 0, 0, 0)": 0.7000000000000001,
+              "(0, 0, 1, 0, 0, 0, 0, 0, 0, 0)": 0.1,
+              "(0, 1, 0, 0, 0, 0, 0, 0, 0, 0)": 0.09999999999999994,
+              "(1, 0, 0, 0, 0, 0, 0, 0, 0, 0)": 0.1
+            },
+            {
+              "(0, 0, 0, 0, 1, 0, 0, 0, 0, 0)": 0.6000000000000001,
+              "(0, 0, 0, 1, 0, 0, 0, 0, 0, 0)": 0.1,
+              "(0, 0, 1, 0, 0, 0, 0, 0, 0, 0)": 0.1,
+              "(0, 1, 0, 0, 0, 0, 0, 0, 0, 0)": 0.09999999999999994,
+              "(1, 0, 0, 0, 0, 0, 0, 0, 0, 0)": 0.1
+            },
+            {
+              "(0, 0, 0, 0, 0, 1, 0, 0, 0, 0)": 0.5000000000000001,
+              "(0, 0, 0, 0, 1, 0, 0, 0, 0, 0)": 0.09999999999999996,
+              "(0, 0, 0, 1, 0, 0, 0, 0, 0, 0)": 0.1,
+              "(0, 0, 1, 0, 0, 0, 0, 0, 0, 0)": 0.1,
+              "(0, 1, 0, 0, 0, 0, 0, 0, 0, 0)": 0.09999999999999994,
+              "(1, 0, 0, 0, 0, 0, 0, 0, 0, 0)": 0.1
+            },
+            {
+              "(0, 0, 0, 0, 0, 0, 1, 0, 0, 0)": 0.4,
+              "(0, 0, 0, 0, 0, 1, 0, 0, 0, 0)": 0.10000000000000007,
+              "(0, 0, 0, 0, 1, 0, 0, 0, 0, 0)": 0.09999999999999996,
+              "(0, 0, 0, 1, 0, 0, 0, 0, 0, 0)": 0.1,
+              "(0, 0, 1, 0, 0, 0, 0, 0, 0, 0)": 0.1,
+              "(0, 1, 0, 0, 0, 0, 0, 0, 0, 0)": 0.09999999999999994,
+              "(1, 0, 0, 0, 0, 0, 0, 0, 0, 0)": 0.1
+            },
+            {
+              "(0, 0, 0, 0, 0, 0, 0, 1, 0, 0)": 0.3000000000000001,
+              "(0, 0, 0, 0, 0, 0, 1, 0, 0, 0)": 0.09999999999999996,
+              "(0, 0, 0, 0, 0, 1, 0, 0, 0, 0)": 0.10000000000000007,
+              "(0, 0, 0, 0, 1, 0, 0, 0, 0, 0)": 0.09999999999999996,
+              "(0, 0, 0, 1, 0, 0, 0, 0, 0, 0)": 0.1,
+              "(0, 0, 1, 0, 0, 0, 0, 0, 0, 0)": 0.1,
+              "(0, 1, 0, 0, 0, 0, 0, 0, 0, 0)": 0.09999999999999994,
+              "(1, 0, 0, 0, 0, 0, 0, 0, 0, 0)": 0.1
+            },
+            {
+              "(0, 0, 0, 0, 0, 0, 0, 0, 1, 0)": 0.20000000000000004,
+              "(0, 0, 0, 0, 0, 0, 0, 1, 0, 0)": 0.10000000000000003,
+              "(0, 0, 0, 0, 0, 0, 1, 0, 0, 0)": 0.09999999999999996,
+              "(0, 0, 0, 0, 0, 1, 0, 0, 0, 0)": 0.10000000000000007,
+              "(0, 0, 0, 0, 1, 0, 0, 0, 0, 0)": 0.09999999999999996,
+              "(0, 0, 0, 1, 0, 0, 0, 0, 0, 0)": 0.1,
+              "(0, 0, 1, 0, 0, 0, 0, 0, 0, 0)": 0.1,
+              "(0, 1, 0, 0, 0, 0, 0, 0, 0, 0)": 0.09999999999999994,
+              "(1, 0, 0, 0, 0, 0, 0, 0, 0, 0)": 0.1
+            },
+            {
+              "(0, 0, 0, 0, 0, 0, 0, 0, 0, 1)": 0.10000000000000003,
+              "(0, 0, 0, 0, 0, 0, 0, 0, 1, 0)": 0.1,
+              "(0, 0, 0, 0, 0, 0, 0, 1, 0, 0)": 0.10000000000000003,
+              "(0, 0, 0, 0, 0, 0, 1, 0, 0, 0)": 0.09999999999999996,
+              "(0, 0, 0, 0, 0, 1, 0, 0, 0, 0)": 0.10000000000000007,
+              "(0, 0, 0, 0, 1, 0, 0, 0, 0, 0)": 0.09999999999999996,
+              "(0, 0, 0, 1, 0, 0, 0, 0, 0, 0)": 0.1,
+              "(0, 0, 1, 0, 0, 0, 0, 0, 0, 0)": 0.1,
+              "(0, 1, 0, 0, 0, 0, 0, 0, 0, 0)": 0.09999999999999994,
+              "(1, 0, 0, 0, 0, 0, 0, 0, 0, 0)": 0.1
+            }
+          ]
+        },
+        {
+          "property_id": "paper_w_middle",
+          "selected_positions": [
+            "f11"
+          ],
+          "checker_satisfied": true,
+          "reference_satisfied": true,
+          "judgments_agree": true,
+          "checker_observation": [
+            {
+              "0": 0.8999999999999998,
+              "1": 0.09999999999999996
+            }
+          ],
+          "reference_observation": [
+            {
+              "0": 0.8999999999999999,
+              "1": 0.09999999999999996
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "row": 9,
+      "model_label": "Ladder focus",
+      "model": "experiment_data/models/Structure/ladder_focus_mid.qam",
+      "expected_satisfied": true,
+      "checker_satisfied": true,
+      "reference_satisfied": true,
+      "matches_expected": true,
+      "all_property_judgments_agree": true,
+      "source_files": [
+        {
+          "path": "experiment_data/models/Structure/ladder_focus_mid.qam",
+          "sha256": "ab98b3bedb9e6ab7ff3054cb8345d056d69e0c7e6245f1bfa1e3a565df1a1e0a"
+        }
+      ],
+      "properties": [
+        {
+          "property_id": "paper_ladder_equal",
+          "selected_positions": [
+            "f4"
+          ],
+          "checker_satisfied": true,
+          "reference_satisfied": true,
+          "judgments_agree": true,
+          "checker_observation": [
+            {
+              "(0, 0)": 0.5,
+              "(1, 1)": 0.5
+            }
+          ],
+          "reference_observation": [
+            {
+              "(0, 0)": 0.4999999999999999,
+              "(1, 1)": 0.4999999999999999
+            }
+          ]
+        },
+        {
+          "property_id": "paper_ladder_distribution",
+          "selected_positions": [
+            "f4"
+          ],
+          "checker_satisfied": true,
+          "reference_satisfied": true,
+          "judgments_agree": true,
+          "checker_observation": [
+            {
+              "(0, 0)": 0.5,
+              "(1, 1)": 0.5
+            }
+          ],
+          "reference_observation": [
+            {
+              "(0, 0)": 0.4999999999999999,
+              "(1, 1)": 0.4999999999999999
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "row": 10,
+      "model_label": "Fanout focus",
+      "model": "experiment_data/models/Structure/fanout_focus_root.qam",
+      "expected_satisfied": true,
+      "checker_satisfied": true,
+      "reference_satisfied": true,
+      "matches_expected": true,
+      "all_property_judgments_agree": true,
+      "source_files": [
+        {
+          "path": "experiment_data/models/Structure/fanout_focus_root.qam",
+          "sha256": "ce94147df639c137f02f9e4003948dff4add14746664fd16df2ce9e1997ab70f"
+        }
+      ],
+      "properties": [
+        {
+          "property_id": "paper_fanout_equal",
+          "selected_positions": [
+            "f4"
+          ],
+          "checker_satisfied": true,
+          "reference_satisfied": true,
+          "judgments_agree": true,
+          "checker_observation": [
+            {
+              "(0, 0, 0, 0)": 0.5,
+              "(1, 1, 1, 1)": 0.5
+            }
+          ],
+          "reference_observation": [
+            {
+              "(0, 0, 0, 0)": 0.4999999999999999,
+              "(1, 1, 1, 1)": 0.4999999999999999
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "row": 11,
+      "model_label": "Transient bridge",
+      "model": "experiment_data/models/Structure/transient_bridge_burst.qam",
+      "expected_satisfied": true,
+      "checker_satisfied": true,
+      "reference_satisfied": true,
+      "matches_expected": true,
+      "all_property_judgments_agree": true,
+      "source_files": [
+        {
+          "path": "experiment_data/models/Structure/transient_bridge_burst.qam",
+          "sha256": "70d9a71c5ec50172390a75cd05704a5d8955ba0a7a1760ee9e10eb86f02934d9"
+        },
+        {
+          "path": "experiment_data/models/Structure/transient_bridge_burst.qprop",
+          "sha256": "af0f456515ac8764d8a453ef4bd26eed91467a5043483b50fa2638591f72e7f8"
+        }
+      ],
+      "properties": [
+        {
+          "property_id": "paper_transient_focus",
+          "selected_positions": [
+            "a2",
+            "a3",
+            "a4",
+            "a5",
+            "a6",
+            "f7"
+          ],
+          "checker_satisfied": true,
+          "reference_satisfied": true,
+          "judgments_agree": true,
+          "checker_observation": [
+            {
+              "(0, 0)": 0.5,
+              "(1, 1)": 0.5
+            },
+            {
+              "(0, 0)": 0.5,
+              "(1, 1)": 0.5
+            },
+            {
+              "(0, 0)": 0.5,
+              "(1, 1)": 0.5
+            },
+            {
+              "(0, 0)": 0.5,
+              "(1, 1)": 0.5
+            },
+            {
+              "(0, 0)": 0.5,
+              "(1, 1)": 0.5
+            },
+            {
+              "(0, 0)": 0.5,
+              "(1, 1)": 0.5
+            }
+          ],
+          "reference_observation": [
+            {
+              "(0, 0)": 0.4999999999999999,
+              "(1, 1)": 0.4999999999999999
+            },
+            {
+              "(0, 0)": 0.4999999999999998,
+              "(1, 1)": 0.4999999999999998
+            },
+            {
+              "(0, 0)": 0.4999999999999998,
+              "(1, 1)": 0.4999999999999998
+            },
+            {
+              "(0, 0)": 0.4999999999999998,
+              "(1, 1)": 0.4999999999999998
+            },
+            {
+              "(0, 0)": 0.4999999999999998,
+              "(1, 1)": 0.4999999999999998
+            },
+            {
+              "(0, 0)": 0.4999999999999998,
+              "(1, 1)": 0.4999999999999998
+            }
+          ]
+        },
+        {
+          "property_id": "paper_transient_second_pair",
+          "selected_positions": [
+            "a2",
+            "a3",
+            "a4",
+            "a5",
+            "a6",
+            "f7"
+          ],
+          "checker_satisfied": true,
+          "reference_satisfied": true,
+          "judgments_agree": true,
+          "checker_observation": [
+            {
+              "(0, 0)": 1.0
+            },
+            {
+              "(0, 0)": 0.5,
+              "(1, 0)": 0.5
+            },
+            {
+              "(0, 0)": 0.5,
+              "(1, 1)": 0.5
+            },
+            {
+              "(0, 0)": 0.5,
+              "(1, 1)": 0.5
+            },
+            {
+              "(0, 0)": 0.5,
+              "(1, 1)": 0.5
+            },
+            {
+              "(0, 0)": 0.25,
+              "(0, 1)": 0.25,
+              "(1, 0)": 0.25,
+              "(1, 1)": 0.25
+            }
+          ],
+          "reference_observation": [
+            {
+              "(0, 0)": 0.9999999999999998
+            },
+            {
+              "(0, 0)": 0.4999999999999998,
+              "(1, 0)": 0.4999999999999998
+            },
+            {
+              "(0, 0)": 0.4999999999999998,
+              "(1, 1)": 0.4999999999999998
+            },
+            {
+              "(0, 0)": 0.4999999999999998,
+              "(1, 1)": 0.4999999999999998
+            },
+            {
+              "(0, 0)": 0.4999999999999998,
+              "(1, 1)": 0.4999999999999998
+            },
+            {
+              "(0, 0)": 0.2499999999999999,
+              "(0, 1)": 0.2499999999999999,
+              "(1, 0)": 0.2499999999999999,
+              "(1, 1)": 0.2499999999999999
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "row": 12,
+      "model_label": "Recurrent join/release",
+      "model": "experiment_data/models/Structure/recurrent_join_release.qam",
+      "expected_satisfied": true,
+      "checker_satisfied": true,
+      "reference_satisfied": true,
+      "matches_expected": true,
+      "all_property_judgments_agree": true,
+      "source_files": [
+        {
+          "path": "experiment_data/models/Structure/recurrent_join_release.qam",
+          "sha256": "ad71f3e4006eedb3559e82abb485bc20f53a7ded37c1f7dbd71886f7383b3e28"
+        },
+        {
+          "path": "experiment_data/models/Structure/recurrent_join_release.qprop",
+          "sha256": "1a1f978eb78afc2c68cf17a665c409d09bb9be5b95d37232cae6dda0f15ff8c0"
+        }
+      ],
+      "properties": [
+        {
+          "property_id": "paper_recurrent_focus",
+          "selected_positions": [
+            "a2",
+            "a3",
+            "a4",
+            "a5",
+            "f6"
+          ],
+          "checker_satisfied": true,
+          "reference_satisfied": true,
+          "judgments_agree": true,
+          "checker_observation": [
+            {
+              "(0, 0)": 0.5,
+              "(1, 1)": 0.5
+            },
+            {
+              "(0, 0)": 0.5,
+              "(1, 1)": 0.5
+            },
+            {
+              "(0, 0)": 0.5,
+              "(1, 1)": 0.5
+            },
+            {
+              "(0, 0)": 0.5,
+              "(1, 1)": 0.5
+            },
+            {
+              "(0, 0)": 0.5,
+              "(1, 1)": 0.5
+            }
+          ],
+          "reference_observation": [
+            {
+              "(0, 0)": 0.4999999999999999,
+              "(1, 1)": 0.4999999999999999
+            },
+            {
+              "(0, 0)": 0.4999999999999999,
+              "(1, 1)": 0.4999999999999999
+            },
+            {
+              "(0, 0)": 0.4999999999999999,
+              "(1, 1)": 0.4999999999999999
+            },
+            {
+              "(0, 0)": 0.4999999999999999,
+              "(1, 1)": 0.4999999999999999
+            },
+            {
+              "(0, 0)": 0.4999999999999999,
+              "(1, 1)": 0.4999999999999999
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "row": 13,
+      "model_label": "CCX ladder",
+      "model": "experiment_data/models/AbstractionPatterns/ccx_ladder_5.qam",
+      "expected_satisfied": true,
+      "checker_satisfied": true,
+      "reference_satisfied": true,
+      "matches_expected": true,
+      "all_property_judgments_agree": true,
+      "source_files": [
+        {
+          "path": "experiment_data/models/AbstractionPatterns/ccx_ladder_5.qam",
+          "sha256": "8e42afbcfa525d64f2f7e142bb5462a505acc19c6671ec2c7b58659832f498f3"
+        }
+      ],
+      "properties": [
+        {
+          "property_id": "paper_ccx_tail",
+          "selected_positions": [
+            "f5"
+          ],
+          "checker_satisfied": true,
+          "reference_satisfied": true,
+          "judgments_agree": true,
+          "checker_observation": [
+            {
+              "(0, 0, 0)": 0.75,
+              "(1, 1, 1)": 0.25
+            }
+          ],
+          "reference_observation": [
+            {
+              "(0, 0, 0)": 0.7499999999999997,
+              "(1, 1, 1)": 0.2499999999999999
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "row": 14,
+      "model_label": "CCX ladder reach",
+      "model": "experiment_data/models/AbstractionPatterns/ccx_ladder_reach_9.qam",
+      "expected_satisfied": true,
+      "checker_satisfied": true,
+      "reference_satisfied": true,
+      "matches_expected": true,
+      "all_property_judgments_agree": true,
+      "source_files": [
+        {
+          "path": "experiment_data/models/AbstractionPatterns/ccx_ladder_reach_9.qam",
+          "sha256": "6dbeb14d2f99e01d9a2eb8841e0f430eda8efbc8cd984f26394fa6415c98a309"
+        }
+      ],
+      "properties": [
+        {
+          "property_id": "paper_ccx_reach",
+          "selected_positions": [
+            "a0",
+            "a1",
+            "a2",
+            "a3",
+            "a4",
+            "a5",
+            "a6",
+            "a7",
+            "f8"
+          ],
+          "checker_satisfied": true,
+          "reference_satisfied": true,
+          "judgments_agree": true,
+          "checker_observation": [
+            {
+              "0": 1.0
+            },
+            {
+              "0": 1.0
+            },
+            {
+              "0": 1.0
+            },
+            {
+              "0": 1.0
+            },
+            {
+              "0": 1.0
+            },
+            {
+              "0": 1.0
+            },
+            {
+              "0": 1.0
+            },
+            {
+              "0": 1.0
+            },
+            {
+              "1": 1.0
+            }
+          ],
+          "reference_observation": [
+            {
+              "0": 1.0
+            },
+            {
+              "0": 1.0
+            },
+            {
+              "0": 1.0
+            },
+            {
+              "0": 1.0
+            },
+            {
+              "0": 1.0
+            },
+            {
+              "0": 1.0
+            },
+            {
+              "0": 1.0
+            },
+            {
+              "0": 1.0
+            },
+            {
+              "1": 1.0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "row": 15,
+      "model_label": "CCX ladder counter",
+      "model": "experiment_data/models/AbstractionPatterns/ccx_ladder_counter_9.qam",
+      "expected_satisfied": false,
+      "checker_satisfied": false,
+      "reference_satisfied": false,
+      "matches_expected": true,
+      "all_property_judgments_agree": true,
+      "source_files": [
+        {
+          "path": "experiment_data/models/AbstractionPatterns/ccx_ladder_counter_9.qam",
+          "sha256": "5a2ea2c47f62cc65f0bd848f998a29c04f311773354a4bca8b5a2ff731078bc6"
+        }
+      ],
+      "properties": [
+        {
+          "property_id": "paper_ccx_counter",
+          "selected_positions": [
+            "a0",
+            "a1",
+            "a2",
+            "a3",
+            "a4",
+            "a5",
+            "a6",
+            "f7"
+          ],
+          "checker_satisfied": false,
+          "reference_satisfied": false,
+          "judgments_agree": true,
+          "checker_observation": [
+            {
+              "0": 1.0
+            },
+            {
+              "0": 1.0
+            },
+            {
+              "0": 1.0
+            },
+            {
+              "0": 1.0
+            },
+            {
+              "0": 1.0
+            },
+            {
+              "0": 1.0
+            },
+            {
+              "0": 1.0
+            },
+            {
+              "0": 1.0
+            }
+          ],
+          "reference_observation": [
+            {
+              "0": 1.0
+            },
+            {
+              "0": 1.0
+            },
+            {
+              "0": 1.0
+            },
+            {
+              "0": 1.0
+            },
+            {
+              "0": 1.0
+            },
+            {
+              "0": 1.0
+            },
+            {
+              "0": 1.0
+            },
+            {
+              "0": 1.0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "row": 16,
+      "model_label": "Split/merge",
+      "model": "experiment_data/models/AbstractionPatterns/split_merge_prob_8.qam",
+      "expected_satisfied": true,
+      "checker_satisfied": true,
+      "reference_satisfied": true,
+      "matches_expected": true,
+      "all_property_judgments_agree": true,
+      "source_files": [
+        {
+          "path": "experiment_data/models/AbstractionPatterns/split_merge_prob_8.qam",
+          "sha256": "cde0bac819ec2e9bde64088b968ea9813da97e3641a5282d7d80da6efe31769d"
+        }
+      ],
+      "properties": [
+        {
+          "property_id": "paper_split_merge",
+          "selected_positions": [
+            "f7"
+          ],
+          "checker_satisfied": true,
+          "reference_satisfied": true,
+          "judgments_agree": true,
+          "checker_observation": [
+            {
+              "(1, 1, 1, 0, 1, 1, 1, 1)": 1.0
+            }
+          ],
+          "reference_observation": [
+            {
+              "(1, 1, 1, 0, 1, 1, 1, 1)": 1.0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "row": 17,
+      "model_label": "Split/merge counter",
+      "model": "experiment_data/models/AbstractionPatterns/split_merge_counter_8.qam",
+      "expected_satisfied": false,
+      "checker_satisfied": false,
+      "reference_satisfied": false,
+      "matches_expected": true,
+      "all_property_judgments_agree": true,
+      "source_files": [
+        {
+          "path": "experiment_data/models/AbstractionPatterns/split_merge_counter_8.qam",
+          "sha256": "e8c66ddd31669744828ae3f3e89e7223555730eba2b14b0375accdea29d6b269"
+        }
+      ],
+      "properties": [
+        {
+          "property_id": "paper_split_counter",
+          "selected_positions": [
+            "f6"
+          ],
+          "checker_satisfied": false,
+          "reference_satisfied": false,
+          "judgments_agree": true,
+          "checker_observation": [
+            {
+              "(1, 1, 1, 0, 1, 1, 1, 0)": 1.0
+            }
+          ],
+          "reference_observation": [
+            {
+              "(1, 1, 1, 0, 1, 1, 1, 0)": 1.0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "row": 18,
+      "model_label": "Uncompute reach",
+      "model": "experiment_data/models/AbstractionPatterns/uncompute_reach_8.qam",
+      "expected_satisfied": true,
+      "checker_satisfied": true,
+      "reference_satisfied": true,
+      "matches_expected": true,
+      "all_property_judgments_agree": true,
+      "source_files": [
+        {
+          "path": "experiment_data/models/AbstractionPatterns/uncompute_reach_8.qam",
+          "sha256": "b9b2e9a9288f79f8003d7c9d5b4e3eb9afb1525604820ffba923467f21da7e6e"
+        },
+        {
+          "path": "experiment_data/models/AbstractionPatterns/uncompute_reach_8.qprop",
+          "sha256": "02edc511cb27c8807ec7fd8450de01b732101cd3dc28fd631649da2de01fa8c9"
+        }
+      ],
+      "properties": [
+        {
+          "property_id": "paper_uncompute_reached",
+          "selected_positions": [
+            "a0",
+            "a1",
+            "a2",
+            "a3",
+            "a4",
+            "a5",
+            "f6"
+          ],
+          "checker_satisfied": true,
+          "reference_satisfied": true,
+          "judgments_agree": true,
+          "checker_observation": [
+            {
+              "0": 1.0
+            },
+            {
+              "0": 1.0
+            },
+            {
+              "0": 1.0
+            },
+            {
+              "0": 0.5,
+              "1": 0.5
+            },
+            {
+              "0": 1.0
+            },
+            {
+              "0": 1.0
+            },
+            {
+              "0": 1.0
+            }
+          ],
+          "reference_observation": [
+            {
+              "0": 1.0
+            },
+            {
+              "0": 0.9999999999999998
+            },
+            {
+              "0": 0.9999999999999998
+            },
+            {
+              "0": 0.4999999999999999,
+              "1": 0.4999999999999999
+            },
+            {
+              "0": 0.9999999999999998
+            },
+            {
+              "0": 0.9999999999999998
+            },
+            {
+              "0": 0.9999999999999996
+            }
+          ]
+        },
+        {
+          "property_id": "paper_uncompute_cleared",
+          "selected_positions": [
+            "f6"
+          ],
+          "checker_satisfied": true,
+          "reference_satisfied": true,
+          "judgments_agree": true,
+          "checker_observation": [
+            {
+              "0": 1.0
+            }
+          ],
+          "reference_observation": [
+            {
+              "0": 0.9999999999999996
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "row": 19,
+      "model_label": "Uncompute counter",
+      "model": "experiment_data/models/AbstractionPatterns/uncompute_counter_8.qam",
+      "expected_satisfied": false,
+      "checker_satisfied": false,
+      "reference_satisfied": false,
+      "matches_expected": true,
+      "all_property_judgments_agree": true,
+      "source_files": [
+        {
+          "path": "experiment_data/models/AbstractionPatterns/uncompute_counter_8.qam",
+          "sha256": "d73e145a9b677b38b3d7806ca8c4f40135fcf8698cb39e8a3c12cc4e5a7b3b82"
+        }
+      ],
+      "properties": [
+        {
+          "property_id": "paper_uncompute_counter",
+          "selected_positions": [
+            "a0",
+            "a1",
+            "a2",
+            "a3",
+            "f4"
+          ],
+          "checker_satisfied": false,
+          "reference_satisfied": false,
+          "judgments_agree": true,
+          "checker_observation": [
+            {
+              "0": 1.0
+            },
+            {
+              "0": 1.0
+            },
+            {
+              "0": 1.0
+            },
+            {
+              "0": 1.0
+            },
+            {
+              "0": 1.0
+            }
+          ],
+          "reference_observation": [
+            {
+              "0": 1.0
+            },
+            {
+              "0": 1.0
+            },
+            {
+              "0": 1.0
+            },
+            {
+              "0": 1.0
+            },
+            {
+              "0": 1.0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "row": 20,
+      "model_label": "GHZ faulty",
+      "model": "experiment_data/models/FaultyVariants/GHZ/ghz_faulty_missing_tail.qam",
+      "expected_satisfied": false,
+      "checker_satisfied": false,
+      "reference_satisfied": false,
+      "matches_expected": true,
+      "all_property_judgments_agree": true,
+      "source_files": [
+        {
+          "path": "experiment_data/models/FaultyVariants/GHZ/ghz_faulty_missing_tail.qam",
+          "sha256": "6a6bcf2367c523d3879086d2899b580cb4b629629f18f3639f0c92af26679643"
+        }
+      ],
+      "properties": [
+        {
+          "property_id": "paper_ghz_faulty",
+          "selected_positions": [
+            "f9"
+          ],
+          "checker_satisfied": false,
+          "reference_satisfied": false,
+          "judgments_agree": true,
+          "checker_observation": [
+            {
+              "(0, 0, 0, 0, 0, 0, 0, 0, 0, 0)": 0.001953125,
+              "(0, 0, 0, 0, 0, 0, 0, 0, 1, 0)": 0.001953125,
+              "(0, 0, 0, 0, 0, 0, 0, 1, 0, 0)": 0.001953125,
+              "(0, 0, 0, 0, 0, 0, 0, 1, 1, 0)": 0.001953125,
+              "(0, 0, 0, 0, 0, 0, 1, 0, 0, 0)": 0.001953125,
+              "(0, 0, 0, 0, 0, 0, 1, 0, 1, 0)": 0.001953125,
+              "(0, 0, 0, 0, 0, 0, 1, 1, 0, 0)": 0.001953125,
+              "(0, 0, 0, 0, 0, 0, 1, 1, 1, 0)": 0.001953125,
+              "(0, 0, 0, 0, 0, 1, 0, 0, 0, 0)": 0.001953125,
+              "(0, 0, 0, 0, 0, 1, 0, 0, 1, 0)": 0.001953125,
+              "(0, 0, 0, 0, 0, 1, 0, 1, 0, 0)": 0.001953125,
+              "(0, 0, 0, 0, 0, 1, 0, 1, 1, 0)": 0.001953125,
+              "(0, 0, 0, 0, 0, 1, 1, 0, 0, 0)": 0.001953125,
+              "(0, 0, 0, 0, 0, 1, 1, 0, 1, 0)": 0.001953125,
+              "(0, 0, 0, 0, 0, 1, 1, 1, 0, 0)": 0.001953125,
+              "(0, 0, 0, 0, 0, 1, 1, 1, 1, 0)": 0.001953125,
+              "(0, 0, 0, 0, 1, 0, 0, 0, 0, 0)": 0.001953125,
+              "(0, 0, 0, 0, 1, 0, 0, 0, 1, 0)": 0.001953125,
+              "(0, 0, 0, 0, 1, 0, 0, 1, 0, 0)": 0.001953125,
+              "(0, 0, 0, 0, 1, 0, 0, 1, 1, 0)": 0.001953125,
+              "(0, 0, 0, 0, 1, 0, 1, 0, 0, 0)": 0.001953125,
+              "(0, 0, 0, 0, 1, 0, 1, 0, 1, 0)": 0.001953125,
+              "(0, 0, 0, 0, 1, 0, 1, 1, 0, 0)": 0.001953125,
+              "(0, 0, 0, 0, 1, 0, 1, 1, 1, 0)": 0.001953125,
+              "(0, 0, 0, 0, 1, 1, 0, 0, 0, 0)": 0.001953125,
+              "(0, 0, 0, 0, 1, 1, 0, 0, 1, 0)": 0.001953125,
+              "(0, 0, 0, 0, 1, 1, 0, 1, 0, 0)": 0.001953125,
+              "(0, 0, 0, 0, 1, 1, 0, 1, 1, 0)": 0.001953125,
+              "(0, 0, 0, 0, 1, 1, 1, 0, 0, 0)": 0.001953125,
+              "(0, 0, 0, 0, 1, 1, 1, 0, 1, 0)": 0.001953125,
+              "(0, 0, 0, 0, 1, 1, 1, 1, 0, 0)": 0.001953125,
+              "(0, 0, 0, 0, 1, 1, 1, 1, 1, 0)": 0.001953125,
+              "(0, 0, 0, 1, 0, 0, 0, 0, 0, 0)": 0.001953125,
+              "(0, 0, 0, 1, 0, 0, 0, 0, 1, 0)": 0.001953125,
+              "(0, 0, 0, 1, 0, 0, 0, 1, 0, 0)": 0.001953125,
+              "(0, 0, 0, 1, 0, 0, 0, 1, 1, 0)": 0.001953125,
+              "(0, 0, 0, 1, 0, 0, 1, 0, 0, 0)": 0.001953125,
+              "(0, 0, 0, 1, 0, 0, 1, 0, 1, 0)": 0.001953125,
+              "(0, 0, 0, 1, 0, 0, 1, 1, 0, 0)": 0.001953125,
+              "(0, 0, 0, 1, 0, 0, 1, 1, 1, 0)": 0.001953125,
+              "(0, 0, 0, 1, 0, 1, 0, 0, 0, 0)": 0.001953125,
+              "(0, 0, 0, 1, 0, 1, 0, 0, 1, 0)": 0.001953125,
+              "(0, 0, 0, 1, 0, 1, 0, 1, 0, 0)": 0.001953125,
+              "(0, 0, 0, 1, 0, 1, 0, 1, 1, 0)": 0.001953125,
+              "(0, 0, 0, 1, 0, 1, 1, 0, 0, 0)": 0.001953125,
+              "(0, 0, 0, 1, 0, 1, 1, 0, 1, 0)": 0.001953125,
+              "(0, 0, 0, 1, 0, 1, 1, 1, 0, 0)": 0.001953125,
+              "(0, 0, 0, 1, 0, 1, 1, 1, 1, 0)": 0.001953125,
+              "(0, 0, 0, 1, 1, 0, 0, 0, 0, 0)": 0.001953125,
+              "(0, 0, 0, 1, 1, 0, 0, 0, 1, 0)": 0.001953125,
+              "(0, 0, 0, 1, 1, 0, 0, 1, 0, 0)": 0.001953125,
+              "(0, 0, 0, 1, 1, 0, 0, 1, 1, 0)": 0.001953125,
+              "(0, 0, 0, 1, 1, 0, 1, 0, 0, 0)": 0.001953125,
+              "(0, 0, 0, 1, 1, 0, 1, 0, 1, 0)": 0.001953125,
+              "(0, 0, 0, 1, 1, 0, 1, 1, 0, 0)": 0.001953125,
+              "(0, 0, 0, 1, 1, 0, 1, 1, 1, 0)": 0.001953125,
+              "(0, 0, 0, 1, 1, 1, 0, 0, 0, 0)": 0.001953125,
+              "(0, 0, 0, 1, 1, 1, 0, 0, 1, 0)": 0.001953125,
+              "(0, 0, 0, 1, 1, 1, 0, 1, 0, 0)": 0.001953125,
+              "(0, 0, 0, 1, 1, 1, 0, 1, 1, 0)": 0.001953125,
+              "(0, 0, 0, 1, 1, 1, 1, 0, 0, 0)": 0.001953125,
+              "(0, 0, 0, 1, 1, 1, 1, 0, 1, 0)": 0.001953125,
+              "(0, 0, 0, 1, 1, 1, 1, 1, 0, 0)": 0.001953125,
+              "(0, 0, 0, 1, 1, 1, 1, 1, 1, 0)": 0.001953125,
+              "(0, 0, 1, 0, 0, 0, 0, 0, 0, 0)": 0.001953125,
+              "(0, 0, 1, 0, 0, 0, 0, 0, 1, 0)": 0.001953125,
+              "(0, 0, 1, 0, 0, 0, 0, 1, 0, 0)": 0.001953125,
+              "(0, 0, 1, 0, 0, 0, 0, 1, 1, 0)": 0.001953125,
+              "(0, 0, 1, 0, 0, 0, 1, 0, 0, 0)": 0.001953125,
+              "(0, 0, 1, 0, 0, 0, 1, 0, 1, 0)": 0.001953125,
+              "(0, 0, 1, 0, 0, 0, 1, 1, 0, 0)": 0.001953125,
+              "(0, 0, 1, 0, 0, 0, 1, 1, 1, 0)": 0.001953125,
+              "(0, 0, 1, 0, 0, 1, 0, 0, 0, 0)": 0.001953125,
+              "(0, 0, 1, 0, 0, 1, 0, 0, 1, 0)": 0.001953125,
+              "(0, 0, 1, 0, 0, 1, 0, 1, 0, 0)": 0.001953125,
+              "(0, 0, 1, 0, 0, 1, 0, 1, 1, 0)": 0.001953125,
+              "(0, 0, 1, 0, 0, 1, 1, 0, 0, 0)": 0.001953125,
+              "(0, 0, 1, 0, 0, 1, 1, 0, 1, 0)": 0.001953125,
+              "(0, 0, 1, 0, 0, 1, 1, 1, 0, 0)": 0.001953125,
+              "(0, 0, 1, 0, 0, 1, 1, 1, 1, 0)": 0.001953125,
+              "(0, 0, 1, 0, 1, 0, 0, 0, 0, 0)": 0.001953125,
+              "(0, 0, 1, 0, 1, 0, 0, 0, 1, 0)": 0.001953125,
+              "(0, 0, 1, 0, 1, 0, 0, 1, 0, 0)": 0.001953125,
+              "(0, 0, 1, 0, 1, 0, 0, 1, 1, 0)": 0.001953125,
+              "(0, 0, 1, 0, 1, 0, 1, 0, 0, 0)": 0.001953125,
+              "(0, 0, 1, 0, 1, 0, 1, 0, 1, 0)": 0.001953125,
+              "(0, 0, 1, 0, 1, 0, 1, 1, 0, 0)": 0.001953125,
+              "(0, 0, 1, 0, 1, 0, 1, 1, 1, 0)": 0.001953125,
+              "(0, 0, 1, 0, 1, 1, 0, 0, 0, 0)": 0.001953125,
+              "(0, 0, 1, 0, 1, 1, 0, 0, 1, 0)": 0.001953125,
+              "(0, 0, 1, 0, 1, 1, 0, 1, 0, 0)": 0.001953125,
+              "(0, 0, 1, 0, 1, 1, 0, 1, 1, 0)": 0.001953125,
+              "(0, 0, 1, 0, 1, 1, 1, 0, 0, 0)": 0.001953125,
+              "(0, 0, 1, 0, 1, 1, 1, 0, 1, 0)": 0.001953125,
+              "(0, 0, 1, 0, 1, 1, 1, 1, 0, 0)": 0.001953125,
+              "(0, 0, 1, 0, 1, 1, 1, 1, 1, 0)": 0.001953125,
+              "(0, 0, 1, 1, 0, 0, 0, 0, 0, 0)": 0.001953125,
+              "(0, 0, 1, 1, 0, 0, 0, 0, 1, 0)": 0.001953125,
+              "(0, 0, 1, 1, 0, 0, 0, 1, 0, 0)": 0.001953125,
+              "(0, 0, 1, 1, 0, 0, 0, 1, 1, 0)": 0.001953125,
+              "(0, 0, 1, 1, 0, 0, 1, 0, 0, 0)": 0.001953125,
+              "(0, 0, 1, 1, 0, 0, 1, 0, 1, 0)": 0.001953125,
+              "(0, 0, 1, 1, 0, 0, 1, 1, 0, 0)": 0.001953125,
+              "(0, 0, 1, 1, 0, 0, 1, 1, 1, 0)": 0.001953125,
+              "(0, 0, 1, 1, 0, 1, 0, 0, 0, 0)": 0.001953125,
+              "(0, 0, 1, 1, 0, 1, 0, 0, 1, 0)": 0.001953125,
+              "(0, 0, 1, 1, 0, 1, 0, 1, 0, 0)": 0.001953125,
+              "(0, 0, 1, 1, 0, 1, 0, 1, 1, 0)": 0.001953125,
+              "(0, 0, 1, 1, 0, 1, 1, 0, 0, 0)": 0.001953125,
+              "(0, 0, 1, 1, 0, 1, 1, 0, 1, 0)": 0.001953125,
+              "(0, 0, 1, 1, 0, 1, 1, 1, 0, 0)": 0.001953125,
+              "(0, 0, 1, 1, 0, 1, 1, 1, 1, 0)": 0.001953125,
+              "(0, 0, 1, 1, 1, 0, 0, 0, 0, 0)": 0.001953125,
+              "(0, 0, 1, 1, 1, 0, 0, 0, 1, 0)": 0.001953125,
+              "(0, 0, 1, 1, 1, 0, 0, 1, 0, 0)": 0.001953125,
+              "(0, 0, 1, 1, 1, 0, 0, 1, 1, 0)": 0.001953125,
+              "(0, 0, 1, 1, 1, 0, 1, 0, 0, 0)": 0.001953125,
+              "(0, 0, 1, 1, 1, 0, 1, 0, 1, 0)": 0.001953125,
+              "(0, 0, 1, 1, 1, 0, 1, 1, 0, 0)": 0.001953125,
+              "(0, 0, 1, 1, 1, 0, 1, 1, 1, 0)": 0.001953125,
+              "(0, 0, 1, 1, 1, 1, 0, 0, 0, 0)": 0.001953125,
+              "(0, 0, 1, 1, 1, 1, 0, 0, 1, 0)": 0.001953125,
+              "(0, 0, 1, 1, 1, 1, 0, 1, 0, 0)": 0.001953125,
+              "(0, 0, 1, 1, 1, 1, 0, 1, 1, 0)": 0.001953125,
+              "(0, 0, 1, 1, 1, 1, 1, 0, 0, 0)": 0.001953125,
+              "(0, 0, 1, 1, 1, 1, 1, 0, 1, 0)": 0.001953125,
+              "(0, 0, 1, 1, 1, 1, 1, 1, 0, 0)": 0.001953125,
+              "(0, 0, 1, 1, 1, 1, 1, 1, 1, 0)": 0.001953125,
+              "(0, 1, 0, 0, 0, 0, 0, 0, 0, 0)": 0.001953125,
+              "(0, 1, 0, 0, 0, 0, 0, 0, 1, 0)": 0.001953125,
+              "(0, 1, 0, 0, 0, 0, 0, 1, 0, 0)": 0.001953125,
+              "(0, 1, 0, 0, 0, 0, 0, 1, 1, 0)": 0.001953125,
+              "(0, 1, 0, 0, 0, 0, 1, 0, 0, 0)": 0.001953125,
+              "(0, 1, 0, 0, 0, 0, 1, 0, 1, 0)": 0.001953125,
+              "(0, 1, 0, 0, 0, 0, 1, 1, 0, 0)": 0.001953125,
+              "(0, 1, 0, 0, 0, 0, 1, 1, 1, 0)": 0.001953125,
+              "(0, 1, 0, 0, 0, 1, 0, 0, 0, 0)": 0.001953125,
+              "(0, 1, 0, 0, 0, 1, 0, 0, 1, 0)": 0.001953125,
+              "(0, 1, 0, 0, 0, 1, 0, 1, 0, 0)": 0.001953125,
+              "(0, 1, 0, 0, 0, 1, 0, 1, 1, 0)": 0.001953125,
+              "(0, 1, 0, 0, 0, 1, 1, 0, 0, 0)": 0.001953125,
+              "(0, 1, 0, 0, 0, 1, 1, 0, 1, 0)": 0.001953125,
+              "(0, 1, 0, 0, 0, 1, 1, 1, 0, 0)": 0.001953125,
+              "(0, 1, 0, 0, 0, 1, 1, 1, 1, 0)": 0.001953125,
+              "(0, 1, 0, 0, 1, 0, 0, 0, 0, 0)": 0.001953125,
+              "(0, 1, 0, 0, 1, 0, 0, 0, 1, 0)": 0.001953125,
+              "(0, 1, 0, 0, 1, 0, 0, 1, 0, 0)": 0.001953125,
+              "(0, 1, 0, 0, 1, 0, 0, 1, 1, 0)": 0.001953125,
+              "(0, 1, 0, 0, 1, 0, 1, 0, 0, 0)": 0.001953125,
+              "(0, 1, 0, 0, 1, 0, 1, 0, 1, 0)": 0.001953125,
+              "(0, 1, 0, 0, 1, 0, 1, 1, 0, 0)": 0.001953125,
+              "(0, 1, 0, 0, 1, 0, 1, 1, 1, 0)": 0.001953125,
+              "(0, 1, 0, 0, 1, 1, 0, 0, 0, 0)": 0.001953125,
+              "(0, 1, 0, 0, 1, 1, 0, 0, 1, 0)": 0.001953125,
+              "(0, 1, 0, 0, 1, 1, 0, 1, 0, 0)": 0.001953125,
+              "(0, 1, 0, 0, 1, 1, 0, 1, 1, 0)": 0.001953125,
+              "(0, 1, 0, 0, 1, 1, 1, 0, 0, 0)": 0.001953125,
+              "(0, 1, 0, 0, 1, 1, 1, 0, 1, 0)": 0.001953125,
+              "(0, 1, 0, 0, 1, 1, 1, 1, 0, 0)": 0.001953125,
+              "(0, 1, 0, 0, 1, 1, 1, 1, 1, 0)": 0.001953125,
+              "(0, 1, 0, 1, 0, 0, 0, 0, 0, 0)": 0.001953125,
+              "(0, 1, 0, 1, 0, 0, 0, 0, 1, 0)": 0.001953125,
+              "(0, 1, 0, 1, 0, 0, 0, 1, 0, 0)": 0.001953125,
+              "(0, 1, 0, 1, 0, 0, 0, 1, 1, 0)": 0.001953125,
+              "(0, 1, 0, 1, 0, 0, 1, 0, 0, 0)": 0.001953125,
+              "(0, 1, 0, 1, 0, 0, 1, 0, 1, 0)": 0.001953125,
+              "(0, 1, 0, 1, 0, 0, 1, 1, 0, 0)": 0.001953125,
+              "(0, 1, 0, 1, 0, 0, 1, 1, 1, 0)": 0.001953125,
+              "(0, 1, 0, 1, 0, 1, 0, 0, 0, 0)": 0.001953125,
+              "(0, 1, 0, 1, 0, 1, 0, 0, 1, 0)": 0.001953125,
+              "(0, 1, 0, 1, 0, 1, 0, 1, 0, 0)": 0.001953125,
+              "(0, 1, 0, 1, 0, 1, 0, 1, 1, 0)": 0.001953125,
+              "(0, 1, 0, 1, 0, 1, 1, 0, 0, 0)": 0.001953125,
+              "(0, 1, 0, 1, 0, 1, 1, 0, 1, 0)": 0.001953125,
+              "(0, 1, 0, 1, 0, 1, 1, 1, 0, 0)": 0.001953125,
+              "(0, 1, 0, 1, 0, 1, 1, 1, 1, 0)": 0.001953125,
+              "(0, 1, 0, 1, 1, 0, 0, 0, 0, 0)": 0.001953125,
+              "(0, 1, 0, 1, 1, 0, 0, 0, 1, 0)": 0.001953125,
+              "(0, 1, 0, 1, 1, 0, 0, 1, 0, 0)": 0.001953125,
+              "(0, 1, 0, 1, 1, 0, 0, 1, 1, 0)": 0.001953125,
+              "(0, 1, 0, 1, 1, 0, 1, 0, 0, 0)": 0.001953125,
+              "(0, 1, 0, 1, 1, 0, 1, 0, 1, 0)": 0.001953125,
+              "(0, 1, 0, 1, 1, 0, 1, 1, 0, 0)": 0.001953125,
+              "(0, 1, 0, 1, 1, 0, 1, 1, 1, 0)": 0.001953125,
+              "(0, 1, 0, 1, 1, 1, 0, 0, 0, 0)": 0.001953125,
+              "(0, 1, 0, 1, 1, 1, 0, 0, 1, 0)": 0.001953125,
+              "(0, 1, 0, 1, 1, 1, 0, 1, 0, 0)": 0.001953125,
+              "(0, 1, 0, 1, 1, 1, 0, 1, 1, 0)": 0.001953125,
+              "(0, 1, 0, 1, 1, 1, 1, 0, 0, 0)": 0.001953125,
+              "(0, 1, 0, 1, 1, 1, 1, 0, 1, 0)": 0.001953125,
+              "(0, 1, 0, 1, 1, 1, 1, 1, 0, 0)": 0.001953125,
+              "(0, 1, 0, 1, 1, 1, 1, 1, 1, 0)": 0.001953125,
+              "(0, 1, 1, 0, 0, 0, 0, 0, 0, 0)": 0.001953125,
+              "(0, 1, 1, 0, 0, 0, 0, 0, 1, 0)": 0.001953125,
+              "(0, 1, 1, 0, 0, 0, 0, 1, 0, 0)": 0.001953125,
+              "(0, 1, 1, 0, 0, 0, 0, 1, 1, 0)": 0.001953125,
+              "(0, 1, 1, 0, 0, 0, 1, 0, 0, 0)": 0.001953125,
+              "(0, 1, 1, 0, 0, 0, 1, 0, 1, 0)": 0.001953125,
+              "(0, 1, 1, 0, 0, 0, 1, 1, 0, 0)": 0.001953125,
+              "(0, 1, 1, 0, 0, 0, 1, 1, 1, 0)": 0.001953125,
+              "(0, 1, 1, 0, 0, 1, 0, 0, 0, 0)": 0.001953125,
+              "(0, 1, 1, 0, 0, 1, 0, 0, 1, 0)": 0.001953125,
+              "(0, 1, 1, 0, 0, 1, 0, 1, 0, 0)": 0.001953125,
+              "(0, 1, 1, 0, 0, 1, 0, 1, 1, 0)": 0.001953125,
+              "(0, 1, 1, 0, 0, 1, 1, 0, 0, 0)": 0.001953125,
+              "(0, 1, 1, 0, 0, 1, 1, 0, 1, 0)": 0.001953125,
+              "(0, 1, 1, 0, 0, 1, 1, 1, 0, 0)": 0.001953125,
+              "(0, 1, 1, 0, 0, 1, 1, 1, 1, 0)": 0.001953125,
+              "(0, 1, 1, 0, 1, 0, 0, 0, 0, 0)": 0.001953125,
+              "(0, 1, 1, 0, 1, 0, 0, 0, 1, 0)": 0.001953125,
+              "(0, 1, 1, 0, 1, 0, 0, 1, 0, 0)": 0.001953125,
+              "(0, 1, 1, 0, 1, 0, 0, 1, 1, 0)": 0.001953125,
+              "(0, 1, 1, 0, 1, 0, 1, 0, 0, 0)": 0.001953125,
+              "(0, 1, 1, 0, 1, 0, 1, 0, 1, 0)": 0.001953125,
+              "(0, 1, 1, 0, 1, 0, 1, 1, 0, 0)": 0.001953125,
+              "(0, 1, 1, 0, 1, 0, 1, 1, 1, 0)": 0.001953125,
+              "(0, 1, 1, 0, 1, 1, 0, 0, 0, 0)": 0.001953125,
+              "(0, 1, 1, 0, 1, 1, 0, 0, 1, 0)": 0.001953125,
+              "(0, 1, 1, 0, 1, 1, 0, 1, 0, 0)": 0.001953125,
+              "(0, 1, 1, 0, 1, 1, 0, 1, 1, 0)": 0.001953125,
+              "(0, 1, 1, 0, 1, 1, 1, 0, 0, 0)": 0.001953125,
+              "(0, 1, 1, 0, 1, 1, 1, 0, 1, 0)": 0.001953125,
+              "(0, 1, 1, 0, 1, 1, 1, 1, 0, 0)": 0.001953125,
+              "(0, 1, 1, 0, 1, 1, 1, 1, 1, 0)": 0.001953125,
+              "(0, 1, 1, 1, 0, 0, 0, 0, 0, 0)": 0.001953125,
+              "(0, 1, 1, 1, 0, 0, 0, 0, 1, 0)": 0.001953125,
+              "(0, 1, 1, 1, 0, 0, 0, 1, 0, 0)": 0.001953125,
+              "(0, 1, 1, 1, 0, 0, 0, 1, 1, 0)": 0.001953125,
+              "(0, 1, 1, 1, 0, 0, 1, 0, 0, 0)": 0.001953125,
+              "(0, 1, 1, 1, 0, 0, 1, 0, 1, 0)": 0.001953125,
+              "(0, 1, 1, 1, 0, 0, 1, 1, 0, 0)": 0.001953125,
+              "(0, 1, 1, 1, 0, 0, 1, 1, 1, 0)": 0.001953125,
+              "(0, 1, 1, 1, 0, 1, 0, 0, 0, 0)": 0.001953125,
+              "(0, 1, 1, 1, 0, 1, 0, 0, 1, 0)": 0.001953125,
+              "(0, 1, 1, 1, 0, 1, 0, 1, 0, 0)": 0.001953125,
+              "(0, 1, 1, 1, 0, 1, 0, 1, 1, 0)": 0.001953125,
+              "(0, 1, 1, 1, 0, 1, 1, 0, 0, 0)": 0.001953125,
+              "(0, 1, 1, 1, 0, 1, 1, 0, 1, 0)": 0.001953125,
+              "(0, 1, 1, 1, 0, 1, 1, 1, 0, 0)": 0.001953125,
+              "(0, 1, 1, 1, 0, 1, 1, 1, 1, 0)": 0.001953125,
+              "(0, 1, 1, 1, 1, 0, 0, 0, 0, 0)": 0.001953125,
+              "(0, 1, 1, 1, 1, 0, 0, 0, 1, 0)": 0.001953125,
+              "(0, 1, 1, 1, 1, 0, 0, 1, 0, 0)": 0.001953125,
+              "(0, 1, 1, 1, 1, 0, 0, 1, 1, 0)": 0.001953125,
+              "(0, 1, 1, 1, 1, 0, 1, 0, 0, 0)": 0.001953125,
+              "(0, 1, 1, 1, 1, 0, 1, 0, 1, 0)": 0.001953125,
+              "(0, 1, 1, 1, 1, 0, 1, 1, 0, 0)": 0.001953125,
+              "(0, 1, 1, 1, 1, 0, 1, 1, 1, 0)": 0.001953125,
+              "(0, 1, 1, 1, 1, 1, 0, 0, 0, 0)": 0.001953125,
+              "(0, 1, 1, 1, 1, 1, 0, 0, 1, 0)": 0.001953125,
+              "(0, 1, 1, 1, 1, 1, 0, 1, 0, 0)": 0.001953125,
+              "(0, 1, 1, 1, 1, 1, 0, 1, 1, 0)": 0.001953125,
+              "(0, 1, 1, 1, 1, 1, 1, 0, 0, 0)": 0.001953125,
+              "(0, 1, 1, 1, 1, 1, 1, 0, 1, 0)": 0.001953125,
+              "(0, 1, 1, 1, 1, 1, 1, 1, 0, 0)": 0.001953125,
+              "(0, 1, 1, 1, 1, 1, 1, 1, 1, 0)": 0.001953125,
+              "(1, 0, 0, 0, 0, 0, 0, 0, 0, 0)": 0.001953125,
+              "(1, 0, 0, 0, 0, 0, 0, 0, 1, 0)": 0.001953125,
+              "(1, 0, 0, 0, 0, 0, 0, 1, 0, 0)": 0.001953125,
+              "(1, 0, 0, 0, 0, 0, 0, 1, 1, 0)": 0.001953125,
+              "(1, 0, 0, 0, 0, 0, 1, 0, 0, 0)": 0.001953125,
+              "(1, 0, 0, 0, 0, 0, 1, 0, 1, 0)": 0.001953125,
+              "(1, 0, 0, 0, 0, 0, 1, 1, 0, 0)": 0.001953125,
+              "(1, 0, 0, 0, 0, 0, 1, 1, 1, 0)": 0.001953125,
+              "(1, 0, 0, 0, 0, 1, 0, 0, 0, 0)": 0.001953125,
+              "(1, 0, 0, 0, 0, 1, 0, 0, 1, 0)": 0.001953125,
+              "(1, 0, 0, 0, 0, 1, 0, 1, 0, 0)": 0.001953125,
+              "(1, 0, 0, 0, 0, 1, 0, 1, 1, 0)": 0.001953125,
+              "(1, 0, 0, 0, 0, 1, 1, 0, 0, 0)": 0.001953125,
+              "(1, 0, 0, 0, 0, 1, 1, 0, 1, 0)": 0.001953125,
+              "(1, 0, 0, 0, 0, 1, 1, 1, 0, 0)": 0.001953125,
+              "(1, 0, 0, 0, 0, 1, 1, 1, 1, 0)": 0.001953125,
+              "(1, 0, 0, 0, 1, 0, 0, 0, 0, 0)": 0.001953125,
+              "(1, 0, 0, 0, 1, 0, 0, 0, 1, 0)": 0.001953125,
+              "(1, 0, 0, 0, 1, 0, 0, 1, 0, 0)": 0.001953125,
+              "(1, 0, 0, 0, 1, 0, 0, 1, 1, 0)": 0.001953125,
+              "(1, 0, 0, 0, 1, 0, 1, 0, 0, 0)": 0.001953125,
+              "(1, 0, 0, 0, 1, 0, 1, 0, 1, 0)": 0.001953125,
+              "(1, 0, 0, 0, 1, 0, 1, 1, 0, 0)": 0.001953125,
+              "(1, 0, 0, 0, 1, 0, 1, 1, 1, 0)": 0.001953125,
+              "(1, 0, 0, 0, 1, 1, 0, 0, 0, 0)": 0.001953125,
+              "(1, 0, 0, 0, 1, 1, 0, 0, 1, 0)": 0.001953125,
+              "(1, 0, 0, 0, 1, 1, 0, 1, 0, 0)": 0.001953125,
+              "(1, 0, 0, 0, 1, 1, 0, 1, 1, 0)": 0.001953125,
+              "(1, 0, 0, 0, 1, 1, 1, 0, 0, 0)": 0.001953125,
+              "(1, 0, 0, 0, 1, 1, 1, 0, 1, 0)": 0.001953125,
+              "(1, 0, 0, 0, 1, 1, 1, 1, 0, 0)": 0.001953125,
+              "(1, 0, 0, 0, 1, 1, 1, 1, 1, 0)": 0.001953125,
+              "(1, 0, 0, 1, 0, 0, 0, 0, 0, 0)": 0.001953125,
+              "(1, 0, 0, 1, 0, 0, 0, 0, 1, 0)": 0.001953125,
+              "(1, 0, 0, 1, 0, 0, 0, 1, 0, 0)": 0.001953125,
+              "(1, 0, 0, 1, 0, 0, 0, 1, 1, 0)": 0.001953125,
+              "(1, 0, 0, 1, 0, 0, 1, 0, 0, 0)": 0.001953125,
+              "(1, 0, 0, 1, 0, 0, 1, 0, 1, 0)": 0.001953125,
+              "(1, 0, 0, 1, 0, 0, 1, 1, 0, 0)": 0.001953125,
+              "(1, 0, 0, 1, 0, 0, 1, 1, 1, 0)": 0.001953125,
+              "(1, 0, 0, 1, 0, 1, 0, 0, 0, 0)": 0.001953125,
+              "(1, 0, 0, 1, 0, 1, 0, 0, 1, 0)": 0.001953125,
+              "(1, 0, 0, 1, 0, 1, 0, 1, 0, 0)": 0.001953125,
+              "(1, 0, 0, 1, 0, 1, 0, 1, 1, 0)": 0.001953125,
+              "(1, 0, 0, 1, 0, 1, 1, 0, 0, 0)": 0.001953125,
+              "(1, 0, 0, 1, 0, 1, 1, 0, 1, 0)": 0.001953125,
+              "(1, 0, 0, 1, 0, 1, 1, 1, 0, 0)": 0.001953125,
+              "(1, 0, 0, 1, 0, 1, 1, 1, 1, 0)": 0.001953125,
+              "(1, 0, 0, 1, 1, 0, 0, 0, 0, 0)": 0.001953125,
+              "(1, 0, 0, 1, 1, 0, 0, 0, 1, 0)": 0.001953125,
+              "(1, 0, 0, 1, 1, 0, 0, 1, 0, 0)": 0.001953125,
+              "(1, 0, 0, 1, 1, 0, 0, 1, 1, 0)": 0.001953125,
+              "(1, 0, 0, 1, 1, 0, 1, 0, 0, 0)": 0.001953125,
+              "(1, 0, 0, 1, 1, 0, 1, 0, 1, 0)": 0.001953125,
+              "(1, 0, 0, 1, 1, 0, 1, 1, 0, 0)": 0.001953125,
+              "(1, 0, 0, 1, 1, 0, 1, 1, 1, 0)": 0.001953125,
+              "(1, 0, 0, 1, 1, 1, 0, 0, 0, 0)": 0.001953125,
+              "(1, 0, 0, 1, 1, 1, 0, 0, 1, 0)": 0.001953125,
+              "(1, 0, 0, 1, 1, 1, 0, 1, 0, 0)": 0.001953125,
+              "(1, 0, 0, 1, 1, 1, 0, 1, 1, 0)": 0.001953125,
+              "(1, 0, 0, 1, 1, 1, 1, 0, 0, 0)": 0.001953125,
+              "(1, 0, 0, 1, 1, 1, 1, 0, 1, 0)": 0.001953125,
+              "(1, 0, 0, 1, 1, 1, 1, 1, 0, 0)": 0.001953125,
+              "(1, 0, 0, 1, 1, 1, 1, 1, 1, 0)": 0.001953125,
+              "(1, 0, 1, 0, 0, 0, 0, 0, 0, 0)": 0.001953125,
+              "(1, 0, 1, 0, 0, 0, 0, 0, 1, 0)": 0.001953125,
+              "(1, 0, 1, 0, 0, 0, 0, 1, 0, 0)": 0.001953125,
+              "(1, 0, 1, 0, 0, 0, 0, 1, 1, 0)": 0.001953125,
+              "(1, 0, 1, 0, 0, 0, 1, 0, 0, 0)": 0.001953125,
+              "(1, 0, 1, 0, 0, 0, 1, 0, 1, 0)": 0.001953125,
+              "(1, 0, 1, 0, 0, 0, 1, 1, 0, 0)": 0.001953125,
+              "(1, 0, 1, 0, 0, 0, 1, 1, 1, 0)": 0.001953125,
+              "(1, 0, 1, 0, 0, 1, 0, 0, 0, 0)": 0.001953125,
+              "(1, 0, 1, 0, 0, 1, 0, 0, 1, 0)": 0.001953125,
+              "(1, 0, 1, 0, 0, 1, 0, 1, 0, 0)": 0.001953125,
+              "(1, 0, 1, 0, 0, 1, 0, 1, 1, 0)": 0.001953125,
+              "(1, 0, 1, 0, 0, 1, 1, 0, 0, 0)": 0.001953125,
+              "(1, 0, 1, 0, 0, 1, 1, 0, 1, 0)": 0.001953125,
+              "(1, 0, 1, 0, 0, 1, 1, 1, 0, 0)": 0.001953125,
+              "(1, 0, 1, 0, 0, 1, 1, 1, 1, 0)": 0.001953125,
+              "(1, 0, 1, 0, 1, 0, 0, 0, 0, 0)": 0.001953125,
+              "(1, 0, 1, 0, 1, 0, 0, 0, 1, 0)": 0.001953125,
+              "(1, 0, 1, 0, 1, 0, 0, 1, 0, 0)": 0.001953125,
+              "(1, 0, 1, 0, 1, 0, 0, 1, 1, 0)": 0.001953125,
+              "(1, 0, 1, 0, 1, 0, 1, 0, 0, 0)": 0.001953125,
+              "(1, 0, 1, 0, 1, 0, 1, 0, 1, 0)": 0.001953125,
+              "(1, 0, 1, 0, 1, 0, 1, 1, 0, 0)": 0.001953125,
+              "(1, 0, 1, 0, 1, 0, 1, 1, 1, 0)": 0.001953125,
+              "(1, 0, 1, 0, 1, 1, 0, 0, 0, 0)": 0.001953125,
+              "(1, 0, 1, 0, 1, 1, 0, 0, 1, 0)": 0.001953125,
+              "(1, 0, 1, 0, 1, 1, 0, 1, 0, 0)": 0.001953125,
+              "(1, 0, 1, 0, 1, 1, 0, 1, 1, 0)": 0.001953125,
+              "(1, 0, 1, 0, 1, 1, 1, 0, 0, 0)": 0.001953125,
+              "(1, 0, 1, 0, 1, 1, 1, 0, 1, 0)": 0.001953125,
+              "(1, 0, 1, 0, 1, 1, 1, 1, 0, 0)": 0.001953125,
+              "(1, 0, 1, 0, 1, 1, 1, 1, 1, 0)": 0.001953125,
+              "(1, 0, 1, 1, 0, 0, 0, 0, 0, 0)": 0.001953125,
+              "(1, 0, 1, 1, 0, 0, 0, 0, 1, 0)": 0.001953125,
+              "(1, 0, 1, 1, 0, 0, 0, 1, 0, 0)": 0.001953125,
+              "(1, 0, 1, 1, 0, 0, 0, 1, 1, 0)": 0.001953125,
+              "(1, 0, 1, 1, 0, 0, 1, 0, 0, 0)": 0.001953125,
+              "(1, 0, 1, 1, 0, 0, 1, 0, 1, 0)": 0.001953125,
+              "(1, 0, 1, 1, 0, 0, 1, 1, 0, 0)": 0.001953125,
+              "(1, 0, 1, 1, 0, 0, 1, 1, 1, 0)": 0.001953125,
+              "(1, 0, 1, 1, 0, 1, 0, 0, 0, 0)": 0.001953125,
+              "(1, 0, 1, 1, 0, 1, 0, 0, 1, 0)": 0.001953125,
+              "(1, 0, 1, 1, 0, 1, 0, 1, 0, 0)": 0.001953125,
+              "(1, 0, 1, 1, 0, 1, 0, 1, 1, 0)": 0.001953125,
+              "(1, 0, 1, 1, 0, 1, 1, 0, 0, 0)": 0.001953125,
+              "(1, 0, 1, 1, 0, 1, 1, 0, 1, 0)": 0.001953125,
+              "(1, 0, 1, 1, 0, 1, 1, 1, 0, 0)": 0.001953125,
+              "(1, 0, 1, 1, 0, 1, 1, 1, 1, 0)": 0.001953125,
+              "(1, 0, 1, 1, 1, 0, 0, 0, 0, 0)": 0.001953125,
+              "(1, 0, 1, 1, 1, 0, 0, 0, 1, 0)": 0.001953125,
+              "(1, 0, 1, 1, 1, 0, 0, 1, 0, 0)": 0.001953125,
+              "(1, 0, 1, 1, 1, 0, 0, 1, 1, 0)": 0.001953125,
+              "(1, 0, 1, 1, 1, 0, 1, 0, 0, 0)": 0.001953125,
+              "(1, 0, 1, 1, 1, 0, 1, 0, 1, 0)": 0.001953125,
+              "(1, 0, 1, 1, 1, 0, 1, 1, 0, 0)": 0.001953125,
+              "(1, 0, 1, 1, 1, 0, 1, 1, 1, 0)": 0.001953125,
+              "(1, 0, 1, 1, 1, 1, 0, 0, 0, 0)": 0.001953125,
+              "(1, 0, 1, 1, 1, 1, 0, 0, 1, 0)": 0.001953125,
+              "(1, 0, 1, 1, 1, 1, 0, 1, 0, 0)": 0.001953125,
+              "(1, 0, 1, 1, 1, 1, 0, 1, 1, 0)": 0.001953125,
+              "(1, 0, 1, 1, 1, 1, 1, 0, 0, 0)": 0.001953125,
+              "(1, 0, 1, 1, 1, 1, 1, 0, 1, 0)": 0.001953125,
+              "(1, 0, 1, 1, 1, 1, 1, 1, 0, 0)": 0.001953125,
+              "(1, 0, 1, 1, 1, 1, 1, 1, 1, 0)": 0.001953125,
+              "(1, 1, 0, 0, 0, 0, 0, 0, 0, 0)": 0.001953125,
+              "(1, 1, 0, 0, 0, 0, 0, 0, 1, 0)": 0.001953125,
+              "(1, 1, 0, 0, 0, 0, 0, 1, 0, 0)": 0.001953125,
+              "(1, 1, 0, 0, 0, 0, 0, 1, 1, 0)": 0.001953125,
+              "(1, 1, 0, 0, 0, 0, 1, 0, 0, 0)": 0.001953125,
+              "(1, 1, 0, 0, 0, 0, 1, 0, 1, 0)": 0.001953125,
+              "(1, 1, 0, 0, 0, 0, 1, 1, 0, 0)": 0.001953125,
+              "(1, 1, 0, 0, 0, 0, 1, 1, 1, 0)": 0.001953125,
+              "(1, 1, 0, 0, 0, 1, 0, 0, 0, 0)": 0.001953125,
+              "(1, 1, 0, 0, 0, 1, 0, 0, 1, 0)": 0.001953125,
+              "(1, 1, 0, 0, 0, 1, 0, 1, 0, 0)": 0.001953125,
+              "(1, 1, 0, 0, 0, 1, 0, 1, 1, 0)": 0.001953125,
+              "(1, 1, 0, 0, 0, 1, 1, 0, 0, 0)": 0.001953125,
+              "(1, 1, 0, 0, 0, 1, 1, 0, 1, 0)": 0.001953125,
+              "(1, 1, 0, 0, 0, 1, 1, 1, 0, 0)": 0.001953125,
+              "(1, 1, 0, 0, 0, 1, 1, 1, 1, 0)": 0.001953125,
+              "(1, 1, 0, 0, 1, 0, 0, 0, 0, 0)": 0.001953125,
+              "(1, 1, 0, 0, 1, 0, 0, 0, 1, 0)": 0.001953125,
+              "(1, 1, 0, 0, 1, 0, 0, 1, 0, 0)": 0.001953125,
+              "(1, 1, 0, 0, 1, 0, 0, 1, 1, 0)": 0.001953125,
+              "(1, 1, 0, 0, 1, 0, 1, 0, 0, 0)": 0.001953125,
+              "(1, 1, 0, 0, 1, 0, 1, 0, 1, 0)": 0.001953125,
+              "(1, 1, 0, 0, 1, 0, 1, 1, 0, 0)": 0.001953125,
+              "(1, 1, 0, 0, 1, 0, 1, 1, 1, 0)": 0.001953125,
+              "(1, 1, 0, 0, 1, 1, 0, 0, 0, 0)": 0.001953125,
+              "(1, 1, 0, 0, 1, 1, 0, 0, 1, 0)": 0.001953125,
+              "(1, 1, 0, 0, 1, 1, 0, 1, 0, 0)": 0.001953125,
+              "(1, 1, 0, 0, 1, 1, 0, 1, 1, 0)": 0.001953125,
+              "(1, 1, 0, 0, 1, 1, 1, 0, 0, 0)": 0.001953125,
+              "(1, 1, 0, 0, 1, 1, 1, 0, 1, 0)": 0.001953125,
+              "(1, 1, 0, 0, 1, 1, 1, 1, 0, 0)": 0.001953125,
+              "(1, 1, 0, 0, 1, 1, 1, 1, 1, 0)": 0.001953125,
+              "(1, 1, 0, 1, 0, 0, 0, 0, 0, 0)": 0.001953125,
+              "(1, 1, 0, 1, 0, 0, 0, 0, 1, 0)": 0.001953125,
+              "(1, 1, 0, 1, 0, 0, 0, 1, 0, 0)": 0.001953125,
+              "(1, 1, 0, 1, 0, 0, 0, 1, 1, 0)": 0.001953125,
+              "(1, 1, 0, 1, 0, 0, 1, 0, 0, 0)": 0.001953125,
+              "(1, 1, 0, 1, 0, 0, 1, 0, 1, 0)": 0.001953125,
+              "(1, 1, 0, 1, 0, 0, 1, 1, 0, 0)": 0.001953125,
+              "(1, 1, 0, 1, 0, 0, 1, 1, 1, 0)": 0.001953125,
+              "(1, 1, 0, 1, 0, 1, 0, 0, 0, 0)": 0.001953125,
+              "(1, 1, 0, 1, 0, 1, 0, 0, 1, 0)": 0.001953125,
+              "(1, 1, 0, 1, 0, 1, 0, 1, 0, 0)": 0.001953125,
+              "(1, 1, 0, 1, 0, 1, 0, 1, 1, 0)": 0.001953125,
+              "(1, 1, 0, 1, 0, 1, 1, 0, 0, 0)": 0.001953125,
+              "(1, 1, 0, 1, 0, 1, 1, 0, 1, 0)": 0.001953125,
+              "(1, 1, 0, 1, 0, 1, 1, 1, 0, 0)": 0.001953125,
+              "(1, 1, 0, 1, 0, 1, 1, 1, 1, 0)": 0.001953125,
+              "(1, 1, 0, 1, 1, 0, 0, 0, 0, 0)": 0.001953125,
+              "(1, 1, 0, 1, 1, 0, 0, 0, 1, 0)": 0.001953125,
+              "(1, 1, 0, 1, 1, 0, 0, 1, 0, 0)": 0.001953125,
+              "(1, 1, 0, 1, 1, 0, 0, 1, 1, 0)": 0.001953125,
+              "(1, 1, 0, 1, 1, 0, 1, 0, 0, 0)": 0.001953125,
+              "(1, 1, 0, 1, 1, 0, 1, 0, 1, 0)": 0.001953125,
+              "(1, 1, 0, 1, 1, 0, 1, 1, 0, 0)": 0.001953125,
+              "(1, 1, 0, 1, 1, 0, 1, 1, 1, 0)": 0.001953125,
+              "(1, 1, 0, 1, 1, 1, 0, 0, 0, 0)": 0.001953125,
+              "(1, 1, 0, 1, 1, 1, 0, 0, 1, 0)": 0.001953125,
+              "(1, 1, 0, 1, 1, 1, 0, 1, 0, 0)": 0.001953125,
+              "(1, 1, 0, 1, 1, 1, 0, 1, 1, 0)": 0.001953125,
+              "(1, 1, 0, 1, 1, 1, 1, 0, 0, 0)": 0.001953125,
+              "(1, 1, 0, 1, 1, 1, 1, 0, 1, 0)": 0.001953125,
+              "(1, 1, 0, 1, 1, 1, 1, 1, 0, 0)": 0.001953125,
+              "(1, 1, 0, 1, 1, 1, 1, 1, 1, 0)": 0.001953125,
+              "(1, 1, 1, 0, 0, 0, 0, 0, 0, 0)": 0.001953125,
+              "(1, 1, 1, 0, 0, 0, 0, 0, 1, 0)": 0.001953125,
+              "(1, 1, 1, 0, 0, 0, 0, 1, 0, 0)": 0.001953125,
+              "(1, 1, 1, 0, 0, 0, 0, 1, 1, 0)": 0.001953125,
+              "(1, 1, 1, 0, 0, 0, 1, 0, 0, 0)": 0.001953125,
+              "(1, 1, 1, 0, 0, 0, 1, 0, 1, 0)": 0.001953125,
+              "(1, 1, 1, 0, 0, 0, 1, 1, 0, 0)": 0.001953125,
+              "(1, 1, 1, 0, 0, 0, 1, 1, 1, 0)": 0.001953125,
+              "(1, 1, 1, 0, 0, 1, 0, 0, 0, 0)": 0.001953125,
+              "(1, 1, 1, 0, 0, 1, 0, 0, 1, 0)": 0.001953125,
+              "(1, 1, 1, 0, 0, 1, 0, 1, 0, 0)": 0.001953125,
+              "(1, 1, 1, 0, 0, 1, 0, 1, 1, 0)": 0.001953125,
+              "(1, 1, 1, 0, 0, 1, 1, 0, 0, 0)": 0.001953125,
+              "(1, 1, 1, 0, 0, 1, 1, 0, 1, 0)": 0.001953125,
+              "(1, 1, 1, 0, 0, 1, 1, 1, 0, 0)": 0.001953125,
+              "(1, 1, 1, 0, 0, 1, 1, 1, 1, 0)": 0.001953125,
+              "(1, 1, 1, 0, 1, 0, 0, 0, 0, 0)": 0.001953125,
+              "(1, 1, 1, 0, 1, 0, 0, 0, 1, 0)": 0.001953125,
+              "(1, 1, 1, 0, 1, 0, 0, 1, 0, 0)": 0.001953125,
+              "(1, 1, 1, 0, 1, 0, 0, 1, 1, 0)": 0.001953125,
+              "(1, 1, 1, 0, 1, 0, 1, 0, 0, 0)": 0.001953125,
+              "(1, 1, 1, 0, 1, 0, 1, 0, 1, 0)": 0.001953125,
+              "(1, 1, 1, 0, 1, 0, 1, 1, 0, 0)": 0.001953125,
+              "(1, 1, 1, 0, 1, 0, 1, 1, 1, 0)": 0.001953125,
+              "(1, 1, 1, 0, 1, 1, 0, 0, 0, 0)": 0.001953125,
+              "(1, 1, 1, 0, 1, 1, 0, 0, 1, 0)": 0.001953125,
+              "(1, 1, 1, 0, 1, 1, 0, 1, 0, 0)": 0.001953125,
+              "(1, 1, 1, 0, 1, 1, 0, 1, 1, 0)": 0.001953125,
+              "(1, 1, 1, 0, 1, 1, 1, 0, 0, 0)": 0.001953125,
+              "(1, 1, 1, 0, 1, 1, 1, 0, 1, 0)": 0.001953125,
+              "(1, 1, 1, 0, 1, 1, 1, 1, 0, 0)": 0.001953125,
+              "(1, 1, 1, 0, 1, 1, 1, 1, 1, 0)": 0.001953125,
+              "(1, 1, 1, 1, 0, 0, 0, 0, 0, 0)": 0.001953125,
+              "(1, 1, 1, 1, 0, 0, 0, 0, 1, 0)": 0.001953125,
+              "(1, 1, 1, 1, 0, 0, 0, 1, 0, 0)": 0.001953125,
+              "(1, 1, 1, 1, 0, 0, 0, 1, 1, 0)": 0.001953125,
+              "(1, 1, 1, 1, 0, 0, 1, 0, 0, 0)": 0.001953125,
+              "(1, 1, 1, 1, 0, 0, 1, 0, 1, 0)": 0.001953125,
+              "(1, 1, 1, 1, 0, 0, 1, 1, 0, 0)": 0.001953125,
+              "(1, 1, 1, 1, 0, 0, 1, 1, 1, 0)": 0.001953125,
+              "(1, 1, 1, 1, 0, 1, 0, 0, 0, 0)": 0.001953125,
+              "(1, 1, 1, 1, 0, 1, 0, 0, 1, 0)": 0.001953125,
+              "(1, 1, 1, 1, 0, 1, 0, 1, 0, 0)": 0.001953125,
+              "(1, 1, 1, 1, 0, 1, 0, 1, 1, 0)": 0.001953125,
+              "(1, 1, 1, 1, 0, 1, 1, 0, 0, 0)": 0.001953125,
+              "(1, 1, 1, 1, 0, 1, 1, 0, 1, 0)": 0.001953125,
+              "(1, 1, 1, 1, 0, 1, 1, 1, 0, 0)": 0.001953125,
+              "(1, 1, 1, 1, 0, 1, 1, 1, 1, 0)": 0.001953125,
+              "(1, 1, 1, 1, 1, 0, 0, 0, 0, 0)": 0.001953125,
+              "(1, 1, 1, 1, 1, 0, 0, 0, 1, 0)": 0.001953125,
+              "(1, 1, 1, 1, 1, 0, 0, 1, 0, 0)": 0.001953125,
+              "(1, 1, 1, 1, 1, 0, 0, 1, 1, 0)": 0.001953125,
+              "(1, 1, 1, 1, 1, 0, 1, 0, 0, 0)": 0.001953125,
+              "(1, 1, 1, 1, 1, 0, 1, 0, 1, 0)": 0.001953125,
+              "(1, 1, 1, 1, 1, 0, 1, 1, 0, 0)": 0.001953125,
+              "(1, 1, 1, 1, 1, 0, 1, 1, 1, 0)": 0.001953125,
+              "(1, 1, 1, 1, 1, 1, 0, 0, 0, 0)": 0.001953125,
+              "(1, 1, 1, 1, 1, 1, 0, 0, 1, 0)": 0.001953125,
+              "(1, 1, 1, 1, 1, 1, 0, 1, 0, 0)": 0.001953125,
+              "(1, 1, 1, 1, 1, 1, 0, 1, 1, 0)": 0.001953125,
+              "(1, 1, 1, 1, 1, 1, 1, 0, 0, 0)": 0.001953125,
+              "(1, 1, 1, 1, 1, 1, 1, 0, 1, 0)": 0.001953125,
+              "(1, 1, 1, 1, 1, 1, 1, 1, 0, 0)": 0.001953125,
+              "(1, 1, 1, 1, 1, 1, 1, 1, 1, 0)": 0.001953125
+            }
+          ],
+          "reference_observation": [
+            {
+              "(0, 0, 0, 0, 0, 0, 0, 0, 0, 0)": 0.4999999999999999,
+              "(1, 1, 1, 1, 1, 1, 1, 1, 1, 0)": 0.4999999999999999
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "row": 21,
+      "model_label": "Adder faulty",
+      "model": "experiment_data/models/FaultyVariants/Adder/adder_faulty_sum.qam",
+      "expected_satisfied": false,
+      "checker_satisfied": false,
+      "reference_satisfied": false,
+      "matches_expected": true,
+      "all_property_judgments_agree": true,
+      "source_files": [
+        {
+          "path": "experiment_data/models/FaultyVariants/Adder/adder_faulty_sum.qam",
+          "sha256": "c35549657034f461d2da1191d6af04281864a671c0cc0c83c8118a870327fc15"
+        }
+      ],
+      "properties": [
+        {
+          "property_id": "paper_adder_faulty",
+          "selected_positions": [
+            "f28"
+          ],
+          "checker_satisfied": false,
+          "reference_satisfied": false,
+          "judgments_agree": true,
+          "checker_observation": [
+            {
+              "(0, 1, 1, 0, 0, 0, 1, 1, 0, 0)": 1.0
+            }
+          ],
+          "reference_observation": [
+            {
+              "(0, 1, 1, 0, 0, 0, 1, 1, 0, 0)": 1.0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "row": 22,
+      "model_label": "BV faulty",
+      "model": "experiment_data/models/FaultyVariants/BV/bv_faulty_hidden_bit.qam",
+      "expected_satisfied": false,
+      "checker_satisfied": false,
+      "reference_satisfied": false,
+      "matches_expected": true,
+      "all_property_judgments_agree": true,
+      "source_files": [
+        {
+          "path": "experiment_data/models/FaultyVariants/BV/bv_faulty_hidden_bit.qam",
+          "sha256": "aadb813ec8a2964e543c0eddf085ce3f96e6f0dd6c70d89c195047340f70c8aa"
+        }
+      ],
+      "properties": [
+        {
+          "property_id": "paper_bv_faulty",
+          "selected_positions": [
+            "f22"
+          ],
+          "checker_satisfied": false,
+          "reference_satisfied": false,
+          "judgments_agree": true,
+          "checker_observation": [
+            {
+              "(1, 0, 0, 0, 1, 0, 0, 0, 0)": 1.0
+            }
+          ],
+          "reference_observation": [
+            {
+              "(1, 0, 0, 0, 1, 0, 0, 0, 0)": 0.999999999999997
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "rows": 22,
+    "rows_matching_expected": 22,
+    "expected_satisfactions": 16,
+    "expected_violations": 6,
+    "property_judgments": 35,
+    "all_property_judgments_agree": true
+  }
+}

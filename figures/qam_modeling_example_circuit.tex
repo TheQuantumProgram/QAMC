@@ -1,0 +1,38 @@
+% Six-qubit circuit for Figure 2. Compile with pdfLaTeX.
+% The gate sequence and separate classical register match the numbered program.
+\documentclass[border=.6mm]{standalone}
+\usepackage[T1]{fontenc}
+\usepackage{newtxtext,newtxmath}
+\usepackage{quantikz}
+% Match gate and meter frames. Meter geometry follows Qiskit's mpl renderer:
+% a semicircle 70% of the box width and a plain 45-degree needle.
+\tikzset{
+ thickness/.style={line width=.6pt},
+ qam gate box/.style={draw,fill=white,rectangle,minimum size=5.6mm,
+   inner sep=0pt,thickness},
+ operator/.style={qam gate box,align=center},
+ meter/.style={
+  qam gate box,
+  path picture={
+    \draw[line width=.8pt]
+      ([xshift=-1.96mm,yshift=-.84mm]path picture bounding box.center)
+      arc[start angle=180,end angle=0,radius=1.96mm];
+    \draw[line width=.8pt]
+      ([yshift=-.84mm]path picture bounding box.center)
+      -- ([xshift=1.96mm,yshift=1.12mm]path picture bounding box.center);
+  }
+}}
+\begin{document}
+\fontsize{8.2}{9.4}\selectfont
+\newcommand{\qamwirelabel}[2]{\makebox[1.8em][r]{\(#1\)}:\ \makebox[1.9em][l]{\(#2\)}}
+\newcommand{\qamclasslabel}[2]{\makebox[1.8em][r]{\(#1\)}:\ \makebox[1.9em][l]{\hspace{.22em}\(#2\)}}
+\begin{quantikz}[column sep={0.52cm,between origins},row sep={0.55cm,between origins}]
+  \lstick{\qamwirelabel{q_0}{|0\rangle}} & \gate{H} & \ctrl{1} & \qw      & \qw      & \qw      & \qw      & \qw & \qw      & \qw      & \qw \\
+  \lstick{\qamwirelabel{q_1}{|0\rangle}} & \qw      & \targ{}  & \ctrl{1} & \qw      & \qw      & \qw      & \qw & \qw      & \qw      & \qw \\
+  \lstick{\qamwirelabel{q_2}{|0\rangle}} & \qw      & \qw      & \targ{}  & \qw      & \ctrl{1} & \qw      & \qw & \qw      & \qw      & \qw \\
+  \lstick{\qamwirelabel{q_3}{|0\rangle}} & \qw      & \qw      & \qw      & \gate{H} & \ctrl{1} & \meter{} & \qw\arrow[from=4-7,to=7-7,arrows]{} & \qw & \qw & \qw \\
+  \lstick{\qamwirelabel{q_4}{|0\rangle}} & \qw      & \qw      & \qw      & \qw      & \targ{}  & \qw      & \qw & \qw      & \targ{}  & \qw \\
+  \lstick{\qamwirelabel{q_5}{|0\rangle}} & \qw      & \qw      & \qw      & \qw      & \qw      & \qw      & \qw & \gate{H} & \ctrl{-1}& \qw \\
+  \lstick{\qamclasslabel{m_3}{0}}        & \cw      & \cw      & \cw      & \cw      & \cw      & \cw      & \cw & |[phase]| {} \vqw{-1}\cw & \cw & \cw
+\end{quantikz}
+\end{document}

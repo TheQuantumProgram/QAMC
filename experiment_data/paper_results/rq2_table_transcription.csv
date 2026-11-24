@@ -1,7 +1,0 @@
-model,qubits,gates,nonempty_source_lines,time_ms,retained_array_mib,classical_latex,property_latex,result_latex
-Teleportation,3,9,117,2.4,0.004,"$m0$, $m1$",Final: $\Pr[X(q2)=0]=1$,\ensuremath{\surd}
-Bit-flip code,5,10,134,2.3,0.005,"$m0$, $m1$","Final: $Z(q0,q1,q2)=111$",\ensuremath{\surd}
-Entanglement swap,4,10,130,2.3,0.014,"$m0$, $m1$","Some node: $m0,m1\in\{0,1\}$; final on $(q0,q3)$: $P_Z(00)=P_Z(11)=0.5$",\ensuremath{\surd}
-Hybrid register,10,12,100,2.2,0.009,"$enable$, $m0$","All nodes: $enable=1$; some node: $m0\in\{0,1\}$; final on $(q1,q9)$: $P_Z(01)=P_Z(11)=0.5$",\ensuremath{\surd}
-Program mux,2,5,72,0.8,0.001,"$flip$, $m0$","All nodes: $flip=1$; some node: $m0\in\{0,1\}$; final on $q1$: $P_Z(0)=P_Z(1)=0.5$",\ensuremath{\surd}
-Multiway branch,10,13,73,1.2,0.007,$route$,All nodes: $route=2$; final: $\Pr[X(q9)=0]=1$,\ensuremath{\surd}

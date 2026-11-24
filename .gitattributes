@@ -1,0 +1,6 @@
+# Keep the byte sequences verified by the source, model and measurement hashes.
+*.py text eol=lf
+*.csv -text
+*.json -text
+*.qam -text
+*.qprop -text

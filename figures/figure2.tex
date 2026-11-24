@@ -1,0 +1,27 @@
+% Figure 2: the numbered program and the circuit side by side.
+\documentclass[border=0pt]{standalone}
+\usepackage[T1]{fontenc}
+\usepackage[tt=false]{libertine}
+\usepackage[libertine]{newtxmath}
+\usepackage{graphicx}
+\begin{document}
+\small
+  \renewcommand{\arraystretch}{1.22}
+  \begin{tabular}{@{}c@{\hspace{2.5mm}}c@{}}
+  \begin{tabular}[c]{@{}r@{\quad}l@{}}
+    \multicolumn{2}{@{}l@{}}{\textbf{Quantum program}}\\[0.4em]
+    1 & initialize \(q_0,\ldots,q_5 := |0\rangle\) \\
+    2 & \(H(q_0);\ CX(q_0,q_1)\) \\
+    3 & \(CX(q_1,q_2);\ H(q_3)\) \\
+    4 & \(CCX(q_2,q_3,q_4)\) \\
+    5 & \(m_3 := M_Z(q_3)\) \\
+    6 & if \(m_3=0\): \(ID(q_5)\) \\
+    7 & else: \(H(q_5)\) \\
+    8 & \(CX(q_5,q_4)\)
+  \end{tabular}
+  &
+  \begin{minipage}[c]{71mm}
+  \includegraphics[width=\linewidth]{qam_modeling_example_circuit.pdf}
+  \end{minipage}
+  \end{tabular}
+\end{document}

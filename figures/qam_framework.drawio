@@ -1,0 +1,174 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="QAM framework inputs 2026-10-20" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.0.3 Chrome/140.0.7339.249 Electron/38.7.0 Safari/537.36" version="29.0.3">
+  <diagram id="qam-framework" name="QAM framework">
+    <mxGraphModel dx="1338" dy="840" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1105" pageHeight="505" background="#FFFFFF" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="p1V2G8zetDO1W6pq_mjI-5" value="" style="rounded=0;whiteSpace=wrap;html=1;align=left;textShadow=0;" vertex="1" parent="1">
+          <mxGeometry width="280" height="500" as="geometry" x="0" y="0" />
+        </mxCell>
+        <mxCell id="language-group" value="" style="rounded=0;html=0;fillColor=none;strokeColor=#888888;strokeWidth=1;dashed=1;dashPattern=4 3;" parent="1" vertex="1">
+          <mxGeometry x="10" y="275" width="260" height="165" as="geometry" />
+        </mxCell>
+        <mxCell id="system" value="" style="rounded=0;arcSize=10;html=0;whiteSpace=wrap;fillColor=white;strokeColor=#555555;strokeWidth=1.3;container=1;collapsible=0;textShadow=0;" parent="1" vertex="1">
+          <mxGeometry x="318" width="784" height="500" as="geometry" y="0" />
+        </mxCell>
+        <mxCell id="system-title" value="QAM model checker" style="text;html=0;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;spacing=0;fontFamily=Liberation Sans;fontSize=18;fontStyle=1;fontColor=#252525;textShadow=0;" parent="system" vertex="1">
+          <mxGeometry x="214" y="8.064516129032258" width="356" height="27.217741935483872" as="geometry" />
+        </mxCell>
+        <mxCell id="analyzer" value="" style="rounded=0;arcSize=10;html=0;whiteSpace=wrap;fillColor=#F3F3F3;strokeColor=#555555;strokeWidth=1.3;container=1;collapsible=0;textShadow=0;" parent="system" vertex="1">
+          <mxGeometry x="24" y="44.354838709677416" width="736" height="96.7741935483871" as="geometry" />
+        </mxCell>
+        <mxCell id="analyzer-title" value="Analyzer" style="text;html=0;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;spacing=0;fontFamily=Liberation Sans;fontSize=18;fontStyle=1;fontColor=#252525;textShadow=0;" parent="analyzer" vertex="1">
+          <mxGeometry x="8" y="7.056451612903226" width="720" height="26.20967741935484" as="geometry" />
+        </mxCell>
+        <mxCell id="parser" value="" style="rounded=0;arcSize=10;html=0;whiteSpace=wrap;fillColor=white;strokeColor=#555555;strokeWidth=1.3;container=1;collapsible=0;textShadow=0;" parent="analyzer" vertex="1">
+          <mxGeometry x="16" y="46.37096774193548" width="200" height="35.28225806451613" as="geometry" />
+        </mxCell>
+        <mxCell id="parser-label" value="Parser" style="text;html=0;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;spacing=0;fontFamily=Liberation Sans;fontSize=16;fontStyle=0;fontColor=#252525;textShadow=0;" parent="parser" vertex="1">
+          <mxGeometry x="4" y="4.032258064516129" width="192" height="27.217741935483872" as="geometry" />
+        </mxCell>
+        <mxCell id="completion" value="" style="rounded=0;arcSize=10;html=0;whiteSpace=wrap;fillColor=white;strokeColor=#555555;strokeWidth=1.3;container=1;collapsible=0;textShadow=0;" parent="analyzer" vertex="1">
+          <mxGeometry x="268" y="46.37096774193548" width="200" height="35.28225806451613" as="geometry" />
+        </mxCell>
+        <mxCell id="completion-label" value="Normalizer" style="text;html=0;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;spacing=0;fontFamily=Liberation Sans;fontSize=16;fontStyle=0;fontColor=#252525;textShadow=0;" parent="completion" vertex="1">
+          <mxGeometry x="4" y="4.032258064516129" width="192" height="27.217741935483872" as="geometry" />
+        </mxCell>
+        <mxCell id="checks" value="" style="rounded=0;arcSize=10;html=0;whiteSpace=wrap;fillColor=white;strokeColor=#555555;strokeWidth=1.3;container=1;collapsible=0;textShadow=0;" parent="analyzer" vertex="1">
+          <mxGeometry x="520" y="46.37096774193548" width="200" height="35.28225806451613" as="geometry" />
+        </mxCell>
+        <mxCell id="checks-label" value="Validator" style="text;html=0;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;spacing=0;fontFamily=Liberation Sans;fontSize=16;fontStyle=0;fontColor=#252525;textShadow=0;" parent="checks" vertex="1">
+          <mxGeometry x="4" y="4.032258064516129" width="192" height="27.217741935483872" as="geometry" />
+        </mxCell>
+        <mxCell id="executor" value="" style="rounded=0;arcSize=10;html=0;whiteSpace=wrap;fillColor=#F3F3F3;strokeColor=#555555;strokeWidth=1.3;container=1;collapsible=0;textShadow=0;" parent="system" vertex="1">
+          <mxGeometry x="24" y="217.74193548387098" width="218" height="118.95161290322581" as="geometry" />
+        </mxCell>
+        <mxCell id="executor-title" value="Execution engine" style="text;html=0;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;spacing=0;fontFamily=Liberation Sans;fontSize=18;fontStyle=1;fontColor=#252525;textShadow=0;" parent="executor" vertex="1">
+          <mxGeometry x="5" y="9.07258064516129" width="208" height="27.217741935483872" as="geometry" />
+        </mxCell>
+        <mxCell id="executor-body" value="Initialization&#10;Transition execution&#10;Branch recording" style="text;html=0;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;spacing=0;fontFamily=Liberation Sans;fontSize=15;fontStyle=0;fontColor=#252525;textShadow=0;" parent="executor" vertex="1">
+          <mxGeometry x="5" y="46.37096774193548" width="208" height="62.5" as="geometry" />
+        </mxCell>
+        <mxCell id="trace" value="" style="rounded=1;arcSize=10;html=0;whiteSpace=wrap;fillColor=white;strokeColor=#555555;strokeWidth=1.3;container=1;collapsible=0;textShadow=0;" parent="system" vertex="1">
+          <mxGeometry x="287" y="217.74193548387098" width="210" height="118.95161290322581" as="geometry" />
+        </mxCell>
+        <mxCell id="trace-title" value="Execution result" style="text;html=0;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;spacing=0;fontFamily=Liberation Sans;fontSize=18;fontStyle=1;fontColor=#252525;textShadow=0;" parent="trace" vertex="1">
+          <mxGeometry x="5" y="9.07258064516129" width="200" height="27.217741935483872" as="geometry" />
+        </mxCell>
+        <mxCell id="trace-body" value="State-transition model&#10;Node bindings&#10;Reach probabilities" style="text;html=0;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;spacing=0;fontFamily=Liberation Sans;fontSize=15;fontStyle=0;fontColor=#252525;textShadow=0;" parent="trace" vertex="1">
+          <mxGeometry x="5" y="46.37096774193548" width="200" height="62.5" as="geometry" />
+        </mxCell>
+        <mxCell id="checker" value="" style="rounded=0;arcSize=10;html=0;whiteSpace=wrap;fillColor=#F3F3F3;strokeColor=#555555;strokeWidth=1.3;container=1;collapsible=0;textShadow=0;" parent="system" vertex="1">
+          <mxGeometry x="542" y="217.74193548387098" width="218" height="118.95161290322581" as="geometry" />
+        </mxCell>
+        <mxCell id="checker-title" value="Property checker" style="text;html=0;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;spacing=0;fontFamily=Liberation Sans;fontSize=18;fontStyle=1;fontColor=#252525;textShadow=0;" parent="checker" vertex="1">
+          <mxGeometry x="5" y="9.07258064516129" width="208" height="27.217741935483872" as="geometry" />
+        </mxCell>
+        <mxCell id="checker-body" value="State selection&#10;Observation evaluation&#10;Condition checking" style="text;html=0;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;spacing=0;fontFamily=Liberation Sans;fontSize=15;fontStyle=0;fontColor=#252525;textShadow=0;" parent="checker" vertex="1">
+          <mxGeometry x="5" y="46.37096774193548" width="208" height="62.5" as="geometry" />
+        </mxCell>
+        <mxCell id="backend" value="" style="rounded=0;arcSize=10;html=0;whiteSpace=wrap;fillColor=#F3F3F3;strokeColor=#555555;strokeWidth=1.3;container=1;collapsible=0;textShadow=0;" parent="system" vertex="1">
+          <mxGeometry x="24" y="405.241935483871" width="473" height="78.62903225806451" as="geometry" />
+        </mxCell>
+        <mxCell id="backend-title" value="Quantum backend" style="text;html=0;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;spacing=0;fontFamily=Liberation Sans;fontSize=18;fontStyle=1;fontColor=#252525;textShadow=0;" parent="backend" vertex="1">
+          <mxGeometry x="8" y="5.040322580645161" width="457" height="26.20967741935484" as="geometry" />
+        </mxCell>
+        <mxCell id="backend-body" value="Gate and measurement operations&#10;Reduced states and outcome distributions" style="text;html=0;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;spacing=0;fontFamily=Liberation Sans;fontSize=15;fontStyle=0;fontColor=#252525;textShadow=0;" parent="backend" vertex="1">
+          <mxGeometry x="8" y="33.266129032258064" width="457" height="39.314516129032256" as="geometry" />
+        </mxCell>
+        <mxCell id="results" value="" style="rounded=1;arcSize=10;html=0;whiteSpace=wrap;fillColor=white;strokeColor=#555555;strokeWidth=1.3;container=1;collapsible=0;textShadow=0;" parent="system" vertex="1">
+          <mxGeometry x="542" y="405.241935483871" width="218" height="78.62903225806451" as="geometry" />
+        </mxCell>
+        <mxCell id="results-title" value="Checking results" style="text;html=0;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;spacing=0;fontFamily=Liberation Sans;fontSize=18;fontStyle=1;fontColor=#252525;textShadow=0;" parent="results" vertex="1">
+          <mxGeometry x="6" y="5.040322580645161" width="206" height="26.20967741935484" as="geometry" />
+        </mxCell>
+        <mxCell id="results-body" value="Assertion judgments&#10;and observations" style="text;html=0;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;spacing=0;fontFamily=Liberation Sans;fontSize=15;fontStyle=0;fontColor=#252525;textShadow=0;" parent="results" vertex="1">
+          <mxGeometry x="6" y="33.266129032258064" width="206" height="39.314516129032256" as="geometry" />
+        </mxCell>
+        <mxCell id="p1V2G8zetDO1W6pq_mjI-12" value="Checking objective" style="text;html=0;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;spacing=0;fontFamily=Liberation Sans;fontSize=18;fontStyle=1;fontColor=#252525;textShadow=0;" vertex="1" parent="1">
+          <mxGeometry x="10" y="8.06" width="260" height="27.22" as="geometry" />
+        </mxCell>
+        <mxCell id="parser-completion" value="" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#252525;strokeWidth=1.5;endSize=7;exitX=1.0;exitY=0.5;entryX=0.0;entryY=0.5;exitPerimeter=0;entryPerimeter=0;textShadow=0;" parent="1" source="parser" target="completion" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="completion-checks" value="" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#252525;strokeWidth=1.5;endSize=7;exitX=1.0;exitY=0.5;entryX=0.0;entryY=0.5;exitPerimeter=0;entryPerimeter=0;textShadow=0;" parent="1" source="completion" target="checks" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="analyzer-executor" value="" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#252525;strokeWidth=1.5;endSize=7;exitX=0.1480978260869565;exitY=1.0;entryX=0.5;entryY=0.0;exitPerimeter=0;entryPerimeter=0;textShadow=0;" parent="1" source="analyzer" target="executor" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="executable-model" value="Executable model" style="text;html=0;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;spacing=0;fontFamily=Liberation Sans;fontSize=15;fontStyle=0;fontColor=#252525;textShadow=0;" parent="1" vertex="1">
+          <mxGeometry x="461.0" y="164" width="166" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="analyzer-checker" value="" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#252525;strokeWidth=1.5;endSize=7;exitX=0.8519021739130435;exitY=1.0;entryX=0.5;entryY=0.0;exitPerimeter=0;entryPerimeter=0;textShadow=0;" parent="1" source="analyzer" target="checker" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="parsed-assertions" value="Parsed&#10;assertions" style="text;html=0;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;spacing=0;fontFamily=Liberation Sans;fontSize=15;fontStyle=0;fontColor=#252525;textShadow=0;" parent="1" vertex="1">
+          <mxGeometry x="980.0" y="155" width="101" height="43" as="geometry" />
+        </mxCell>
+        <mxCell id="executor-trace" value="" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#252525;strokeWidth=1.5;endSize=7;exitX=1.0;exitY=0.4915254237288136;entryX=0.0;entryY=0.4915254237288136;exitPerimeter=0;entryPerimeter=0;textShadow=0;" parent="1" source="executor" target="trace" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="trace-checker" value="" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#252525;strokeWidth=1.5;endSize=7;exitX=1.0;exitY=0.4915254237288136;entryX=0.0;entryY=0.4915254237288136;exitPerimeter=0;entryPerimeter=0;textShadow=0;" parent="1" source="trace" target="checker" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="executor-backend" value="" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#555555;strokeWidth=1.5;endSize=7;exitX=0.5;exitY=1.0;entryX=0.23044397463002114;entryY=0.0;exitPerimeter=0;entryPerimeter=0;dashed=1;dashPattern=5 4;startArrow=block;startFill=1;startSize=7;textShadow=0;" parent="1" source="executor" target="backend" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="state-updates" value="State updates" style="text;html=0;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;spacing=0;fontFamily=Liberation Sans;fontSize=17;fontStyle=0;fontColor=#252525;textShadow=0;" parent="1" vertex="1">
+          <mxGeometry x="461.0" y="351" width="142" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="checker-backend" value="" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#555555;strokeWidth=1.5;endSize=7;exitX=0.1834862385321101;exitY=1.0;entryX=0.8964059196617337;entryY=0.0;exitPerimeter=0;entryPerimeter=0;dashed=1;dashPattern=5 4;startArrow=block;startFill=1;startSize=7;textShadow=0;" parent="1" source="checker" target="backend" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="900.0" y="375" />
+              <mxPoint x="766.0" y="375" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="observations" value="Observations" style="text;html=0;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;spacing=0;fontFamily=Liberation Sans;fontSize=17;fontStyle=0;fontColor=#252525;textShadow=0;" parent="1" vertex="1">
+          <mxGeometry x="722.0" y="342" width="140" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="checker-results" value="" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#252525;strokeWidth=1.5;endSize=7;exitX=0.7155963302752294;exitY=1.0;entryX=0.7155963302752294;entryY=0.0;exitPerimeter=0;entryPerimeter=0;textShadow=0;" parent="1" source="checker" target="results" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="model" value="QAM model" style="rounded=1;arcSize=10;html=0;whiteSpace=wrap;fillColor=white;strokeColor=#555555;strokeWidth=1.3;container=1;collapsible=0;fontSize=15;fontStyle=0;textShadow=0;" parent="1" vertex="1">
+          <mxGeometry x="20" y="330" width="110" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="assertions" value="Quantum&#10;assertions" style="rounded=1;arcSize=10;html=0;whiteSpace=wrap;fillColor=white;strokeColor=#555555;strokeWidth=1.3;container=1;collapsible=0;fontSize=15;textShadow=0;" parent="1" vertex="1">
+          <mxGeometry x="150" y="330" width="110" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="p1V2G8zetDO1W6pq_mjI-6" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#252525;strokeWidth=1.3;endSize=7;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="p1V2G8zetDO1W6pq_mjI-3" target="model">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p1V2G8zetDO1W6pq_mjI-3" value="Quantum&lt;br&gt;program" style="rounded=1;whiteSpace=wrap;html=1;fontStyle=0;fontSize=15;textShadow=0;" vertex="1" parent="1">
+          <mxGeometry x="20" y="95" width="110" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="p1V2G8zetDO1W6pq_mjI-8" style="edgeStyle=none;rounded=0;html=0;endArrow=block;endFill=1;strokeColor=#252525;strokeWidth=1.3;endSize=7;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="p1V2G8zetDO1W6pq_mjI-7" target="assertions">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p1V2G8zetDO1W6pq_mjI-7" value="&lt;font&gt;&lt;span style=&quot;color: rgb(37, 37, 37); font-family: &amp;quot;Liberation Sans&amp;quot;;&quot;&gt;Properties&lt;/span&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontStyle=0;fontSize=15;textShadow=0;" vertex="1" parent="1">
+          <mxGeometry x="150" y="95" width="110" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="language-title" value="QAM modeling language" style="text;html=0;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;spacing=0;fontFamily=Liberation Sans;fontSize=16;fontStyle=1;fontColor=#252525;" parent="1" vertex="1">
+          <mxGeometry x="20" y="402" width="240" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="language-analyzer" value="" style="edgeStyle=none;html=0;rounded=0;strokeColor=#252525;strokeWidth=1.3;endArrow=block;endFill=1;endSize=7;exitX=1;exitY=0.5;entryX=0;entryY=0.5;exitPerimeter=0;entryPerimeter=0;" parent="1" source="language-group" target="analyzer" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="300" y="357.5" />
+              <mxPoint x="300" y="92.742" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="modeling-label" value="Modeling" style="text;html=0;whiteSpace=wrap;strokeColor=none;fillColor=white;align=center;verticalAlign=middle;spacing=0;fontFamily=Liberation Sans;fontSize=14;fontStyle=0;fontColor=#252525;textShadow=0;" parent="1" vertex="1">
+          <mxGeometry x="25" y="206" width="100" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="formalization-label" value="Formalization" style="text;html=0;whiteSpace=wrap;strokeColor=none;fillColor=white;align=center;verticalAlign=middle;spacing=0;fontFamily=Liberation Sans;fontSize=14;fontStyle=0;fontColor=#252525;textShadow=0;" parent="1" vertex="1">
+          <mxGeometry x="155" y="206" width="100" height="26" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

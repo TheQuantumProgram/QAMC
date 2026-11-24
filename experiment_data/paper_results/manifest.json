@@ -1,0 +1,152 @@
+{
+  "measured_on": "2026-11-24",
+  "working_directory": "repository root",
+  "environment": {
+    "cpu": "Intel Core i7-13700HX",
+    "logical_cpus": 24,
+    "memtotal_kib": 7973012,
+    "kernel": "6.6.87.2-microsoft-standard-WSL2",
+    "python": "3.10.12",
+    "numpy": "2.2.6",
+    "blas": "OpenBLAS, default 24 threads",
+    "timed_processes": "Serial on one host",
+    "env": {
+      "PYTHONPATH": "src",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    }
+  },
+  "source_revisions": {
+    "main_measurements": {
+      "commit": "80e603347ba63f8bac773b3e1d5dd776f67115f5",
+      "source_tree_sha256": "e8e59ba9f13a9bdce476a2570dd92b42e68bfe8e6cb1f86db7353db6fc538f68"
+    },
+    "grover_measurements": {
+      "commit": "62ef1e95d258b2d8c4fddb8c97d916f2216eb7f9",
+      "source_tree_sha256": "a41186c496da34509627037795f6584a88e403415119ec11dc807012b715a549"
+    }
+  },
+  "source_hash_method": "SHA-256 over sorted .py paths relative to src/qamc, each UTF-8 path followed by NUL and its 32-byte SHA-256 file digest.",
+  "runs": {
+    "rq12": {
+      "revision": "main_measurements",
+      "command": [
+        "python",
+        "-m",
+        "qamc.cli.experiments",
+        "--measure-models",
+        "--output",
+        "runs/rq1_rq2_measurements.csv"
+      ],
+      "measurements": "raw/rq1_rq2_measurements.csv"
+    },
+    "rq3": {
+      "revision": "main_measurements",
+      "command": [
+        "python",
+        "-m",
+        "qamc.cli.experiments",
+        "--rq3-scalability",
+        "--rq3-sizes",
+        "5-20",
+        "--rq3-repeats",
+        "5",
+        "--rq3-results-dir",
+        "runs/rq3",
+        "--output",
+        "runs/rq3.log"
+      ],
+      "measurements": "raw/rq3_trials.csv",
+      "summary": "rq3_scalability.csv"
+    },
+    "rq4_others": {
+      "revision": "main_measurements",
+      "command": [
+        "python",
+        "-c",
+        "from qamc.experiments.rq4 import run_rq4_large_scale, write_rq4_outputs; r=run_rq4_large_scale(benchmark_names=('ghz', 'bv', 'adder', 'simon'), sizes=(50,100,200,300,400,500)); write_rq4_outputs(r, results_dir='runs/rq4_others'); assert r.all_ok"
+      ],
+      "measurements": "raw/rq4_other_families.csv"
+    },
+    "rq4_grover": {
+      "revision": "grover_measurements",
+      "command": [
+        "python",
+        "-c",
+        "from qamc.experiments.rq4 import run_rq4_large_scale, write_rq4_outputs; r=run_rq4_large_scale(benchmark_names=('grover',), sizes=(50,100,200,300,400,500)); write_rq4_outputs(r, results_dir='runs/rq4_grover'); assert r.all_ok"
+      ],
+      "measurements": "raw/rq4_grover.csv"
+    }
+  },
+  "files": {
+    "rq1_table.csv": {
+      "sha256": "d82bb1152fb7e960f73482e9e9943b4975b31b47fa0b70833b6c62e4d4d96511",
+      "records": 22
+    },
+    "rq2_table.csv": {
+      "sha256": "2357d052846cad9551cef337be05dfbd6539da88d69cd0ce3b6d731881430328",
+      "records": 6
+    },
+    "rq3_scalability.csv": {
+      "sha256": "e9f8e71111ff69069dcf2a13730cfa03db5dc031c3f663f65dc384fed2db5589",
+      "records": 128
+    },
+    "rq4_large_scale.csv": {
+      "sha256": "f24a261d547c6ade824bd81ed0cd6831aa738d354897c95375a3520c45c5325d",
+      "records": 30
+    },
+    "raw/rq1_rq2_measurements.csv": {
+      "sha256": "dd3a6453a35925d903a4ba1afe9f93877ee98ef32ebb1ce07cc40737dd553c99",
+      "records": 28
+    },
+    "raw/rq3_trials.csv": {
+      "sha256": "818426cb5f75d334ddcb220758f3d880ebe0a0b23e854d2a3f7a93eb1b86c419",
+      "records": 640
+    },
+    "raw/rq4_other_families.csv": {
+      "sha256": "0800dff8589db983838b0d23b37d9231d5640aab25c0bb0f2705f5f6b3608ddb",
+      "records": 24
+    },
+    "raw/rq4_grover.csv": {
+      "sha256": "cc5a4fab12c6a04677c41205557bae2ce3ec3635497e0685e698a55f4571e3ec",
+      "records": 6
+    }
+  },
+  "derivations": {
+    "rq1_table.csv": "Rows for RQ1 from raw/rq1_rq2_measurements.csv in row order with the manuscript labels. Time is rounded to 0.1 ms and memory to 0.001 MiB.",
+    "rq2_table.csv": "Rows for RQ2 from raw/rq1_rq2_measurements.csv in row order with the manuscript labels. Same rounding as RQ1.",
+    "rq3_scalability.csv": "Per (family, size, representation), median of the five wall times and allocation peaks, min/max wall time and population standard deviation. Structural fields and retained memory come from the final trial.",
+    "rq4_large_scale.csv": "The 24 rows of raw/rq4_other_families.csv plus the six rows of raw/rq4_grover.csv in paper order. Values are preserved at the precision emitted by the driver."
+  },
+  "validation_outputs": {
+    "rq1": {
+      "path": "validation/rq1_property_audit/reference_results.json",
+      "sha256": "09230c5e76ecf2a6bce2bbffa5a7e846447b300f060a2ff6bfe51b5d328b6f5e",
+      "source_revision": "main_measurements",
+      "environment": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "command": [
+        "python",
+        "validation/rq1_property_audit/verify_rq1.py",
+        "--output",
+        "runs/rq1-reference.json"
+      ]
+    },
+    "rq2_feedback": {
+      "path": "validation/feedback_control/reference_results.json",
+      "sha256": "5d609e947bd4905ba7d30692f697fd5b97d9022a48b97d19038481271d1a7165",
+      "source_revision": "main_measurements",
+      "environment": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "command": [
+        "python",
+        "validation/feedback_control/run_feedback_comparison.py",
+        "--output",
+        "runs/feedback-reference.json"
+      ]
+    }
+  }
+}

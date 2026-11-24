@@ -117,13 +117,9 @@ def main() -> int:
     args = parser.parse_args()
     manifest_path = HERE / "manifest.json"
     manifest = json.loads(manifest_path.read_text())
-    history = PROJECT / manifest["historical_table_source"]
-    if sha256(history) != manifest["historical_table_sha256"]:
-        raise ValueError("The historical table transcription changed.")
     result = {
         "checked_at_utc": datetime.now(timezone.utc).isoformat(),
-        "scope": "Judgments for the 22 mapped RQ1 properties, with the IQFT per-bit thresholds taken from the original model.",
-        "historical_performance_rerun": False,
+        "scope": "Checker and independent full-state judgments for the properties of the 22 RQ1 models.",
         "manifest_sha256": sha256(manifest_path),
         "code_sha256": {str(path.relative_to(PROJECT)): sha256(path)
                         for path in sorted((PROJECT / "src/qamc").rglob("*.py"))},

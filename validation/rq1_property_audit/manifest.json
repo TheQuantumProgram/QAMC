@@ -1,7 +1,5 @@
 {
-  "purpose": "Compare the checker and the full-state calculation for the 22 correctness benchmarks.",
-  "historical_table_source": "experiment_data/paper_results/rq1_table_transcription.csv",
-  "historical_table_sha256": "3ebd881abcadba452cb10b949d8de611016925e83cd1e096c7576ac802a115bf",
+  "purpose": "Map the 22 Table 1 models to their expected judgments and the properties checked by the independent full-state calculation.",
   "independent_reference": "qamc.experiments.modeling_reference: shared parsed program IR; independent full-state amplitudes and measurements. Predicate judgment comes from modeling_audit.reference_judgment.",
   "cases": [
     {
@@ -1389,5 +1387,6 @@
         }
       ]
     }
-  ]
+  ],
+  "table": "experiment_data/paper_results/rq1_table.csv"
 }

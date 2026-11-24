@@ -7,10 +7,11 @@ import argparse
 import csv
 import math
 from pathlib import Path
+from statistics import median
 
 
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_INPUT = ROOT / "experiment_data/paper_results/rq3_scalability.csv"
+DEFAULT_INPUT = ROOT / "experiment_data/paper_results/raw/rq3_trials.csv"
 DEFAULT_OUTPUT = ROOT / "runs/figure5.pdf"
 SIZES = tuple(range(5, 21))
 FAMILIES = (
@@ -22,9 +23,25 @@ FAMILIES = (
 
 
 def read_measurements(path: Path) -> list[dict[str, str]]:
-    """Validate the complete archived series without modifying its values."""
+    """Read the five raw trials per point, or a precomputed RQ3 summary."""
     with path.open(newline="", encoding="utf-8") as stream:
         rows = list(csv.DictReader(stream))
+    if rows and "trial" in rows[0]:
+        groups: dict[tuple[str, str, str], list[dict[str, str]]] = {}
+        for row in rows:
+            key = (row["benchmark_id"], row["style"], row["qubits"])
+            groups.setdefault(key, []).append(row)
+        rows = []
+        for key, trials in groups.items():
+            if (len(trials) != 5 or {int(r["trial"]) for r in trials} != {1, 2, 3, 4, 5}
+                    or any(r["status"] != "ok" or r["ok"] != "1" for r in trials)):
+                raise ValueError(f"Expected five successful trials for {key}")
+            if len({float(r["payload_mib"]) for r in trials}) != 1:
+                raise ValueError(f"Retained memory differs across trials for {key}")
+            times = [float(r["wall_time_ms"]) for r in trials]
+            if not all(math.isfinite(t) and t > 0 for t in times):
+                raise ValueError(f"Invalid timings for {key}")
+            rows.append(dict(trials[0], wall_time_ms=str(median(times)), repeats="5"))
     expected = {(family, style, n) for family, _, _ in FAMILIES
                 for style in ("abstract", "full") for n in SIZES}
     seen = set()
@@ -117,13 +134,16 @@ def render(rows: list[dict[str, str]], output: Path) -> None:
                   columnspacing=1.25)
     figure.subplots_adjust(left=0.075, right=0.995, top=0.86, bottom=0.23, wspace=0.28)
     output.parent.mkdir(parents=True, exist_ok=True)
-    figure.savefig(output, bbox_inches="tight", pad_inches=0.02)
+    # The PDF should be identical when rebuilt from the same trials and environment.
+    metadata = {"CreationDate": None} if output.suffix.lower() == ".pdf" else None
+    figure.savefig(output, bbox_inches="tight", pad_inches=0.02, metadata=metadata)
     plt.close(figure)
 
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--input-csv", type=Path, default=DEFAULT_INPUT)
+    parser.add_argument("--input-csv", type=Path, default=DEFAULT_INPUT,
+                        help="Raw RQ3 trials or the RQ3 summary CSV (default: archived trials).")
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT,
                         help="Figure filename (default: runs/figure5.pdf)")
     args = parser.parse_args(argv)

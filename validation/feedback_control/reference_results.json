@@ -1,0 +1,364 @@
+{
+  "purpose": "Check that the same final X-basis assertion accepts correct feedback and rejects a missing Z correction.",
+  "source": {
+    "correct": {
+      "path": "experiment_data/models/HybridClassical/Teleportation/teleport_plus.qam",
+      "sha256": "570a23876b4eddc8c17faeabeafd378de04c65863542922cdaf43ee25f361a90"
+    },
+    "faulty": {
+      "path": "validation/feedback_control/models/teleport_plus_missing_z.qam",
+      "sha256": "904085b5099f66651a0b6fbb03756fbdaeb69b2c7c5e0589e1eb01ac45082ba1"
+    },
+    "mutation": {
+      "before": "when m0 == 1 -> S9: Z(q2)",
+      "after": "when m0 == 1 -> S9: ID(q2)"
+    }
+  },
+  "runner_sha256": "21ee4a82c18a9a02fc656ed8cf2aff6804159fcf0bcd269acf4d16dcf1006b83",
+  "reference_source": "src/qamc/experiments/modeling_reference.py",
+  "reference_sha256": "5da33d053e8a27cb0e27a34d76e344d8a004e37976289db14a6b242be681e413",
+  "reference_scope": "Shares parsed QAM IR; independent full-state quantum updates, measurement, and observations.",
+  "tolerance": 1e-09,
+  "cases": {
+    "correct": {
+      "model_source": "experiment_data/models/HybridClassical/Teleportation/teleport_plus.qam",
+      "model_sha256": "570a23876b4eddc8c17faeabeafd378de04c65863542922cdaf43ee25f361a90",
+      "validation_ok": true,
+      "property_id": "p_teleported_plus",
+      "mode": "aggregate",
+      "selected_position": "f9",
+      "observed_qubits": [
+        "q2"
+      ],
+      "basis": "X",
+      "same_expected_distribution": {
+        "0": 1.0,
+        "1": 0.0
+      },
+      "expected_judgment": true,
+      "checker_judgment": true,
+      "reference_judgment": true,
+      "checker_aggregate_distribution": {
+        "0": 1.0,
+        "1": 0.0
+      },
+      "reference_aggregate_distribution": {
+        "0": 0.9999999999999996,
+        "1": 0.0
+      },
+      "aggregate_max_absolute_error": 4.440892098500626e-16,
+      "terminal_branches": [
+        {
+          "measurement_records": {
+            "m0": 0,
+            "m1": 0
+          },
+          "checker_reach_probability": 0.25,
+          "reference_reach_probability": 0.2499999999999999,
+          "checker_q2_x_distribution": {
+            "0": 1.0,
+            "1": 0.0
+          },
+          "reference_q2_x_distribution": {
+            "0": 0.9999999999999996,
+            "1": 0.0
+          },
+          "observation_max_absolute_error": 4.440892098500626e-16,
+          "satisfies_same_condition_on_this_branch": true
+        },
+        {
+          "measurement_records": {
+            "m0": 0,
+            "m1": 1
+          },
+          "checker_reach_probability": 0.25,
+          "reference_reach_probability": 0.2499999999999999,
+          "checker_q2_x_distribution": {
+            "0": 1.0,
+            "1": 0.0
+          },
+          "reference_q2_x_distribution": {
+            "0": 0.9999999999999996,
+            "1": 0.0
+          },
+          "observation_max_absolute_error": 4.440892098500626e-16,
+          "satisfies_same_condition_on_this_branch": true
+        },
+        {
+          "measurement_records": {
+            "m0": 1,
+            "m1": 0
+          },
+          "checker_reach_probability": 0.25,
+          "reference_reach_probability": 0.2499999999999999,
+          "checker_q2_x_distribution": {
+            "0": 1.0,
+            "1": 0.0
+          },
+          "reference_q2_x_distribution": {
+            "0": 0.9999999999999996,
+            "1": 0.0
+          },
+          "observation_max_absolute_error": 4.440892098500626e-16,
+          "satisfies_same_condition_on_this_branch": true
+        },
+        {
+          "measurement_records": {
+            "m0": 1,
+            "m1": 1
+          },
+          "checker_reach_probability": 0.25,
+          "reference_reach_probability": 0.2499999999999999,
+          "checker_q2_x_distribution": {
+            "0": 1.0,
+            "1": 0.0
+          },
+          "reference_q2_x_distribution": {
+            "0": 0.9999999999999996,
+            "1": 0.0
+          },
+          "observation_max_absolute_error": 4.440892098500626e-16,
+          "satisfies_same_condition_on_this_branch": true
+        }
+      ],
+      "measurement_edges": [
+        {
+          "transition": "t_measure_source",
+          "target_measurement_records": {
+            "m0": 0
+          },
+          "checker_local_probability": 0.5,
+          "reference_local_probability": 0.4999999999999998
+        },
+        {
+          "transition": "t_measure_source",
+          "target_measurement_records": {
+            "m0": 1
+          },
+          "checker_local_probability": 0.5,
+          "reference_local_probability": 0.4999999999999998
+        },
+        {
+          "transition": "t_measure_pair",
+          "target_measurement_records": {
+            "m0": 0,
+            "m1": 0
+          },
+          "checker_local_probability": 0.5,
+          "reference_local_probability": 0.5
+        },
+        {
+          "transition": "t_measure_pair",
+          "target_measurement_records": {
+            "m0": 0,
+            "m1": 1
+          },
+          "checker_local_probability": 0.5,
+          "reference_local_probability": 0.5
+        },
+        {
+          "transition": "t_measure_pair",
+          "target_measurement_records": {
+            "m0": 1,
+            "m1": 0
+          },
+          "checker_local_probability": 0.5,
+          "reference_local_probability": 0.5
+        },
+        {
+          "transition": "t_measure_pair",
+          "target_measurement_records": {
+            "m0": 1,
+            "m1": 1
+          },
+          "checker_local_probability": 0.5,
+          "reference_local_probability": 0.5
+        }
+      ],
+      "full_execution_comparison": {
+        "structure_matches": true,
+        "mismatches": [],
+        "max_density_error": 4.440892098500626e-16,
+        "max_reach_probability_error": 2.220446049250313e-16,
+        "max_branch_probability_error": 2.220446049250313e-16,
+        "compared_payloads": 27,
+        "compared_nodes": 20,
+        "compared_edges": 19,
+        "skipped_zero_nodes": 0,
+        "skipped_undefined_edges": 0,
+        "tolerance": 1e-09
+      }
+    },
+    "faulty": {
+      "model_source": "validation/feedback_control/models/teleport_plus_missing_z.qam",
+      "model_sha256": "904085b5099f66651a0b6fbb03756fbdaeb69b2c7c5e0589e1eb01ac45082ba1",
+      "validation_ok": true,
+      "property_id": "p_teleported_plus",
+      "mode": "aggregate",
+      "selected_position": "f9",
+      "observed_qubits": [
+        "q2"
+      ],
+      "basis": "X",
+      "same_expected_distribution": {
+        "0": 1.0,
+        "1": 0.0
+      },
+      "expected_judgment": false,
+      "checker_judgment": false,
+      "reference_judgment": false,
+      "checker_aggregate_distribution": {
+        "0": 0.5,
+        "1": 0.5
+      },
+      "reference_aggregate_distribution": {
+        "0": 0.4999999999999998,
+        "1": 0.4999999999999998
+      },
+      "aggregate_max_absolute_error": 2.220446049250313e-16,
+      "terminal_branches": [
+        {
+          "measurement_records": {
+            "m0": 0,
+            "m1": 0
+          },
+          "checker_reach_probability": 0.25,
+          "reference_reach_probability": 0.2499999999999999,
+          "checker_q2_x_distribution": {
+            "0": 1.0,
+            "1": 0.0
+          },
+          "reference_q2_x_distribution": {
+            "0": 0.9999999999999996,
+            "1": 0.0
+          },
+          "observation_max_absolute_error": 4.440892098500626e-16,
+          "satisfies_same_condition_on_this_branch": true
+        },
+        {
+          "measurement_records": {
+            "m0": 0,
+            "m1": 1
+          },
+          "checker_reach_probability": 0.25,
+          "reference_reach_probability": 0.2499999999999999,
+          "checker_q2_x_distribution": {
+            "0": 1.0,
+            "1": 0.0
+          },
+          "reference_q2_x_distribution": {
+            "0": 0.9999999999999996,
+            "1": 0.0
+          },
+          "observation_max_absolute_error": 4.440892098500626e-16,
+          "satisfies_same_condition_on_this_branch": true
+        },
+        {
+          "measurement_records": {
+            "m0": 1,
+            "m1": 0
+          },
+          "checker_reach_probability": 0.25,
+          "reference_reach_probability": 0.2499999999999999,
+          "checker_q2_x_distribution": {
+            "0": 0.0,
+            "1": 1.0
+          },
+          "reference_q2_x_distribution": {
+            "0": 0.0,
+            "1": 0.9999999999999996
+          },
+          "observation_max_absolute_error": 4.440892098500626e-16,
+          "satisfies_same_condition_on_this_branch": false
+        },
+        {
+          "measurement_records": {
+            "m0": 1,
+            "m1": 1
+          },
+          "checker_reach_probability": 0.25,
+          "reference_reach_probability": 0.2499999999999999,
+          "checker_q2_x_distribution": {
+            "0": 0.0,
+            "1": 1.0
+          },
+          "reference_q2_x_distribution": {
+            "0": 0.0,
+            "1": 0.9999999999999996
+          },
+          "observation_max_absolute_error": 4.440892098500626e-16,
+          "satisfies_same_condition_on_this_branch": false
+        }
+      ],
+      "measurement_edges": [
+        {
+          "transition": "t_measure_source",
+          "target_measurement_records": {
+            "m0": 0
+          },
+          "checker_local_probability": 0.5,
+          "reference_local_probability": 0.4999999999999998
+        },
+        {
+          "transition": "t_measure_source",
+          "target_measurement_records": {
+            "m0": 1
+          },
+          "checker_local_probability": 0.5,
+          "reference_local_probability": 0.4999999999999998
+        },
+        {
+          "transition": "t_measure_pair",
+          "target_measurement_records": {
+            "m0": 0,
+            "m1": 0
+          },
+          "checker_local_probability": 0.5,
+          "reference_local_probability": 0.5
+        },
+        {
+          "transition": "t_measure_pair",
+          "target_measurement_records": {
+            "m0": 0,
+            "m1": 1
+          },
+          "checker_local_probability": 0.5,
+          "reference_local_probability": 0.5
+        },
+        {
+          "transition": "t_measure_pair",
+          "target_measurement_records": {
+            "m0": 1,
+            "m1": 0
+          },
+          "checker_local_probability": 0.5,
+          "reference_local_probability": 0.5
+        },
+        {
+          "transition": "t_measure_pair",
+          "target_measurement_records": {
+            "m0": 1,
+            "m1": 1
+          },
+          "checker_local_probability": 0.5,
+          "reference_local_probability": 0.5
+        }
+      ],
+      "full_execution_comparison": {
+        "structure_matches": true,
+        "mismatches": [],
+        "max_density_error": 4.440892098500626e-16,
+        "max_reach_probability_error": 2.220446049250313e-16,
+        "max_branch_probability_error": 2.220446049250313e-16,
+        "compared_payloads": 27,
+        "compared_nodes": 20,
+        "compared_edges": 19,
+        "skipped_zero_nodes": 0,
+        "skipped_undefined_edges": 0,
+        "tolerance": 1e-09
+      }
+    }
+  },
+  "same_property_preserved": true,
+  "comparison_pass": true
+}

@@ -32,20 +32,32 @@ def table(caption, label, spacing, layout, headings, rows):
     return "\n".join(lines) + "\n"
 
 
-def model_rows(path, columns, expected_count):
-    records = read_csv(path)
-    if len(records) != expected_count or len({r["model"] for r in records}) != expected_count:
-        raise ValueError(f"Expected {expected_count} distinct models in {path}")
-    for record in records:
-        yield [record[column] for column in columns]
+def model_rows(raw, labels_path, question, expected_count):
+    """Use the publication labels for each row and the measurements for its numbers."""
+    labels = read_csv(labels_path)
+    selected = [r for r in raw if r["question"] == question]
+    indexed = {int(r["row"]): r for r in selected}
+    if (len(labels) != expected_count or len(selected) != expected_count
+            or set(indexed) != set(range(1, expected_count + 1))
+            or len({r["model"] for r in selected}) != expected_count):
+        raise ValueError(f"Expected {expected_count} distinct measured models for {question}")
+    for i, label in enumerate(labels, 1):
+        row = indexed[i]
+        agrees = row["judgment"] == row["expected_judgment"]
+        yield [
+            label["model"], row["qubits"], row["gates"], row["nonempty_source_lines"],
+            f"{float(row['time_ms']):.1f}", f"{float(row['retained_array_mib']):.3f}",
+            *([label["classical_latex"]] if question == "RQ2" else []),
+            label["property_latex"], r"\ensuremath{\surd}" if agrees else "--",
+        ]
 
 
-def scaling_rows(path):
-    records = read_csv(path)
+def scaling_rows(raw_dir):
+    records = read_csv(raw_dir / "rq4_other_families.csv") + read_csv(raw_dir / "rq4_grover.csv")
     indexed = {(r["benchmark_id"], int(r["qubits"])): r for r in records}
     expected = {(family, size) for family in SCALING_FAMILIES for size in SCALING_SIZES}
     if len(indexed) != len(records) or indexed.keys() != expected:
-        raise ValueError(f"Expected one row per RQ4 family and register size in {path}")
+        raise ValueError(f"Expected one row per RQ4 family and register size in {raw_dir}")
     for family, label in SCALING_FAMILIES.items():
         for size in SCALING_SIZES:
             row = indexed[family, size]
@@ -64,9 +76,9 @@ def main():
     parser.add_argument("--input-dir", type=Path, default=DEFAULT_INPUT)
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT)
     args = parser.parse_args()
-    model = ("model", "qubits", "gates", "nonempty_source_lines", "time_ms", "retained_array_mib")
-    result = ("property_latex", "result_latex")
     try:
+        raw_dir = args.input_dir / "raw"
+        measured_models = read_csv(raw_dir / "rq1_rq2_measurements.csv")
         correctness = table(
             "Correctness-checking results. Ln. counts non-empty model source lines, "
             "T is the recorded end-to-end checking time in ms, and Mem is stored quantum-array "
@@ -76,7 +88,7 @@ def main():
             r"{0.98\textwidth}{@{\extracolsep{\fill}}>{\raggedright\arraybackslash}p{0.18\textwidth}"
             r"rrrrr>{\raggedright\arraybackslash}p{0.40\textwidth}c@{}}",
             r"Model & $n$ & G & Ln. & T & Mem & Property & Res.",
-            model_rows(args.input_dir / "rq1_table_transcription.csv", model + result, 22),
+            model_rows(measured_models, args.input_dir / "rq1_table.csv", "RQ1", 22),
         )
         hybrid = table(
             "Hybrid-program support results. Class. lists the recorded measurements and initialized "
@@ -88,13 +100,13 @@ def main():
             r"rrrrr>{\raggedright\arraybackslash}p{0.09\textwidth}>{\raggedright\arraybackslash}"
             r"p{0.36\textwidth}c@{}}",
             r"Model & $n$ & G & Ln. & T & Mem & Class. & Property & Res.",
-            model_rows(args.input_dir / "rq2_table_transcription.csv", model + ("classical_latex",) + result, 6),
+            model_rows(measured_models, args.input_dir / "rq2_table.csv", "RQ2", 6),
         )
         scaling = table(
             "Scalability results for the five benchmark families.", "scaling", 3,
             r"{0.94\textwidth}{@{\extracolsep{\fill}}lrrrrrrrc@{}}",
             "Family & Size & Gates & Lines & Run (ms) & Check (ms) & Total (ms) & Mem (MiB) & Result",
-            scaling_rows(args.input_dir / "rq4_large_scale.csv"),
+            scaling_rows(raw_dir),
         )
         args.output_dir.mkdir(parents=True, exist_ok=True)
         for number, content in enumerate((correctness, hybrid, scaling), 1):

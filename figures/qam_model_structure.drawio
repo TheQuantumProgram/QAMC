@@ -1,0 +1,433 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="QAM model structure layout 2026-10-20">
+  <diagram id="qam-model-structure" name="Model structure">
+    <mxGraphModel grid="1" gridSize="10" guides="1" page="1" pageWidth="1340" pageHeight="1340" math="0" shadow="0" background="#FFFFFF">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="assertion-trace-observations" value="" style="edgeStyle=none;rounded=0;html=1;strokeColor=#555555;strokeWidth=1.5;jumpStyle=arc;jumpSize=7;exitX=0.0;exitY=0.5769230769230769;entryX=1.0;entryY=0.7692307692307693;exitPerimeter=0;entryPerimeter=0;dashed=1;dashPattern=5 4;endArrow=open;endFill=0;endSize=9;" edge="1" parent="1" source="assertion" target="trace-path">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="assertion-positions" value="" style="edgeStyle=none;rounded=0;html=1;strokeColor=#555555;strokeWidth=1.5;jumpStyle=arc;jumpSize=7;exitX=1.0;exitY=0.19230769230769232;entryX=1.0;entryY=0.5604395604395604;exitPerimeter=0;entryPerimeter=0;dashed=1;dashPattern=5 4;endArrow=open;endFill=0;endSize=9;" edge="1" parent="1" source="assertion" target="trace">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1250" y="1130" />
+              <mxPoint x="1250" y="562" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="execution-traces" value="" style="edgeStyle=none;rounded=0;html=1;strokeColor=#555555;strokeWidth=1.5;jumpStyle=arc;jumpSize=7;exitX=0.5;exitY=1.0;entryX=0.5;entryY=0.0;exitPerimeter=0;entryPerimeter=0;dashed=1;dashPattern=5 4;endArrow=open;endFill=0;endSize=9;" edge="1" parent="1" source="execution" target="trace-path">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1092.5" y="1058" />
+              <mxPoint x="440" y="1058" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="execution-node-binding" value="" style="edgeStyle=none;rounded=0;html=1;strokeColor=#555555;strokeWidth=1.5;jumpStyle=arc;jumpSize=7;exitX=0.0;exitY=0.6730769230769231;entryX=0.896551724137931;entryY=1.0;exitPerimeter=0;entryPerimeter=0;dashed=1;dashPattern=5 4;endArrow=open;endFill=0;endSize=9;" edge="1" parent="1" source="execution" target="state-node">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="942" y="885" />
+              <mxPoint x="942" y="1012" />
+              <mxPoint x="555" y="1012" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="class-execution" value="" style="edgeStyle=none;rounded=0;html=1;strokeColor=#555555;strokeWidth=1.5;jumpStyle=arc;jumpSize=7;exitX=0.5;exitY=1.0;entryX=0.5;entryY=0.0;exitPerimeter=0;entryPerimeter=0;dashed=1;dashPattern=5 4;endArrow=open;endFill=0;endSize=9;" edge="1" parent="1" source="trace" target="execution">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="execution-class-steps" value="" style="edgeStyle=none;rounded=0;html=1;strokeColor=#555555;strokeWidth=1.5;jumpStyle=arc;jumpSize=7;exitX=0.3333333333333333;exitY=0.0;entryX=0.86;entryY=0.0;exitPerimeter=0;entryPerimeter=0;dashed=1;dashPattern=5 4;endArrow=open;endFill=0;endSize=9;" edge="1" parent="1" source="trace" target="transition-class">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1050" y="438" />
+              <mxPoint x="865" y="438" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-labels" value="" style="edgeStyle=none;rounded=0;html=1;strokeColor=#555555;strokeWidth=1.5;jumpStyle=arc;jumpSize=7;exitX=1.0;exitY=0.45054945054945056;entryX=0.0;entryY=0.5;exitPerimeter=0;entryPerimeter=0;dashed=1;dashPattern=5 4;endArrow=open;endFill=0;endSize=9;" edge="1" parent="1" source="transition-edge" target="label">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="928" y="862" />
+              <mxPoint x="928" y="335" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-source-target" value="" style="edgeStyle=none;rounded=0;html=1;strokeColor=#555555;strokeWidth=1.5;jumpStyle=arc;jumpSize=7;exitX=0.0;exitY=0.5494505494505495;entryX=1.0;entryY=0.4807692307692308;exitPerimeter=0;entryPerimeter=0;dashed=1;dashPattern=5 4;endArrow=open;endFill=0;endSize=9;" edge="1" parent="1" source="transition-edge" target="state-node">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="initial-node" value="" style="edgeStyle=none;rounded=0;html=1;strokeColor=#555555;strokeWidth=1.5;jumpStyle=arc;jumpSize=7;exitX=1.0;exitY=0.5;entryX=0.0;entryY=0.3942307692307692;exitPerimeter=0;entryPerimeter=0;dashed=1;dashPattern=5 4;endArrow=open;endFill=0;endSize=9;" edge="1" parent="1" source="initial" target="state-node">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="277" y="348" />
+              <mxPoint x="277" y="862" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="class-transition-edge" value="" style="edgeStyle=none;rounded=0;html=1;strokeColor=#555555;strokeWidth=1.5;jumpStyle=arc;jumpSize=7;exitX=0.5;exitY=1.0;entryX=0.5;entryY=0.0;exitPerimeter=0;entryPerimeter=0;dashed=1;dashPattern=5 4;endArrow=open;endFill=0;endSize=9;" edge="1" parent="1" source="transition-class" target="transition-edge">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="transition-class-state-class" value="" style="edgeStyle=none;rounded=0;html=1;strokeColor=#555555;strokeWidth=1.5;jumpStyle=arc;jumpSize=7;exitX=0.38;exitY=0.0;entryX=0.8103448275862069;entryY=0.0;exitPerimeter=0;entryPerimeter=0;dashed=1;dashPattern=5 4;endArrow=open;endFill=0;endSize=9;" edge="1" parent="1" source="transition-class" target="class">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="745" y="438" />
+              <mxPoint x="530" y="438" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="class-state-node" value="" style="edgeStyle=none;rounded=0;html=1;strokeColor=#555555;strokeWidth=1.5;jumpStyle=arc;jumpSize=7;exitX=0.5;exitY=1.0;entryX=0.5;entryY=0.0;exitPerimeter=0;entryPerimeter=0;dashed=1;dashPattern=5 4;endArrow=open;endFill=0;endSize=9;" edge="1" parent="1" source="class" target="state-node">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="class-units" value="" style="edgeStyle=none;rounded=0;html=1;strokeColor=#555555;strokeWidth=1.5;jumpStyle=arc;jumpSize=7;exitX=0.0;exitY=0.5288461538461539;entryX=1.0;entryY=0.7051282051282052;exitPerimeter=0;entryPerimeter=0;endArrow=none;" edge="1" parent="1" source="class" target="unit">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="transition-overview-edges" value="" style="edgeStyle=none;rounded=0;html=1;strokeColor=#555555;strokeWidth=1.5;jumpStyle=arc;jumpSize=7;exitX=1.0;exitY=0.8461538461538461;entryX=0.8;entryY=0.0;exitPerimeter=0;entryPerimeter=0;endArrow=none;" edge="1" parent="1" source="transition" target="transition-edge">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="912" y="380" />
+              <mxPoint x="912" y="748" />
+              <mxPoint x="850" y="748" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="transition-overview-class" value="" style="edgeStyle=none;rounded=0;html=1;strokeColor=#555555;strokeWidth=1.5;jumpStyle=arc;jumpSize=7;exitX=0.5;exitY=1.0;entryX=0.5;entryY=0.0;exitPerimeter=0;entryPerimeter=0;endArrow=none;" edge="1" parent="1" source="transition" target="transition-class">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="state-overview-nodes" value="" style="edgeStyle=none;rounded=0;html=1;strokeColor=#555555;strokeWidth=1.5;jumpStyle=arc;jumpSize=7;exitX=1.0;exitY=0.8461538461538461;entryX=0.896551724137931;entryY=0.0;exitPerimeter=0;entryPerimeter=0;endArrow=none;" edge="1" parent="1" source="state" target="state-node">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="610" y="380" />
+              <mxPoint x="610" y="748" />
+              <mxPoint x="555" y="748" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="state-overview-class" value="" style="edgeStyle=none;rounded=0;html=1;strokeColor=#555555;strokeWidth=1.5;jumpStyle=arc;jumpSize=7;exitX=0.5;exitY=1.0;entryX=0.5;entryY=0.0;exitPerimeter=0;entryPerimeter=0;endArrow=none;" edge="1" parent="1" source="state" target="class">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="model-label" value="" style="edgeStyle=none;rounded=0;html=1;strokeColor=#555555;strokeWidth=1.5;jumpStyle=arc;jumpSize=7;exitX=0.5;exitY=1.0;entryX=0.5;entryY=0.0;exitPerimeter=0;entryPerimeter=0;endArrow=none;" edge="1" parent="1" source="model" target="label">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="600" y="227" />
+              <mxPoint x="1082.5" y="227" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="model-transition" value="" style="edgeStyle=none;rounded=0;html=1;strokeColor=#555555;strokeWidth=1.5;jumpStyle=arc;jumpSize=7;exitX=0.5;exitY=1.0;entryX=0.5;entryY=0.0;exitPerimeter=0;entryPerimeter=0;endArrow=none;" edge="1" parent="1" source="model" target="transition">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="600" y="227" />
+              <mxPoint x="775" y="227" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="model-state" value="" style="edgeStyle=none;rounded=0;html=1;strokeColor=#555555;strokeWidth=1.5;jumpStyle=arc;jumpSize=7;exitX=0.5;exitY=1.0;entryX=0.5;entryY=0.0;exitPerimeter=0;entryPerimeter=0;endArrow=none;" edge="1" parent="1" source="model" target="state">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="600" y="227" />
+              <mxPoint x="440" y="227" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="model-initial" value="" style="edgeStyle=none;rounded=0;html=1;strokeColor=#555555;strokeWidth=1.5;jumpStyle=arc;jumpSize=7;exitX=0.5;exitY=1.0;entryX=0.5;entryY=0.0;exitPerimeter=0;entryPerimeter=0;endArrow=none;" edge="1" parent="1" source="model" target="initial">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="600" y="227" />
+              <mxPoint x="140" y="227" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="model" value="Model" style="swimlane;html=1;horizontal=1;startSize=33;rounded=0;collapsible=0;fillColor=#FFFFFF;swimlaneFillColor=#F5F5F5;strokeColor=#444444;strokeWidth=1.4;fontFamily=Arial;fontSize=23;fontStyle=1;fontColor=#222222;align=center;spacing=0;" vertex="1" parent="1">
+          <mxGeometry x="450" y="10" width="300" height="182" as="geometry" />
+        </mxCell>
+        <mxCell id="model-formula" value="&lt;span style=&quot;font-family:Times New Roman;font-style:italic&quot;&gt;M = (S, s&lt;sub&gt;0&lt;/sub&gt;, Σ, T)&lt;/span&gt;" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=24;fontColor=#222222;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="model">
+          <mxGeometry x="8" y="38" width="284" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="model-field-0" value="&lt;span style=&quot;font-family:Times New Roman;font-style:italic&quot;&gt;S&lt;/span&gt;: states" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=21;fontColor=#222222;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="model">
+          <mxGeometry x="12" y="74" width="276" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="model-field-1" value="&lt;span style=&quot;font-family:Times New Roman;font-style:italic&quot;&gt;s&lt;sub&gt;0&lt;/sub&gt;&lt;/span&gt;: initial state" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=21;fontColor=#222222;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="model">
+          <mxGeometry x="12" y="100" width="276" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="model-field-2" value="&lt;span style=&quot;font-family:Times New Roman;font-style:italic&quot;&gt;Σ&lt;/span&gt;: transition labels" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=21;fontColor=#222222;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="model">
+          <mxGeometry x="12" y="126" width="276" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="model-field-3" value="&lt;span style=&quot;font-family:Times New Roman;font-style:italic&quot;&gt;T&lt;/span&gt;: transitions" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=21;fontColor=#222222;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="model">
+          <mxGeometry x="12" y="152" width="276" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="initial" value="Initial state" style="swimlane;html=1;horizontal=1;startSize=33;rounded=0;collapsible=0;fillColor=#FFFFFF;swimlaneFillColor=#F5F5F5;strokeColor=#444444;strokeWidth=1.4;fontFamily=Arial;fontSize=23;fontStyle=1;fontColor=#222222;align=center;spacing=0;" vertex="1" parent="1">
+          <mxGeometry x="20" y="270" width="240" height="156" as="geometry" />
+        </mxCell>
+        <mxCell id="initial-formula" value="&lt;span style=&quot;font-family:Times New Roman;font-style:italic&quot;&gt;s&lt;sub&gt;0&lt;/sub&gt; ∈ S&lt;/span&gt;" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=24;fontColor=#222222;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="initial">
+          <mxGeometry x="8" y="38" width="224.0" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="initial-field-0" value="Initial class" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=20;fontColor=#222222;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="initial">
+          <mxGeometry x="12" y="74" width="216.0" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="initial-field-1" value="Classical values" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=20;fontColor=#222222;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="initial">
+          <mxGeometry x="12" y="100" width="216.0" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="initial-field-2" value="Quantum preparation" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=20;fontColor=#222222;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="initial">
+          <mxGeometry x="12" y="126" width="216.0" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="state" value="State" style="swimlane;html=1;horizontal=1;startSize=33;rounded=0;collapsible=0;fillColor=#FFFFFF;swimlaneFillColor=#F5F5F5;strokeColor=#444444;strokeWidth=1.4;fontFamily=Arial;fontSize=23;fontStyle=1;fontColor=#222222;align=center;spacing=0;" vertex="1" parent="1">
+          <mxGeometry x="295" y="270" width="290" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="transition" value="Transition" style="swimlane;html=1;horizontal=1;startSize=33;rounded=0;collapsible=0;fillColor=#FFFFFF;swimlaneFillColor=#F5F5F5;strokeColor=#444444;strokeWidth=1.4;fontFamily=Arial;fontSize=23;fontStyle=1;fontColor=#222222;align=center;spacing=0;" vertex="1" parent="1">
+          <mxGeometry x="650" y="270" width="250" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="label" value="Transition labels" style="swimlane;html=1;horizontal=1;startSize=33;rounded=0;collapsible=0;fillColor=#FFFFFF;swimlaneFillColor=#F5F5F5;strokeColor=#444444;strokeWidth=1.4;fontFamily=Arial;fontSize=23;fontStyle=1;fontColor=#222222;align=center;spacing=0;" vertex="1" parent="1">
+          <mxGeometry x="965" y="270" width="235" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="label-formula" value="&lt;span style=&quot;font-family:Times New Roman;font-style:italic&quot;&gt;a ∈ Σ&lt;/span&gt;" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=24;fontColor=#222222;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="label">
+          <mxGeometry x="8" y="38" width="219" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="label-field-0" value="Transition-class ID" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=20;fontColor=#222222;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="label">
+          <mxGeometry x="12" y="74" width="211" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="label-field-1" value="Branch ID" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=20;fontColor=#222222;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="label">
+          <mxGeometry x="12" y="100" width="211" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="execution" value="Execution" style="swimlane;html=1;horizontal=1;startSize=33;rounded=0;collapsible=0;fillColor=#FFFFFF;swimlaneFillColor=#F5F5F5;strokeColor=#444444;strokeWidth=1.4;fontFamily=Arial;fontSize=23;fontStyle=1;fontColor=#222222;align=center;spacing=0;" vertex="1" parent="1">
+          <mxGeometry x="965" y="780" width="255" height="156" as="geometry" />
+        </mxCell>
+        <mxCell id="execution-formula" value="&lt;span style=&quot;font-family:Times New Roman;font-style:italic&quot;&gt;e = (id, E, s&lt;sub&gt;0&lt;/sub&gt;)&lt;/span&gt;" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=24;fontColor=#222222;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="execution">
+          <mxGeometry x="8" y="38" width="239.0" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="execution-field-0" value="&lt;span style=&quot;font-family:Times New Roman;font-style:italic&quot;&gt;id&lt;/span&gt;: identifier" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=20;fontColor=#222222;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="execution">
+          <mxGeometry x="12" y="74" width="231.0" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="execution-field-1" value="&lt;span style=&quot;font-family:Times New Roman;font-style:italic&quot;&gt;E&lt;/span&gt;: execution class" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=20;fontColor=#222222;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="execution">
+          <mxGeometry x="12" y="100" width="231.0" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="execution-field-2" value="&lt;span style=&quot;font-family:Times New Roman;font-style:italic&quot;&gt;s&lt;sub&gt;0&lt;/sub&gt;&lt;/span&gt;: initial state" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=20;fontColor=#222222;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="execution">
+          <mxGeometry x="12" y="126" width="231.0" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="class" value="State class" style="swimlane;html=1;horizontal=1;startSize=33;rounded=0;collapsible=0;fillColor=#FFFFFF;swimlaneFillColor=#F5F5F5;strokeColor=#444444;strokeWidth=1.4;fontFamily=Arial;fontSize=23;fontStyle=1;fontColor=#222222;align=center;spacing=0;" vertex="1" parent="1">
+          <mxGeometry x="295" y="460" width="290" height="208" as="geometry" />
+        </mxCell>
+        <mxCell id="class-formula" value="&lt;span style=&quot;font-family:Times New Roman;font-style:italic&quot;&gt;c = (id, R, Γ&lt;sup&gt;p&lt;/sup&gt;, Γ&lt;sup&gt;m&lt;/sup&gt;, U)&lt;/span&gt;" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=24;fontColor=#222222;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="class">
+          <mxGeometry x="8" y="38" width="274" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="class-field-0" value="&lt;span style=&quot;font-family:Times New Roman;font-style:italic&quot;&gt;id&lt;/span&gt;: identifier" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=21;fontColor=#222222;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="class">
+          <mxGeometry x="12" y="74" width="266" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="class-field-1" value="&lt;span style=&quot;font-family:Times New Roman;font-style:italic&quot;&gt;R&lt;/span&gt;: retained qubits" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=21;fontColor=#222222;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="class">
+          <mxGeometry x="12" y="100" width="266" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="class-field-2" value="&lt;span style=&quot;font-family:Times New Roman;font-style:italic&quot;&gt;Γ&lt;sup&gt;p&lt;/sup&gt;&lt;/span&gt;: program variables" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=21;fontColor=#222222;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="class">
+          <mxGeometry x="12" y="126" width="266" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="class-field-3" value="&lt;span style=&quot;font-family:Times New Roman;font-style:italic&quot;&gt;Γ&lt;sup&gt;m&lt;/sup&gt;&lt;/span&gt;: measurement records" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=21;fontColor=#222222;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="class">
+          <mxGeometry x="12" y="152" width="266" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="class-field-4" value="&lt;span style=&quot;font-family:Times New Roman;font-style:italic&quot;&gt;U&lt;/span&gt;: unit family" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=21;fontColor=#222222;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="class">
+          <mxGeometry x="12" y="178" width="266" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="transition-class" value="Transition class" style="swimlane;html=1;horizontal=1;startSize=33;rounded=0;collapsible=0;fillColor=#FFFFFF;swimlaneFillColor=#F5F5F5;strokeColor=#444444;strokeWidth=1.4;fontFamily=Arial;fontSize=23;fontStyle=1;fontColor=#222222;align=center;spacing=0;" vertex="1" parent="1">
+          <mxGeometry x="650" y="460" width="250" height="182" as="geometry" />
+        </mxCell>
+        <mxCell id="transition-class-formula" value="&lt;span style=&quot;font-family:Times New Roman;font-style:italic&quot;&gt;τ = (id, c, g, B)&lt;/span&gt;" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=24;fontColor=#222222;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="transition-class">
+          <mxGeometry x="8" y="38" width="234" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="transition-class-field-0" value="&lt;span style=&quot;font-family:Times New Roman;font-style:italic&quot;&gt;id&lt;/span&gt;: identifier" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=20;fontColor=#222222;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="transition-class">
+          <mxGeometry x="12" y="74" width="226" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="transition-class-field-1" value="&lt;span style=&quot;font-family:Times New Roman;font-style:italic&quot;&gt;c&lt;/span&gt;: source class" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=20;fontColor=#222222;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="transition-class">
+          <mxGeometry x="12" y="100" width="226" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="transition-class-field-2" value="&lt;span style=&quot;font-family:Times New Roman;font-style:italic&quot;&gt;g&lt;/span&gt;: quantum operation" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=20;fontColor=#222222;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="transition-class">
+          <mxGeometry x="12" y="126" width="226" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="transition-class-field-3" value="&lt;span style=&quot;font-family:Times New Roman;font-style:italic&quot;&gt;B&lt;/span&gt;: branches and targets" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=20;fontColor=#222222;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="transition-class">
+          <mxGeometry x="12" y="152" width="226" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="trace" value="Execution class" style="swimlane;html=1;horizontal=1;startSize=33;rounded=0;collapsible=0;fillColor=#FFFFFF;swimlaneFillColor=#F5F5F5;strokeColor=#444444;strokeWidth=1.4;fontFamily=Arial;fontSize=23;fontStyle=1;fontColor=#222222;align=center;spacing=0;" vertex="1" parent="1">
+          <mxGeometry x="965" y="460" width="255" height="182" as="geometry" />
+        </mxCell>
+        <mxCell id="trace-formula" value="&lt;span style=&quot;font-family:Times New Roman;font-style:italic&quot;&gt;E = (id, L, ℓ&lt;sub&gt;0&lt;/sub&gt;, ℓ&lt;sub&gt;f&lt;/sub&gt;, D)&lt;/span&gt;" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=24;fontColor=#222222;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="trace">
+          <mxGeometry x="8" y="38" width="239.0" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="trace-field-0" value="&lt;span style=&quot;font-family:Times New Roman;font-style:italic&quot;&gt;id&lt;/span&gt;: identifier" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=21;fontColor=#222222;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="trace">
+          <mxGeometry x="12" y="74" width="231.0" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="trace-field-1" value="&lt;span style=&quot;font-family:Times New Roman;font-style:italic&quot;&gt;L&lt;/span&gt;: state positions" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=21;fontColor=#222222;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="trace">
+          <mxGeometry x="12" y="100" width="231.0" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="trace-field-2" value="&lt;span style=&quot;font-family:Times New Roman;font-style:italic&quot;&gt;ℓ&lt;sub&gt;0&lt;/sub&gt;, ℓ&lt;sub&gt;f&lt;/sub&gt;&lt;/span&gt;: entry / terminal" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=21;fontColor=#222222;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="trace">
+          <mxGeometry x="12" y="126" width="231.0" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="trace-field-3" value="&lt;span style=&quot;font-family:Times New Roman;font-style:italic&quot;&gt;D&lt;/span&gt;: ordered steps" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=21;fontColor=#222222;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="trace">
+          <mxGeometry x="12" y="152" width="231.0" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="unit" value="Abstract unit" style="swimlane;html=1;horizontal=1;startSize=33;rounded=0;collapsible=0;fillColor=#FFFFFF;swimlaneFillColor=#F5F5F5;strokeColor=#444444;strokeWidth=1.4;fontFamily=Arial;fontSize=23;fontStyle=1;fontColor=#222222;align=center;spacing=0;" vertex="1" parent="1">
+          <mxGeometry x="20" y="460" width="240" height="156" as="geometry" />
+        </mxCell>
+        <mxCell id="unit-formula" value="&lt;span style=&quot;font-family:Times New Roman;font-style:italic&quot;&gt;u = (id, q̄, κ)&lt;/span&gt;" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=24;fontColor=#222222;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="unit">
+          <mxGeometry x="8" y="38" width="224.0" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="unit-field-0" value="&lt;span style=&quot;font-family:Times New Roman;font-style:italic&quot;&gt;id&lt;/span&gt;: identifier" style="html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=19;fontColor=#222222;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="unit">
+          <mxGeometry x="12" y="74" width="216.0" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="unit-field-1" value="&lt;span style=&quot;font-family:Times New Roman;font-style:italic&quot;&gt;q̄&lt;/span&gt;: ordered qubits" style="html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=19;fontColor=#222222;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="unit">
+          <mxGeometry x="12" y="100" width="216.0" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="unit-field-2" value="&lt;span style=&quot;font-family:Times New Roman;font-style:italic&quot;&gt;κ&lt;/span&gt;: representation type" style="html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=19;fontColor=#222222;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="unit">
+          <mxGeometry x="12" y="126" width="216.0" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="assertion" value="Quantum assertion" style="swimlane;html=1;horizontal=1;startSize=33;rounded=0;collapsible=0;fillColor=#FFFFFF;swimlaneFillColor=#F5F5F5;strokeColor=#444444;strokeWidth=1.4;fontFamily=Arial;fontSize=23;fontStyle=1;fontColor=#222222;align=center;spacing=0;" vertex="1" parent="1">
+          <mxGeometry x="650" y="1090" width="250" height="208" as="geometry" />
+        </mxCell>
+        <mxCell id="assertion-formula" value="&lt;span style=&quot;font-family:Times New Roman;font-style:italic&quot;&gt;φ = (id, N, o, χ, μ)&lt;/span&gt;" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=24;fontColor=#222222;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="assertion">
+          <mxGeometry x="8" y="38" width="234.0" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="assertion-field-0" value="&lt;span style=&quot;font-family:Times New Roman;font-style:italic&quot;&gt;id&lt;/span&gt;: identifier" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=20;fontColor=#222222;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="assertion">
+          <mxGeometry x="12" y="74" width="226.0" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="assertion-field-1" value="&lt;span style=&quot;font-family:Times New Roman;font-style:italic&quot;&gt;N&lt;/span&gt;: selected positions" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=20;fontColor=#222222;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="assertion">
+          <mxGeometry x="12" y="100" width="226.0" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="assertion-field-2" value="&lt;span style=&quot;font-family:Times New Roman;font-style:italic&quot;&gt;o&lt;/span&gt;: observation function" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=20;fontColor=#222222;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="assertion">
+          <mxGeometry x="12" y="126" width="226.0" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="assertion-field-3" value="&lt;span style=&quot;font-family:Times New Roman;font-style:italic&quot;&gt;χ&lt;/span&gt;: condition" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=20;fontColor=#222222;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="assertion">
+          <mxGeometry x="12" y="152" width="226.0" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="assertion-field-4" value="&lt;span style=&quot;font-family:Times New Roman;font-style:italic&quot;&gt;μ&lt;/span&gt;: evaluation mode" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=20;fontColor=#222222;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="assertion">
+          <mxGeometry x="12" y="178" width="226.0" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="trace-path" value="Trace" style="swimlane;html=1;horizontal=1;startSize=33;rounded=0;collapsible=0;fillColor=#FFFFFF;swimlaneFillColor=#F5F5F5;strokeColor=#444444;strokeWidth=1.4;fontFamily=Arial;fontSize=23;fontStyle=1;fontColor=#222222;align=center;spacing=0;" vertex="1" parent="1">
+          <mxGeometry x="295" y="1090" width="290" height="156" as="geometry" />
+        </mxCell>
+        <mxCell id="trace-path-formula" value="&lt;span style=&quot;font-family:Times New Roman;font-style:italic&quot;&gt;t = s&lt;sub&gt;0&lt;/sub&gt; → ⋯ → s&lt;sub&gt;k&lt;/sub&gt;&lt;/span&gt;" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=24;fontColor=#222222;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="trace-path">
+          <mxGeometry x="8" y="38" width="274.0" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="trace-path-field-0" value="&lt;span style=&quot;font-family:Times New Roman;font-style:italic&quot;&gt;s&lt;sub&gt;i&lt;/sub&gt;&lt;/span&gt;: state nodes" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=20;fontColor=#222222;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="trace-path">
+          <mxGeometry x="12" y="74" width="266.0" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="trace-path-field-1" value="&lt;span style=&quot;font-family:Times New Roman;font-style:italic&quot;&gt;a&lt;sub&gt;i&lt;/sub&gt;&lt;/span&gt;: transition labels" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=20;fontColor=#222222;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="trace-path">
+          <mxGeometry x="12" y="100" width="266.0" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="trace-path-field-2" value="&lt;span style=&quot;font-family:Times New Roman;font-style:italic&quot;&gt;p&lt;sub&gt;i&lt;/sub&gt;&lt;/span&gt;: local weights" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=20;fontColor=#222222;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="trace-path">
+          <mxGeometry x="12" y="126" width="266.0" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="state-node" value="State node" style="swimlane;html=1;horizontal=1;startSize=33;rounded=0;collapsible=0;fillColor=#FFFFFF;swimlaneFillColor=#F5F5F5;strokeColor=#444444;strokeWidth=1.4;fontFamily=Arial;fontSize=23;fontStyle=1;fontColor=#222222;align=center;spacing=0;" vertex="1" parent="1">
+          <mxGeometry x="295" y="780" width="290" height="208" as="geometry" />
+        </mxCell>
+        <mxCell id="state-node-formula" value="&lt;span style=&quot;font-family:Times New Roman;font-style:italic&quot;&gt;s = (id, c, ν&lt;sup&gt;p&lt;/sup&gt;, ν&lt;sup&gt;m&lt;/sup&gt;, η)&lt;/span&gt;" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=24;fontColor=#222222;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="state-node">
+          <mxGeometry x="8" y="38" width="274" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="state-node-field-0" value="&lt;span style=&quot;font-family:Times New Roman;font-style:italic&quot;&gt;id&lt;/span&gt;: identifier" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=21;fontColor=#222222;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="state-node">
+          <mxGeometry x="12" y="74" width="266" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="state-node-field-1" value="&lt;span style=&quot;font-family:Times New Roman;font-style:italic&quot;&gt;c&lt;/span&gt;: state class" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=21;fontColor=#222222;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="state-node">
+          <mxGeometry x="12" y="100" width="266" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="state-node-field-2" value="&lt;span style=&quot;font-family:Times New Roman;font-style:italic&quot;&gt;ν&lt;sup&gt;p&lt;/sup&gt;&lt;/span&gt;: program values" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=21;fontColor=#222222;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="state-node">
+          <mxGeometry x="12" y="126" width="266" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="state-node-field-3" value="&lt;span style=&quot;font-family:Times New Roman;font-style:italic&quot;&gt;ν&lt;sup&gt;m&lt;/sup&gt;&lt;/span&gt;: measurement records" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=21;fontColor=#222222;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="state-node">
+          <mxGeometry x="12" y="152" width="266" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="state-node-field-4" value="&lt;span style=&quot;font-family:Times New Roman;font-style:italic&quot;&gt;η&lt;/span&gt;: unit values" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=21;fontColor=#222222;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="state-node">
+          <mxGeometry x="12" y="178" width="266" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="transition-edge" value="Transition edge" style="swimlane;html=1;horizontal=1;startSize=33;rounded=0;collapsible=0;fillColor=#FFFFFF;swimlaneFillColor=#F5F5F5;strokeColor=#444444;strokeWidth=1.4;fontFamily=Arial;fontSize=23;fontStyle=1;fontColor=#222222;align=center;spacing=0;" vertex="1" parent="1">
+          <mxGeometry x="650" y="780" width="250" height="182" as="geometry" />
+        </mxCell>
+        <mxCell id="transition-edge-formula" value="&lt;span style=&quot;font-family:Times New Roman;font-style:italic&quot;&gt;δ = (s, a, p, s′)&lt;/span&gt;" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=24;fontColor=#222222;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="transition-edge">
+          <mxGeometry x="8" y="38" width="234" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="transition-edge-field-0" value="&lt;span style=&quot;font-family:Times New Roman;font-style:italic&quot;&gt;s&lt;/span&gt;: source node" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=21;fontColor=#222222;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="transition-edge">
+          <mxGeometry x="12" y="74" width="226" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="transition-edge-field-1" value="&lt;span style=&quot;font-family:Times New Roman;font-style:italic&quot;&gt;a&lt;/span&gt;: label" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=21;fontColor=#222222;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="transition-edge">
+          <mxGeometry x="12" y="100" width="226" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="transition-edge-field-2" value="&lt;span style=&quot;font-family:Times New Roman;font-style:italic&quot;&gt;p&lt;/span&gt;: local weight" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=21;fontColor=#222222;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="transition-edge">
+          <mxGeometry x="12" y="126" width="226" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="transition-edge-field-3" value="&lt;span style=&quot;font-family:Times New Roman;font-style:italic&quot;&gt;s′&lt;/span&gt;: target node" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=21;fontColor=#222222;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="transition-edge">
+          <mxGeometry x="12" y="152" width="226" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="state-formula" value="&lt;span style=&quot;font-family:Times New Roman;font-style:italic&quot;&gt;S = ⋃&lt;sub&gt;c&lt;/sub&gt; S&lt;sub&gt;c&lt;/sub&gt;&lt;/span&gt;" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=23;fontColor=#222222;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="state">
+          <mxGeometry x="8" y="38" width="274.0" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="state-field-0" value="&lt;span style=&quot;font-family:Times New Roman;font-style:italic&quot;&gt;c&lt;/span&gt;: state class" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=20;fontColor=#222222;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="state">
+          <mxGeometry x="12" y="74" width="266.0" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="state-field-1" value="&lt;span style=&quot;font-family:Times New Roman;font-style:italic&quot;&gt;S&lt;sub&gt;c&lt;/sub&gt;&lt;/span&gt;: state nodes" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=20;fontColor=#222222;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="state">
+          <mxGeometry x="12" y="100" width="266.0" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="transition-formula" value="&lt;span style=&quot;font-family:Times New Roman;font-style:italic&quot;&gt;T = ⋃&lt;sub&gt;τ&lt;/sub&gt; T&lt;sub&gt;τ&lt;/sub&gt;&lt;/span&gt;" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=23;fontColor=#222222;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="transition">
+          <mxGeometry x="8" y="38" width="234.0" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="transition-field-0" value="&lt;span style=&quot;font-family:Times New Roman;font-style:italic&quot;&gt;τ&lt;/span&gt;: transition class" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=20;fontColor=#222222;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="transition">
+          <mxGeometry x="12" y="74" width="226.0" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="transition-field-1" value="&lt;span style=&quot;font-family:Times New Roman;font-style:italic&quot;&gt;T&lt;sub&gt;τ&lt;/sub&gt;&lt;/span&gt;: transition edges" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=20;fontColor=#222222;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="transition">
+          <mxGeometry x="12" y="100" width="226.0" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="component-initial" value="&lt;span style=&quot;font-family:Times New Roman;font-style:italic&quot;&gt;s&lt;sub&gt;0&lt;/sub&gt;&lt;/span&gt;" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=#FFFFFF;fontFamily=Arial;fontSize=21;fontColor=#222222;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry x="108" y="237" width="64" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="component-state" value="&lt;span style=&quot;font-family:Times New Roman;font-style:italic&quot;&gt;S&lt;/span&gt;" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=#FFFFFF;fontFamily=Arial;fontSize=21;fontColor=#222222;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry x="408" y="237" width="64" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="component-transition" value="&lt;span style=&quot;font-family:Times New Roman;font-style:italic&quot;&gt;T&lt;/span&gt;" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=#FFFFFF;fontFamily=Arial;fontSize=21;fontColor=#222222;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry x="743" y="237" width="64" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="component-labels" value="&lt;span style=&quot;font-family:Times New Roman;font-style:italic&quot;&gt;Σ&lt;/span&gt;" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=#FFFFFF;fontFamily=Arial;fontSize=21;fontColor=#222222;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry x="1050" y="237" width="64" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="state-instantiation" value="instantiation" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=18;fontColor=#222222;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry x="448" y="709" width="133" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="class-endpoints" value="source / targets" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=17;fontColor=#222222;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry x="617" y="404" width="135" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="transition-instantiation" value="instantiation" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=18;fontColor=#222222;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry x="783" y="709" width="133" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-endpoints" value="source /&lt;br&gt;target" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=#FFFFFF;fontFamily=Arial;fontSize=17;fontColor=#222222;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry x="585" y="829" width="65" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="class-steps" value="steps" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=18;fontColor=#222222;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry x="941" y="404" width="80" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="execution-instantiation" value="instantiation" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=18;fontColor=#222222;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry x="1100.5" y="709" width="133" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="node-binding" value="maintains &lt;span style=&quot;font-family:Times New Roman;font-style:italic&quot;&gt;β : L → 2&lt;sup&gt;S&lt;/sup&gt;&lt;/span&gt;" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=#FFFFFF;fontFamily=Arial;fontSize=20;fontColor=#222222;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry x="650" y="974" width="258" height="29" as="geometry" />
+        </mxCell>
+        <mxCell id="produces-traces" value="produces" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=#FFFFFF;fontFamily=Arial;fontSize=19;fontColor=#222222;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry x="464" y="1062" width="102" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="assertion-nodes" value="&lt;span style=&quot;font-family:Times New Roman;font-style:italic&quot;&gt;N ⊆ L&lt;/span&gt;" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=21;fontColor=#222222;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="1095" width="80" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="trace-observations" value="observes&lt;br&gt;at &lt;span style=&quot;font-family:Times New Roman;font-style:italic&quot;&gt;N&lt;/span&gt;" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=#FFFFFF;fontFamily=Arial;fontSize=16;fontColor=#222222;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry x="586" y="1157" width="63" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-structure" value="" style="edgeStyle=none;html=1;strokeColor=#555555;strokeWidth=1.5;endArrow=none;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="967" y="57" as="sourcePoint" />
+            <mxPoint x="1028" y="57" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="legend-structure-text" value="structure" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=21;fontColor=#222222;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry x="1041" y="42" width="155" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-relations" value="" style="edgeStyle=none;html=1;strokeColor=#555555;strokeWidth=1.5;dashed=1;dashPattern=5 4;endArrow=open;endFill=0;endSize=9;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="967" y="102" as="sourcePoint" />
+            <mxPoint x="1028" y="102" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="legend-relations-text" value="relations" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontFamily=Arial;fontSize=21;fontColor=#222222;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry x="1041" y="87" width="155" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
