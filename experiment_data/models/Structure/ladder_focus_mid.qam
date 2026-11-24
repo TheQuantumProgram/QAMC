@@ -1,0 +1,78 @@
+model ladder_focus_mid
+
+qubits q0..q3
+gates H, CX
+
+state S0 initial {
+  active q0..q3
+}
+
+state S01 {
+  active q0..q3
+  units {
+    unit_completion singletons
+    u01: q0, q1
+    q2: q2
+    q3: q3
+  }
+}
+
+state S12 {
+  active q0..q3
+  units {
+    unit_completion singletons
+    u01: q0, q1
+    u12: q1, q2
+    q3: q3
+  }
+}
+
+state S23 {
+  active q0..q3
+  units {
+    unit_completion singletons
+    u01: q0, q1
+    u12: q1, q2
+    u23: q2, q3
+  }
+}
+
+transition t_h0: S0 -> S0 {
+  H(q0)
+}
+
+transition t_cx01: S0 -> S01 {
+  CX(q0, q1)
+}
+
+transition t_cx12: S01 -> S12 {
+  CX(q1, q2)
+}
+
+transition t_cx23: S12 -> S23 {
+  CX(q2, q3)
+}
+
+trace main {
+  a0: S0 initial
+  a0 --t_h0--> a1: S0
+  a1 --t_cx01--> a2: S01
+  a2 --t_cx12--> a3: S12
+  a3 --t_cx23--> f4: terminal S23
+}
+
+execution run_main {
+  trace main
+}
+
+property p_mid_ladder_relation relation {
+  anchors f4
+  observe dist(q1, q2, Z)
+  expect equal_bits
+}
+
+property p_mid_ladder_distribution distribution {
+  anchors f4
+  observe dist(q1, q2, Z)
+  expect {(0,0): 0.5, (1,1): 0.5}
+}

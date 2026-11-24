@@ -1,0 +1,14 @@
+{
+  "correct": {
+    "path": "experiment_data/models/HybridClassical/Teleportation/teleport_plus.qam",
+    "sha256": "570a23876b4eddc8c17faeabeafd378de04c65863542922cdaf43ee25f361a90"
+  },
+  "faulty": {
+    "path": "validation/feedback_control/models/teleport_plus_missing_z.qam",
+    "sha256": "904085b5099f66651a0b6fbb03756fbdaeb69b2c7c5e0589e1eb01ac45082ba1"
+  },
+  "mutation": {
+    "before": "when m0 == 1 -> S9: Z(q2)",
+    "after": "when m0 == 1 -> S9: ID(q2)"
+  }
+}

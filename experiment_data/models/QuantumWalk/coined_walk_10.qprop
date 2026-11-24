@@ -1,0 +1,4 @@
+[[temporal_properties]]
+id = "tp_walk_two_step_low_bit_spread"
+interval = ["a1", "a3"]
+formula = "X X [dist(q1,Z) == {0:0.5, 1:0.5}]"

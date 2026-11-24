@@ -1,0 +1,20 @@
+[[properties]]
+id = "p_uncompute_mark_cleared_final"
+kind = "distribution"
+scope_kind = "anchors"
+scope_value = ["f6"]
+mode = "aggregate"
+
+[properties.observable]
+kind = "quantum"
+qubits = ["q2"]
+basis = "Z"
+
+[properties.expectation]
+"0" = 1.0
+"1" = 0.0
+
+[[temporal_properties]]
+id = "tp_mark_reached_then_cleared"
+interval = ["a0", "f6"]
+formula = "F p_midway_mark_reachable && @final p_uncompute_mark_cleared_final"

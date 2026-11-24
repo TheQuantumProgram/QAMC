@@ -1,0 +1,120 @@
+model hybrid_control_register_10
+
+qubits q0..q9
+gates H, MZ, ID, X
+classical enable: bit
+
+state S0 initial {
+  active all
+  units {
+    unit_completion singletons
+  }
+  program enable: bit
+}
+
+state S1 {
+  active all
+  units {
+    unit_completion singletons
+  }
+  program enable: bit
+}
+
+state S2 {
+  active -q0
+  units {
+    unit_completion singletons
+  }
+  program enable: bit
+  measurement m0
+}
+
+state S3 {
+  active -q0
+  units {
+    unit_completion singletons
+  }
+  program enable: bit
+  measurement m0
+}
+
+state S4 {
+  active -q0
+  units {
+    unit_completion singletons
+  }
+  program enable: bit
+  measurement m0
+}
+
+transition t_prepare_control: S0 -> S1 {
+  H(q0)
+}
+
+transition t_seed_q2: S0 -> S0 {
+  X(q2)
+}
+
+transition t_seed_q3: S0 -> S0 {
+  H(q3)
+}
+
+transition t_seed_q4: S0 -> S0 {
+  X(q4)
+}
+
+transition t_seed_q5: S0 -> S0 {
+  H(q5)
+}
+
+transition t_seed_q6: S0 -> S0 {
+  X(q6)
+}
+
+transition t_seed_q7: S0 -> S0 {
+  H(q7)
+}
+
+transition t_seed_q8: S0 -> S0 {
+  X(q8)
+}
+
+transition t_measure_control: S1 -> S2 {
+  MZ(q0) as m0
+}
+
+transition t_measurement_mirror: S2 {
+  when m0 == 0 -> S3: ID(q1)
+  when m0 == 1 -> S3: X(q1)
+}
+
+transition t_program_enable: S3 {
+  when enable == 0 -> S4: ID(q9)
+  when enable == 1 -> S4: X(q9)
+}
+
+trace main {
+  a0: S0 initial
+  a0 --t_seed_q2--> a1: S0
+  a1 --t_seed_q3--> a2: S0
+  a2 --t_seed_q4--> a3: S0
+  a3 --t_seed_q5--> a4: S0
+  a4 --t_seed_q6--> a5: S0
+  a5 --t_seed_q7--> a6: S0
+  a6 --t_seed_q8--> a7: S0
+  a7 --t_prepare_control--> a8: S1
+  a8 --t_measure_control--> a9: S2
+  a9 --t_measurement_mirror--> a10: S3
+  a10 --t_program_enable--> f11: terminal S4
+}
+
+execution run_main {
+  trace main
+  program enable = 1
+}
+
+property p_hybrid_register_output distribution {
+  anchors f11
+  observe dist(q1, q9, Z)
+  expect {(0,1): 0.5, (1,1): 0.5}
+}

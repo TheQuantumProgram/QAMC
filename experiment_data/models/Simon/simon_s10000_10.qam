@@ -1,0 +1,239 @@
+model simon_s10000_10
+
+qubits q0..q9
+gates H, CX
+
+state S0 initial {
+  active all
+  units {
+    unit_completion singletons
+  }
+}
+
+state S1 {
+  active all
+  units {
+    unit_completion singletons
+  }
+}
+
+state S2 {
+  active all
+  units {
+    unit_completion singletons
+    u16: q1, q6
+  }
+}
+
+state S3 {
+  active all
+  units {
+    unit_completion singletons
+    u16: q1, q6
+    u27: q2, q7
+  }
+}
+
+state S4 {
+  active all
+  units {
+    unit_completion singletons
+    u16: q1, q6
+    u27: q2, q7
+    u38: q3, q8
+  }
+}
+
+state S5 {
+  active all
+  units {
+    unit_completion singletons
+    u16: q1, q6
+    u27: q2, q7
+    u38: q3, q8
+    u49: q4, q9
+  }
+}
+
+state S6 {
+  active all
+  units {
+    unit_completion singletons
+    u16: q1, q6
+    u27: q2, q7
+    u38: q3, q8
+    u49: q4, q9
+  }
+}
+
+state S7 {
+  active all
+  units {
+    unit_completion singletons
+    u16: q1, q6
+    u27: q2, q7
+    u38: q3, q8
+    u49: q4, q9
+  }
+}
+
+state S8 {
+  active all
+  units {
+    unit_completion singletons
+    u16: q1, q6
+    u27: q2, q7
+    u38: q3, q8
+    u49: q4, q9
+  }
+}
+
+state S9 {
+  active all
+  units {
+    unit_completion singletons
+    u16: q1, q6
+    u27: q2, q7
+    u38: q3, q8
+    u49: q4, q9
+  }
+}
+
+state S10 {
+  active all
+  units {
+    unit_completion singletons
+    u16: q1, q6
+    u27: q2, q7
+    u38: q3, q8
+    u49: q4, q9
+  }
+}
+
+state S11 {
+  active all
+  units {
+    unit_completion singletons
+    u16: q1, q6
+    u27: q2, q7
+    u38: q3, q8
+    u49: q4, q9
+  }
+}
+
+state S12 {
+  active all
+  units {
+    unit_completion singletons
+    u16: q1, q6
+    u27: q2, q7
+    u38: q3, q8
+    u49: q4, q9
+  }
+}
+
+state S13 {
+  active all
+  units {
+    unit_completion singletons
+    u16: q1, q6
+    u27: q2, q7
+    u38: q3, q8
+    u49: q4, q9
+  }
+}
+
+state S14 {
+  active all
+  units {
+    unit_completion singletons
+    u16: q1, q6
+    u27: q2, q7
+    u38: q3, q8
+    u49: q4, q9
+  }
+}
+
+transition t_h_q0_pre: S0 -> S1 {
+  H(q0)
+}
+
+transition t_h_q1_pre: S1 -> S2 {
+  H(q1)
+}
+
+transition t_h_q2_pre: S2 -> S3 {
+  H(q2)
+}
+
+transition t_h_q3_pre: S3 -> S4 {
+  H(q3)
+}
+
+transition t_h_q4_pre: S4 -> S5 {
+  H(q4)
+}
+
+transition t_oracle_copy_1: S5 -> S6 {
+  CX(q1, q6)
+}
+
+transition t_oracle_copy_2: S6 -> S7 {
+  CX(q2, q7)
+}
+
+transition t_oracle_copy_3: S7 -> S8 {
+  CX(q3, q8)
+}
+
+transition t_oracle_copy_4: S8 -> S9 {
+  CX(q4, q9)
+}
+
+transition t_h_q0_post: S9 -> S10 {
+  H(q0)
+}
+
+transition t_h_q1_post: S10 -> S11 {
+  H(q1)
+}
+
+transition t_h_q2_post: S11 -> S12 {
+  H(q2)
+}
+
+transition t_h_q3_post: S12 -> S13 {
+  H(q3)
+}
+
+transition t_h_q4_post: S13 -> S14 {
+  H(q4)
+}
+
+trace main {
+  a0: S0 initial
+  a0 --t_h_q0_pre--> a1: S1
+  a1 --t_h_q1_pre--> a2: S2
+  a2 --t_h_q2_pre--> a3: S3
+  a3 --t_h_q3_pre--> a4: S4
+  a4 --t_h_q4_pre--> a5: S5
+  a5 --t_oracle_copy_1--> a6: S6
+  a6 --t_oracle_copy_2--> a7: S7
+  a7 --t_oracle_copy_3--> a8: S8
+  a8 --t_oracle_copy_4--> a9: S9
+  a9 --t_h_q0_post--> a10: S10
+  a10 --t_h_q1_post--> a11: S11
+  a11 --t_h_q2_post--> a12: S12
+  a12 --t_h_q3_post--> a13: S13
+  a13 --t_h_q4_post--> f14: terminal S14
+}
+
+execution run_main {
+  trace main
+}
+
+property p_hidden_period_orthogonality distribution {
+  anchors f14
+  observe dist(q0, Z)
+  expect {0: 1}
+}

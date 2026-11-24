@@ -1,0 +1,9 @@
+[[temporal_properties]]
+id = "tp_program_flip_persistent"
+interval = ["a0", "f4"]
+formula = "G [flip == 1]"
+
+[[temporal_properties]]
+id = "tp_measurement_record_eventually_visible"
+interval = ["a0", "f4"]
+formula = "F [m0 in {0,1}]"

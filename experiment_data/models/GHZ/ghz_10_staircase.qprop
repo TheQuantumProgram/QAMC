@@ -1,0 +1,4 @@
+[[temporal_properties]]
+id = "tp_ghz_prefix_pair_invariant"
+interval = ["a2", "f10"]
+formula = "G [rel(q0,q1,Z) == equal_bits]"

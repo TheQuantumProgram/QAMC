@@ -1,0 +1,606 @@
+model bv_10_sparse
+
+qubits q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+gates CX, H, X
+state s0 initial {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u4: q4
+    u5: q5
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s1 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u4: q4
+    u5: q5
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s2 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u4: q4
+    u5: q5
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s3 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u4: q4
+    u5: q5
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s4 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u4: q4
+    u5: q5
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s5 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u4: q4
+    u5: q5
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s6 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u4: q4
+    u5: q5
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s7 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u4: q4
+    u5: q5
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s8 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u4: q4
+    u5: q5
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s9 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u4: q4
+    u5: q5
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s10 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u4: q4
+    u5: q5
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s11 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u4: q4
+    u5: q5
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s12 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u4: q4
+    u5: q5
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s13 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u4: q4
+    u5: q5
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s14 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u4: q4
+    u5: q5
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s15 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u4: q4
+    u5: q5
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s16 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u4: q4
+    u5: q5
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s17 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u4: q4
+    u5: q5
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s18 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u4: q4
+    u5: q5
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s19 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u4: q4
+    u5: q5
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s20 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u4: q4
+    u5: q5
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s21 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u4: q4
+    u5: q5
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s22 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u4: q4
+    u5: q5
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s23 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u4: q4
+    u5: q5
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+transition t000_x: s0 -> s1 {
+  X(q9)
+}
+
+transition t001_h: s1 -> s2 {
+  H(q9)
+}
+
+transition t002_h: s2 -> s3 {
+  H(q0)
+}
+
+transition t003_h: s3 -> s4 {
+  H(q1)
+}
+
+transition t004_h: s4 -> s5 {
+  H(q2)
+}
+
+transition t005_h: s5 -> s6 {
+  H(q3)
+}
+
+transition t006_h: s6 -> s7 {
+  H(q4)
+}
+
+transition t007_h: s7 -> s8 {
+  H(q5)
+}
+
+transition t008_h: s8 -> s9 {
+  H(q6)
+}
+
+transition t009_h: s9 -> s10 {
+  H(q7)
+}
+
+transition t010_h: s10 -> s11 {
+  H(q8)
+}
+
+transition t011_cx: s11 -> s12 {
+  CX(q0, q9)
+}
+
+transition t012_cx: s12 -> s13 {
+  CX(q4, q9)
+}
+
+transition t013_cx: s13 -> s14 {
+  CX(q8, q9)
+}
+
+transition t014_h: s14 -> s15 {
+  H(q0)
+}
+
+transition t015_h: s15 -> s16 {
+  H(q1)
+}
+
+transition t016_h: s16 -> s17 {
+  H(q2)
+}
+
+transition t017_h: s17 -> s18 {
+  H(q3)
+}
+
+transition t018_h: s18 -> s19 {
+  H(q4)
+}
+
+transition t019_h: s19 -> s20 {
+  H(q5)
+}
+
+transition t020_h: s20 -> s21 {
+  H(q6)
+}
+
+transition t021_h: s21 -> s22 {
+  H(q7)
+}
+
+transition t022_h: s22 -> s23 {
+  H(q8)
+}
+
+trace main {
+  a0: s0 initial
+  a0 --t000_x--> a1: s1
+  a1 --t001_h--> a2: s2
+  a2 --t002_h--> a3: s3
+  a3 --t003_h--> a4: s4
+  a4 --t004_h--> a5: s5
+  a5 --t005_h--> a6: s6
+  a6 --t006_h--> a7: s7
+  a7 --t007_h--> a8: s8
+  a8 --t008_h--> a9: s9
+  a9 --t009_h--> a10: s10
+  a10 --t010_h--> a11: s11
+  a11 --t011_cx--> a12: s12
+  a12 --t012_cx--> a13: s13
+  a13 --t013_cx--> a14: s14
+  a14 --t014_h--> a15: s15
+  a15 --t015_h--> a16: s16
+  a16 --t016_h--> a17: s17
+  a17 --t017_h--> a18: s18
+  a18 --t018_h--> a19: s19
+  a19 --t019_h--> a20: s20
+  a20 --t020_h--> a21: s21
+  a21 --t021_h--> a22: s22
+  a22 --t022_h--> f23: terminal s23
+}
+
+execution run_main {
+  trace main
+}
+
+property p_bv_hidden_string_probability_q0 reachability {
+  anchors f23
+  mode pointwise_any
+  observe dist(q0, Z)
+  expect 1
+  threshold 0.999999
+}
+
+property p_bv_hidden_string_probability_q1 reachability {
+  anchors f23
+  mode pointwise_any
+  observe dist(q1, Z)
+  expect 0
+  threshold 0.999999
+}
+
+property p_bv_hidden_string_probability_q2 reachability {
+  anchors f23
+  mode pointwise_any
+  observe dist(q2, Z)
+  expect 0
+  threshold 0.999999
+}
+
+property p_bv_hidden_string_probability_q3 reachability {
+  anchors f23
+  mode pointwise_any
+  observe dist(q3, Z)
+  expect 0
+  threshold 0.999999
+}
+
+property p_bv_hidden_string_probability_q4 reachability {
+  anchors f23
+  mode pointwise_any
+  observe dist(q4, Z)
+  expect 1
+  threshold 0.999999
+}
+
+property p_bv_hidden_string_probability_q5 reachability {
+  anchors f23
+  mode pointwise_any
+  observe dist(q5, Z)
+  expect 0
+  threshold 0.999999
+}
+
+property p_bv_hidden_string_probability_q6 reachability {
+  anchors f23
+  mode pointwise_any
+  observe dist(q6, Z)
+  expect 0
+  threshold 0.999999
+}
+
+property p_bv_hidden_string_probability_q7 reachability {
+  anchors f23
+  mode pointwise_any
+  observe dist(q7, Z)
+  expect 0
+  threshold 0.999999
+}
+
+property p_bv_hidden_string_probability_q8 reachability {
+  anchors f23
+  mode pointwise_any
+  observe dist(q8, Z)
+  expect 1
+  threshold 0.999999
+}

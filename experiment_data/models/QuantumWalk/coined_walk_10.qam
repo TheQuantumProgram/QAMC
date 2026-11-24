@@ -1,0 +1,115 @@
+model coined_walk_10
+
+qubits q0..q9
+gates H, CX, CCX, ID
+
+state S0 initial {
+  active all
+  units {
+    unit_completion singletons
+  }
+}
+
+state S1 {
+  active all
+  units {
+    unit_completion singletons
+  }
+}
+
+state S2 {
+  active all
+  units {
+    unit_completion singletons
+    walk: q0, q1, q2
+  }
+}
+
+state S3 {
+  active all
+  units {
+    unit_completion singletons
+    walk: q0, q1, q2
+  }
+}
+
+state S4 {
+  active all
+  units {
+    unit_completion singletons
+    walk: q0, q1, q2
+  }
+}
+
+state S5 {
+  active all
+  units {
+    unit_completion singletons
+    walk: q0, q1, q2
+  }
+}
+
+state S6 {
+  active all
+  units {
+    unit_completion singletons
+    walk: q0, q1, q2
+  }
+}
+
+state S7 {
+  active all
+  units {
+    unit_completion singletons
+    walk: q0, q1, q2
+  }
+}
+
+transition t_coin_0: S0 -> S1 {
+  H(q0)
+}
+
+transition t_shift_0_carry: S1 -> S2 {
+  CCX(q0, q1, q2)
+}
+
+transition t_shift_0_low: S2 -> S3 {
+  CX(q0, q1)
+}
+
+transition t_coin_1: S3 -> S4 {
+  H(q0)
+}
+
+transition t_shift_1_carry: S4 -> S5 {
+  CCX(q0, q1, q2)
+}
+
+transition t_shift_1_low: S5 -> S6 {
+  CX(q0, q1)
+}
+
+transition t_release_walk: S6 -> S7 {
+  ID(q0)
+}
+
+trace main {
+  a0: S0 initial
+  a0 --t_coin_0--> a1: S1
+  a1 --t_shift_0_carry--> a2: S2
+  a2 --t_shift_0_low--> a3: S3
+  a3 --t_coin_1--> a4: S4
+  a4 --t_shift_1_carry--> a5: S5
+  a5 --t_shift_1_low--> a6: S6
+  a6 --t_release_walk--> f7: terminal S7
+}
+
+execution run_main {
+  trace main
+}
+
+property p_position_after_two_steps distribution {
+  anchors f7
+  observe dist(q1, q2, Z)
+  expect {(0, 0): 0.25, (1, 0): 0.5, (0, 1): 0.25}
+}

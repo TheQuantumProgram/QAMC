@@ -1,0 +1,1393 @@
+{
+  "purpose": "Compare the checker and the full-state calculation for the 22 correctness benchmarks.",
+  "historical_table_source": "experiment_data/paper_results/rq1_table_transcription.csv",
+  "historical_table_sha256": "3ebd881abcadba452cb10b949d8de611016925e83cd1e096c7576ac802a115bf",
+  "independent_reference": "qamc.experiments.modeling_reference: shared parsed program IR; independent full-state amplitudes and measurements. Predicate judgment comes from modeling_audit.reference_judgment.",
+  "cases": [
+    {
+      "row": 1,
+      "model_label": "GHZ",
+      "model": "experiment_data/models/GHZ/ghz_10_staircase.qam",
+      "source_files": [
+        {
+          "path": "experiment_data/models/GHZ/ghz_10_staircase.qam",
+          "sha256": "b310fc601cdff5078e99f4d0cb1098f45227ccc75868628f260569d3e5c2a47f"
+        },
+        {
+          "path": "experiment_data/models/GHZ/ghz_10_staircase.qprop",
+          "sha256": "9544d5d839cd373a830f17be78dac3ea597d028e91343ebdb6cc3683dd9ed271"
+        }
+      ],
+      "related_source_property_ids": [
+        "tp_ghz_prefix_pair_invariant"
+      ],
+      "expected_satisfied": true,
+      "assertions": [
+        {
+          "id": "paper_ghz_invariant",
+          "kind": "relation",
+          "nodes": [
+            "a2",
+            "a3",
+            "a4",
+            "a5",
+            "a6",
+            "a7",
+            "a8",
+            "a9",
+            "f10"
+          ],
+          "mode": "pointwise_all",
+          "qubits": [
+            "q0",
+            "q1"
+          ],
+          "basis": "Z",
+          "relation": "equal_bits"
+        }
+      ],
+      "source_property_locations": [
+        {
+          "property_id": "tp_ghz_prefix_pair_invariant",
+          "path": "experiment_data/models/GHZ/ghz_10_staircase.qprop",
+          "line": 2
+        }
+      ]
+    },
+    {
+      "row": 2,
+      "model_label": "Adder",
+      "model": "experiment_data/models/Adder/adder_10.qam",
+      "source_files": [
+        {
+          "path": "experiment_data/models/Adder/adder_10.qam",
+          "sha256": "b49ace70d53a57153ffa8963cdb794d76dd6d9795ac80070e6c707bc5cab4ac3"
+        }
+      ],
+      "related_source_property_ids": [
+        "p_adder_output_probability_q0",
+        "p_adder_output_probability_q1",
+        "p_adder_output_probability_q2",
+        "p_adder_output_probability_q3",
+        "p_adder_output_probability_q4",
+        "p_adder_output_probability_q5",
+        "p_adder_output_probability_q6",
+        "p_adder_output_probability_q7",
+        "p_adder_output_probability_q8",
+        "p_adder_output_probability_q9"
+      ],
+      "expected_satisfied": true,
+      "assertions": [
+        {
+          "id": "paper_adder_output",
+          "kind": "distribution",
+          "nodes": [
+            "f29"
+          ],
+          "mode": "pointwise_all",
+          "qubits": [
+            "q0",
+            "q1",
+            "q2",
+            "q3",
+            "q4",
+            "q5",
+            "q6",
+            "q7",
+            "q8",
+            "q9"
+          ],
+          "basis": "Z",
+          "expected_probabilities": {
+            "0101000010": 1.0
+          }
+        }
+      ],
+      "source_property_locations": [
+        {
+          "property_id": "p_adder_output_probability_q0",
+          "path": "experiment_data/models/Adder/adder_10.qam",
+          "line": 640
+        },
+        {
+          "property_id": "p_adder_output_probability_q1",
+          "path": "experiment_data/models/Adder/adder_10.qam",
+          "line": 648
+        },
+        {
+          "property_id": "p_adder_output_probability_q2",
+          "path": "experiment_data/models/Adder/adder_10.qam",
+          "line": 656
+        },
+        {
+          "property_id": "p_adder_output_probability_q3",
+          "path": "experiment_data/models/Adder/adder_10.qam",
+          "line": 664
+        },
+        {
+          "property_id": "p_adder_output_probability_q4",
+          "path": "experiment_data/models/Adder/adder_10.qam",
+          "line": 672
+        },
+        {
+          "property_id": "p_adder_output_probability_q5",
+          "path": "experiment_data/models/Adder/adder_10.qam",
+          "line": 680
+        },
+        {
+          "property_id": "p_adder_output_probability_q6",
+          "path": "experiment_data/models/Adder/adder_10.qam",
+          "line": 688
+        },
+        {
+          "property_id": "p_adder_output_probability_q7",
+          "path": "experiment_data/models/Adder/adder_10.qam",
+          "line": 696
+        },
+        {
+          "property_id": "p_adder_output_probability_q8",
+          "path": "experiment_data/models/Adder/adder_10.qam",
+          "line": 704
+        },
+        {
+          "property_id": "p_adder_output_probability_q9",
+          "path": "experiment_data/models/Adder/adder_10.qam",
+          "line": 712
+        }
+      ]
+    },
+    {
+      "row": 3,
+      "model_label": "Bernstein--Vazirani",
+      "model": "experiment_data/models/BV/bv_10_sparse.qam",
+      "source_files": [
+        {
+          "path": "experiment_data/models/BV/bv_10_sparse.qam",
+          "sha256": "d73d673bbcf729ab66e5f2390cc9ba7c196cf8f618061c15c0a3fb295f058af6"
+        }
+      ],
+      "related_source_property_ids": [
+        "p_bv_hidden_string_probability_q0",
+        "p_bv_hidden_string_probability_q1",
+        "p_bv_hidden_string_probability_q2",
+        "p_bv_hidden_string_probability_q3",
+        "p_bv_hidden_string_probability_q4",
+        "p_bv_hidden_string_probability_q5",
+        "p_bv_hidden_string_probability_q6",
+        "p_bv_hidden_string_probability_q7",
+        "p_bv_hidden_string_probability_q8"
+      ],
+      "expected_satisfied": true,
+      "assertions": [
+        {
+          "id": "paper_bv_output",
+          "kind": "distribution",
+          "nodes": [
+            "f23"
+          ],
+          "mode": "pointwise_all",
+          "qubits": [
+            "q0",
+            "q1",
+            "q2",
+            "q3",
+            "q4",
+            "q5",
+            "q6",
+            "q7",
+            "q8"
+          ],
+          "basis": "Z",
+          "expected_probabilities": {
+            "100010001": 1.0
+          }
+        }
+      ],
+      "source_property_locations": [
+        {
+          "property_id": "p_bv_hidden_string_probability_q0",
+          "path": "experiment_data/models/BV/bv_10_sparse.qam",
+          "line": 536
+        },
+        {
+          "property_id": "p_bv_hidden_string_probability_q1",
+          "path": "experiment_data/models/BV/bv_10_sparse.qam",
+          "line": 544
+        },
+        {
+          "property_id": "p_bv_hidden_string_probability_q2",
+          "path": "experiment_data/models/BV/bv_10_sparse.qam",
+          "line": 552
+        },
+        {
+          "property_id": "p_bv_hidden_string_probability_q3",
+          "path": "experiment_data/models/BV/bv_10_sparse.qam",
+          "line": 560
+        },
+        {
+          "property_id": "p_bv_hidden_string_probability_q4",
+          "path": "experiment_data/models/BV/bv_10_sparse.qam",
+          "line": 568
+        },
+        {
+          "property_id": "p_bv_hidden_string_probability_q5",
+          "path": "experiment_data/models/BV/bv_10_sparse.qam",
+          "line": 576
+        },
+        {
+          "property_id": "p_bv_hidden_string_probability_q6",
+          "path": "experiment_data/models/BV/bv_10_sparse.qam",
+          "line": 584
+        },
+        {
+          "property_id": "p_bv_hidden_string_probability_q7",
+          "path": "experiment_data/models/BV/bv_10_sparse.qam",
+          "line": 592
+        },
+        {
+          "property_id": "p_bv_hidden_string_probability_q8",
+          "path": "experiment_data/models/BV/bv_10_sparse.qam",
+          "line": 600
+        }
+      ]
+    },
+    {
+      "row": 4,
+      "model_label": "Deutsch--Jozsa~\\cite{DeutschJozsa1992}",
+      "model": "experiment_data/models/DeutschJozsa/deutsch_balanced.qam",
+      "source_files": [
+        {
+          "path": "experiment_data/models/DeutschJozsa/deutsch_balanced.qam",
+          "sha256": "1413ef9bf1d4d8dc9fb63159f7b7234a07533ee6aedde354b2c80cdcc588b559"
+        }
+      ],
+      "related_source_property_ids": [
+        "p_balanced_detected"
+      ],
+      "expected_satisfied": true,
+      "assertions": [
+        {
+          "id": "paper_dj_output",
+          "kind": "distribution",
+          "nodes": [
+            "f29"
+          ],
+          "mode": "pointwise_all",
+          "qubits": [
+            "q0",
+            "q1",
+            "q2",
+            "q3",
+            "q4",
+            "q5",
+            "q6",
+            "q7",
+            "q8"
+          ],
+          "basis": "Z",
+          "expected_probabilities": {
+            "111111111": 1.0
+          }
+        }
+      ],
+      "source_property_locations": [
+        {
+          "property_id": "p_balanced_detected",
+          "path": "experiment_data/models/DeutschJozsa/deutsch_balanced.qam",
+          "line": 166
+        }
+      ]
+    },
+    {
+      "row": 5,
+      "model_label": "IQFT~\\cite{NielsenChuang2010}",
+      "model": "experiment_data/models/IQFT/iqft_10_w5.qam",
+      "source_files": [
+        {
+          "path": "experiment_data/models/IQFT/iqft_10_w5.qam",
+          "sha256": "1f5f49b19fefe0d7a35e3f55449d23af244b6964a287034b7b3f1deebc1aeb10"
+        }
+      ],
+      "related_source_property_ids": [
+        "p_recover_target_bits_q0",
+        "p_recover_target_bits_q1",
+        "p_recover_target_bits_q2",
+        "p_recover_target_bits_q3",
+        "p_recover_target_bits_q4",
+        "p_recover_target_bits_q5",
+        "p_recover_target_bits_q6",
+        "p_recover_target_bits_q7",
+        "p_recover_target_bits_q8",
+        "p_recover_target_bits_q9"
+      ],
+      "expected_satisfied": true,
+      "assertions": [
+        {
+          "id": "p_recover_target_bits_q0",
+          "kind": "reachability",
+          "nodes": [
+            "f60"
+          ],
+          "mode": "pointwise_any",
+          "qubits": [
+            "q0"
+          ],
+          "basis": "Z",
+          "outcome": 1,
+          "threshold": 0.997
+        },
+        {
+          "id": "p_recover_target_bits_q1",
+          "kind": "reachability",
+          "nodes": [
+            "f60"
+          ],
+          "mode": "pointwise_any",
+          "qubits": [
+            "q1"
+          ],
+          "basis": "Z",
+          "outcome": 0,
+          "threshold": 0.997
+        },
+        {
+          "id": "p_recover_target_bits_q2",
+          "kind": "reachability",
+          "nodes": [
+            "f60"
+          ],
+          "mode": "pointwise_any",
+          "qubits": [
+            "q2"
+          ],
+          "basis": "Z",
+          "outcome": 0,
+          "threshold": 0.997
+        },
+        {
+          "id": "p_recover_target_bits_q3",
+          "kind": "reachability",
+          "nodes": [
+            "f60"
+          ],
+          "mode": "pointwise_any",
+          "qubits": [
+            "q3"
+          ],
+          "basis": "Z",
+          "outcome": 0,
+          "threshold": 0.997
+        },
+        {
+          "id": "p_recover_target_bits_q4",
+          "kind": "reachability",
+          "nodes": [
+            "f60"
+          ],
+          "mode": "pointwise_any",
+          "qubits": [
+            "q4"
+          ],
+          "basis": "Z",
+          "outcome": 1,
+          "threshold": 0.997
+        },
+        {
+          "id": "p_recover_target_bits_q5",
+          "kind": "reachability",
+          "nodes": [
+            "f60"
+          ],
+          "mode": "pointwise_any",
+          "qubits": [
+            "q5"
+          ],
+          "basis": "Z",
+          "outcome": 0,
+          "threshold": 0.997
+        },
+        {
+          "id": "p_recover_target_bits_q6",
+          "kind": "reachability",
+          "nodes": [
+            "f60"
+          ],
+          "mode": "pointwise_any",
+          "qubits": [
+            "q6"
+          ],
+          "basis": "Z",
+          "outcome": 0,
+          "threshold": 0.997
+        },
+        {
+          "id": "p_recover_target_bits_q7",
+          "kind": "reachability",
+          "nodes": [
+            "f60"
+          ],
+          "mode": "pointwise_any",
+          "qubits": [
+            "q7"
+          ],
+          "basis": "Z",
+          "outcome": 0,
+          "threshold": 0.997
+        },
+        {
+          "id": "p_recover_target_bits_q8",
+          "kind": "reachability",
+          "nodes": [
+            "f60"
+          ],
+          "mode": "pointwise_any",
+          "qubits": [
+            "q8"
+          ],
+          "basis": "Z",
+          "outcome": 0,
+          "threshold": 0.997
+        },
+        {
+          "id": "p_recover_target_bits_q9",
+          "kind": "reachability",
+          "nodes": [
+            "f60"
+          ],
+          "mode": "pointwise_any",
+          "qubits": [
+            "q9"
+          ],
+          "basis": "Z",
+          "outcome": 1,
+          "threshold": 0.997
+        }
+      ],
+      "source_property_locations": [
+        {
+          "property_id": "p_recover_target_bits_q0",
+          "path": "experiment_data/models/IQFT/iqft_10_w5.qam",
+          "line": 1210
+        },
+        {
+          "property_id": "p_recover_target_bits_q1",
+          "path": "experiment_data/models/IQFT/iqft_10_w5.qam",
+          "line": 1218
+        },
+        {
+          "property_id": "p_recover_target_bits_q2",
+          "path": "experiment_data/models/IQFT/iqft_10_w5.qam",
+          "line": 1226
+        },
+        {
+          "property_id": "p_recover_target_bits_q3",
+          "path": "experiment_data/models/IQFT/iqft_10_w5.qam",
+          "line": 1234
+        },
+        {
+          "property_id": "p_recover_target_bits_q4",
+          "path": "experiment_data/models/IQFT/iqft_10_w5.qam",
+          "line": 1242
+        },
+        {
+          "property_id": "p_recover_target_bits_q5",
+          "path": "experiment_data/models/IQFT/iqft_10_w5.qam",
+          "line": 1250
+        },
+        {
+          "property_id": "p_recover_target_bits_q6",
+          "path": "experiment_data/models/IQFT/iqft_10_w5.qam",
+          "line": 1258
+        },
+        {
+          "property_id": "p_recover_target_bits_q7",
+          "path": "experiment_data/models/IQFT/iqft_10_w5.qam",
+          "line": 1266
+        },
+        {
+          "property_id": "p_recover_target_bits_q8",
+          "path": "experiment_data/models/IQFT/iqft_10_w5.qam",
+          "line": 1274
+        },
+        {
+          "property_id": "p_recover_target_bits_q9",
+          "path": "experiment_data/models/IQFT/iqft_10_w5.qam",
+          "line": 1282
+        }
+      ],
+      "use_declared_assertions": true
+    },
+    {
+      "row": 6,
+      "model_label": "Simon~\\cite{Simon1997}",
+      "model": "experiment_data/models/Simon/simon_s10000_10.qam",
+      "source_files": [
+        {
+          "path": "experiment_data/models/Simon/simon_s10000_10.qam",
+          "sha256": "fe0fb580fd7bdeaeb05fed21634ab485dd1b9be055998187b917e7e772dde28c"
+        }
+      ],
+      "related_source_property_ids": [
+        "p_hidden_period_orthogonality"
+      ],
+      "expected_satisfied": true,
+      "assertions": [
+        {
+          "id": "paper_simon_output",
+          "kind": "distribution",
+          "nodes": [
+            "f14"
+          ],
+          "mode": "pointwise_all",
+          "qubits": [
+            "q0"
+          ],
+          "basis": "Z",
+          "expected_probabilities": {
+            "0": 1.0
+          }
+        }
+      ],
+      "source_property_locations": [
+        {
+          "property_id": "p_hidden_period_orthogonality",
+          "path": "experiment_data/models/Simon/simon_s10000_10.qam",
+          "line": 235
+        }
+      ]
+    },
+    {
+      "row": 7,
+      "model_label": "Quantum walk",
+      "model": "experiment_data/models/QuantumWalk/coined_walk_10.qam",
+      "source_files": [
+        {
+          "path": "experiment_data/models/QuantumWalk/coined_walk_10.qam",
+          "sha256": "3e83afc52aedd87b6c733869f1fa013e27cca66d1b4c60be3d687f55f72b4162"
+        },
+        {
+          "path": "experiment_data/models/QuantumWalk/coined_walk_10.qprop",
+          "sha256": "68df8375d8d37fcdb6f19fd53543d5f15b38c05c44fc7b52d1ee1b38ba3df75a"
+        }
+      ],
+      "related_source_property_ids": [
+        "tp_walk_two_step_low_bit_spread"
+      ],
+      "expected_satisfied": true,
+      "assertions": [
+        {
+          "id": "paper_walk_at_a3",
+          "kind": "distribution",
+          "nodes": [
+            "a3"
+          ],
+          "mode": "pointwise_all",
+          "qubits": [
+            "q1"
+          ],
+          "basis": "Z",
+          "expected_probabilities": {
+            "0": 0.5,
+            "1": 0.5
+          }
+        }
+      ],
+      "source_property_locations": [
+        {
+          "property_id": "tp_walk_two_step_low_bit_spread",
+          "path": "experiment_data/models/QuantumWalk/coined_walk_10.qprop",
+          "line": 2
+        }
+      ]
+    },
+    {
+      "row": 8,
+      "model_label": "W-state",
+      "model": "experiment_data/models/WState/w10_rbs.qam",
+      "source_files": [
+        {
+          "path": "experiment_data/models/WState/w10_rbs.qam",
+          "sha256": "f617066401d8e57a371b511835166f866ae82fb07283070e45ba7612e38eb5de"
+        },
+        {
+          "path": "experiment_data/models/WState/w10_rbs.qprop",
+          "sha256": "a9cd425ad82c6efea76392ed519d1c2b04fd784c8d219352b6fea3b4db2e872b"
+        }
+      ],
+      "related_source_property_ids": [
+        "p_single_excitation_support",
+        "p_middle_qubit_marginal",
+        "tp_single_excitation_until_uniform_middle"
+      ],
+      "expected_satisfied": true,
+      "assertions": [
+        {
+          "id": "paper_single_excitation",
+          "kind": "relation",
+          "nodes": [
+            "a1",
+            "a2",
+            "a3",
+            "a4",
+            "a5",
+            "a6",
+            "a7",
+            "a8",
+            "a9",
+            "a10"
+          ],
+          "mode": "pointwise_all",
+          "qubits": [
+            "q0",
+            "q1",
+            "q2",
+            "q3",
+            "q4",
+            "q5",
+            "q6",
+            "q7",
+            "q8",
+            "q9"
+          ],
+          "basis": "Z",
+          "relation": "support_subset",
+          "allowed_outcomes": [
+            "1000000000",
+            "0100000000",
+            "0010000000",
+            "0001000000",
+            "0000100000",
+            "0000010000",
+            "0000001000",
+            "0000000100",
+            "0000000010",
+            "0000000001"
+          ]
+        },
+        {
+          "id": "paper_w_middle",
+          "kind": "distribution",
+          "nodes": [
+            "f11"
+          ],
+          "mode": "pointwise_all",
+          "qubits": [
+            "q4"
+          ],
+          "basis": "Z",
+          "expected_probabilities": {
+            "0": 0.9,
+            "1": 0.1
+          }
+        }
+      ],
+      "source_property_locations": [
+        {
+          "property_id": "p_middle_qubit_marginal",
+          "path": "experiment_data/models/WState/w10_rbs.qam",
+          "line": 164
+        },
+        {
+          "property_id": "p_single_excitation_support",
+          "path": "experiment_data/models/WState/w10_rbs.qprop",
+          "line": 4
+        },
+        {
+          "property_id": "tp_single_excitation_until_uniform_middle",
+          "path": "experiment_data/models/WState/w10_rbs.qprop",
+          "line": 33
+        }
+      ]
+    },
+    {
+      "row": 9,
+      "model_label": "Ladder focus",
+      "model": "experiment_data/models/Structure/ladder_focus_mid.qam",
+      "source_files": [
+        {
+          "path": "experiment_data/models/Structure/ladder_focus_mid.qam",
+          "sha256": "ab98b3bedb9e6ab7ff3054cb8345d056d69e0c7e6245f1bfa1e3a565df1a1e0a"
+        }
+      ],
+      "related_source_property_ids": [
+        "p_mid_ladder_relation",
+        "p_mid_ladder_distribution"
+      ],
+      "expected_satisfied": true,
+      "assertions": [
+        {
+          "id": "paper_ladder_equal",
+          "kind": "relation",
+          "nodes": [
+            "f4"
+          ],
+          "mode": "pointwise_all",
+          "qubits": [
+            "q1",
+            "q2"
+          ],
+          "basis": "Z",
+          "relation": "equal_bits"
+        },
+        {
+          "id": "paper_ladder_distribution",
+          "kind": "distribution",
+          "nodes": [
+            "f4"
+          ],
+          "mode": "pointwise_all",
+          "qubits": [
+            "q1",
+            "q2"
+          ],
+          "basis": "Z",
+          "expected_probabilities": {
+            "00": 0.5,
+            "11": 0.5
+          }
+        }
+      ],
+      "source_property_locations": [
+        {
+          "property_id": "p_mid_ladder_relation",
+          "path": "experiment_data/models/Structure/ladder_focus_mid.qam",
+          "line": 68
+        },
+        {
+          "property_id": "p_mid_ladder_distribution",
+          "path": "experiment_data/models/Structure/ladder_focus_mid.qam",
+          "line": 74
+        }
+      ]
+    },
+    {
+      "row": 10,
+      "model_label": "Fanout focus",
+      "model": "experiment_data/models/Structure/fanout_focus_root.qam",
+      "source_files": [
+        {
+          "path": "experiment_data/models/Structure/fanout_focus_root.qam",
+          "sha256": "ce94147df639c137f02f9e4003948dff4add14746664fd16df2ce9e1997ab70f"
+        }
+      ],
+      "related_source_property_ids": [
+        "p_fanout_root_relation"
+      ],
+      "expected_satisfied": true,
+      "assertions": [
+        {
+          "id": "paper_fanout_equal",
+          "kind": "relation",
+          "nodes": [
+            "f4"
+          ],
+          "mode": "pointwise_all",
+          "qubits": [
+            "q0",
+            "q1",
+            "q2",
+            "q3"
+          ],
+          "basis": "Z",
+          "relation": "equal_bits"
+        }
+      ],
+      "source_property_locations": [
+        {
+          "property_id": "p_fanout_root_relation",
+          "path": "experiment_data/models/Structure/fanout_focus_root.qam",
+          "line": 67
+        }
+      ]
+    },
+    {
+      "row": 11,
+      "model_label": "Transient bridge",
+      "model": "experiment_data/models/Structure/transient_bridge_burst.qam",
+      "source_files": [
+        {
+          "path": "experiment_data/models/Structure/transient_bridge_burst.qam",
+          "sha256": "70d9a71c5ec50172390a75cd05704a5d8955ba0a7a1760ee9e10eb86f02934d9"
+        },
+        {
+          "path": "experiment_data/models/Structure/transient_bridge_burst.qprop",
+          "sha256": "af0f456515ac8764d8a453ef4bd26eed91467a5043483b50fa2638591f72e7f8"
+        }
+      ],
+      "related_source_property_ids": [
+        "tp_focus_preserved_during_transient_bridge"
+      ],
+      "expected_satisfied": true,
+      "assertions": [
+        {
+          "id": "paper_transient_focus",
+          "kind": "relation",
+          "nodes": [
+            "a2",
+            "a3",
+            "a4",
+            "a5",
+            "a6",
+            "f7"
+          ],
+          "mode": "pointwise_all",
+          "qubits": [
+            "q0",
+            "q1"
+          ],
+          "basis": "Z",
+          "relation": "equal_bits"
+        },
+        {
+          "id": "paper_transient_second_pair",
+          "kind": "relation",
+          "nodes": [
+            "a2",
+            "a3",
+            "a4",
+            "a5",
+            "a6",
+            "f7"
+          ],
+          "mode": "pointwise_any",
+          "qubits": [
+            "q4",
+            "q5"
+          ],
+          "basis": "Z",
+          "relation": "equal_bits"
+        }
+      ],
+      "source_property_locations": [
+        {
+          "property_id": "tp_focus_preserved_during_transient_bridge",
+          "path": "experiment_data/models/Structure/transient_bridge_burst.qprop",
+          "line": 2
+        }
+      ]
+    },
+    {
+      "row": 12,
+      "model_label": "Recurrent join/release",
+      "model": "experiment_data/models/Structure/recurrent_join_release.qam",
+      "source_files": [
+        {
+          "path": "experiment_data/models/Structure/recurrent_join_release.qam",
+          "sha256": "ad71f3e4006eedb3559e82abb485bc20f53a7ded37c1f7dbd71886f7383b3e28"
+        },
+        {
+          "path": "experiment_data/models/Structure/recurrent_join_release.qprop",
+          "sha256": "1a1f978eb78afc2c68cf17a665c409d09bb9be5b95d37232cae6dda0f15ff8c0"
+        }
+      ],
+      "related_source_property_ids": [
+        "tp_recurrent_focus_relation_persistent"
+      ],
+      "expected_satisfied": true,
+      "assertions": [
+        {
+          "id": "paper_recurrent_focus",
+          "kind": "relation",
+          "nodes": [
+            "a2",
+            "a3",
+            "a4",
+            "a5",
+            "f6"
+          ],
+          "mode": "pointwise_all",
+          "qubits": [
+            "q0",
+            "q1"
+          ],
+          "basis": "Z",
+          "relation": "equal_bits"
+        }
+      ],
+      "source_property_locations": [
+        {
+          "property_id": "tp_recurrent_focus_relation_persistent",
+          "path": "experiment_data/models/Structure/recurrent_join_release.qprop",
+          "line": 2
+        }
+      ]
+    },
+    {
+      "row": 13,
+      "model_label": "CCX ladder",
+      "model": "experiment_data/models/AbstractionPatterns/ccx_ladder_5.qam",
+      "source_files": [
+        {
+          "path": "experiment_data/models/AbstractionPatterns/ccx_ladder_5.qam",
+          "sha256": "8e42afbcfa525d64f2f7e142bb5462a505acc19c6671ec2c7b58659832f498f3"
+        }
+      ],
+      "related_source_property_ids": [
+        "p_ladder_tail_relation"
+      ],
+      "expected_satisfied": true,
+      "assertions": [
+        {
+          "id": "paper_ccx_tail",
+          "kind": "relation",
+          "nodes": [
+            "f5"
+          ],
+          "mode": "pointwise_all",
+          "qubits": [
+            "q2",
+            "q3",
+            "q4"
+          ],
+          "basis": "Z",
+          "relation": "equal_bits"
+        }
+      ],
+      "source_property_locations": [
+        {
+          "property_id": "p_ladder_tail_relation",
+          "path": "experiment_data/models/AbstractionPatterns/ccx_ladder_5.qam",
+          "line": 73
+        }
+      ]
+    },
+    {
+      "row": 14,
+      "model_label": "CCX ladder reach",
+      "model": "experiment_data/models/AbstractionPatterns/ccx_ladder_reach_9.qam",
+      "source_files": [
+        {
+          "path": "experiment_data/models/AbstractionPatterns/ccx_ladder_reach_9.qam",
+          "sha256": "6dbeb14d2f99e01d9a2eb8841e0f430eda8efbc8cd984f26394fa6415c98a309"
+        }
+      ],
+      "related_source_property_ids": [
+        "p_ladder_flag_reachable"
+      ],
+      "expected_satisfied": true,
+      "assertions": [
+        {
+          "id": "paper_ccx_reach",
+          "kind": "reachability",
+          "nodes": [
+            "a0",
+            "a1",
+            "a2",
+            "a3",
+            "a4",
+            "a5",
+            "a6",
+            "a7",
+            "f8"
+          ],
+          "mode": "pointwise_any",
+          "qubits": [
+            "q8"
+          ],
+          "basis": "Z",
+          "outcome": 1,
+          "threshold": 0
+        }
+      ],
+      "source_property_locations": [
+        {
+          "property_id": "p_ladder_flag_reachable",
+          "path": "experiment_data/models/AbstractionPatterns/ccx_ladder_reach_9.qam",
+          "line": 184
+        }
+      ]
+    },
+    {
+      "row": 15,
+      "model_label": "CCX ladder counter",
+      "model": "experiment_data/models/AbstractionPatterns/ccx_ladder_counter_9.qam",
+      "source_files": [
+        {
+          "path": "experiment_data/models/AbstractionPatterns/ccx_ladder_counter_9.qam",
+          "sha256": "5a2ea2c47f62cc65f0bd848f998a29c04f311773354a4bca8b5a2ff731078bc6"
+        }
+      ],
+      "related_source_property_ids": [
+        "p_ladder_flag_reachable"
+      ],
+      "expected_satisfied": false,
+      "assertions": [
+        {
+          "id": "paper_ccx_counter",
+          "kind": "reachability",
+          "nodes": [
+            "a0",
+            "a1",
+            "a2",
+            "a3",
+            "a4",
+            "a5",
+            "a6",
+            "f7"
+          ],
+          "mode": "pointwise_any",
+          "qubits": [
+            "q8"
+          ],
+          "basis": "Z",
+          "outcome": 1,
+          "threshold": 0
+        }
+      ],
+      "source_property_locations": [
+        {
+          "property_id": "p_ladder_flag_reachable",
+          "path": "experiment_data/models/AbstractionPatterns/ccx_ladder_counter_9.qam",
+          "line": 163
+        }
+      ]
+    },
+    {
+      "row": 16,
+      "model_label": "Split/merge",
+      "model": "experiment_data/models/AbstractionPatterns/split_merge_prob_8.qam",
+      "source_files": [
+        {
+          "path": "experiment_data/models/AbstractionPatterns/split_merge_prob_8.qam",
+          "sha256": "cde0bac819ec2e9bde64088b968ea9813da97e3641a5282d7d80da6efe31769d"
+        }
+      ],
+      "related_source_property_ids": [
+        "p_split_merge_basis_probability"
+      ],
+      "expected_satisfied": true,
+      "assertions": [
+        {
+          "id": "paper_split_merge",
+          "kind": "distribution",
+          "nodes": [
+            "f7"
+          ],
+          "mode": "pointwise_all",
+          "qubits": [
+            "q0",
+            "q1",
+            "q2",
+            "q3",
+            "q4",
+            "q5",
+            "q6",
+            "q7"
+          ],
+          "basis": "Z",
+          "expected_probabilities": {
+            "11101111": 1.0
+          }
+        }
+      ],
+      "source_property_locations": [
+        {
+          "property_id": "p_split_merge_basis_probability",
+          "path": "experiment_data/models/AbstractionPatterns/split_merge_prob_8.qam",
+          "line": 152
+        }
+      ]
+    },
+    {
+      "row": 17,
+      "model_label": "Split/merge counter",
+      "model": "experiment_data/models/AbstractionPatterns/split_merge_counter_8.qam",
+      "source_files": [
+        {
+          "path": "experiment_data/models/AbstractionPatterns/split_merge_counter_8.qam",
+          "sha256": "e8c66ddd31669744828ae3f3e89e7223555730eba2b14b0375accdea29d6b269"
+        }
+      ],
+      "related_source_property_ids": [
+        "p_split_merge_basis_probability"
+      ],
+      "expected_satisfied": false,
+      "assertions": [
+        {
+          "id": "paper_split_counter",
+          "kind": "distribution",
+          "nodes": [
+            "f6"
+          ],
+          "mode": "pointwise_all",
+          "qubits": [
+            "q0",
+            "q1",
+            "q2",
+            "q3",
+            "q4",
+            "q5",
+            "q6",
+            "q7"
+          ],
+          "basis": "Z",
+          "expected_probabilities": {
+            "11101111": 1.0
+          }
+        }
+      ],
+      "source_property_locations": [
+        {
+          "property_id": "p_split_merge_basis_probability",
+          "path": "experiment_data/models/AbstractionPatterns/split_merge_counter_8.qam",
+          "line": 136
+        }
+      ]
+    },
+    {
+      "row": 18,
+      "model_label": "Uncompute reach",
+      "model": "experiment_data/models/AbstractionPatterns/uncompute_reach_8.qam",
+      "source_files": [
+        {
+          "path": "experiment_data/models/AbstractionPatterns/uncompute_reach_8.qam",
+          "sha256": "b9b2e9a9288f79f8003d7c9d5b4e3eb9afb1525604820ffba923467f21da7e6e"
+        },
+        {
+          "path": "experiment_data/models/AbstractionPatterns/uncompute_reach_8.qprop",
+          "sha256": "02edc511cb27c8807ec7fd8450de01b732101cd3dc28fd631649da2de01fa8c9"
+        }
+      ],
+      "related_source_property_ids": [
+        "p_midway_mark_reachable",
+        "p_uncompute_mark_cleared_final"
+      ],
+      "expected_satisfied": true,
+      "assertions": [
+        {
+          "id": "paper_uncompute_reached",
+          "kind": "reachability",
+          "nodes": [
+            "a0",
+            "a1",
+            "a2",
+            "a3",
+            "a4",
+            "a5",
+            "f6"
+          ],
+          "mode": "pointwise_any",
+          "qubits": [
+            "q2"
+          ],
+          "basis": "Z",
+          "outcome": 1,
+          "threshold": 0
+        },
+        {
+          "id": "paper_uncompute_cleared",
+          "kind": "distribution",
+          "nodes": [
+            "f6"
+          ],
+          "mode": "pointwise_all",
+          "qubits": [
+            "q2"
+          ],
+          "basis": "Z",
+          "expected_probabilities": {
+            "0": 1.0
+          }
+        }
+      ],
+      "source_property_locations": [
+        {
+          "property_id": "p_midway_mark_reachable",
+          "path": "experiment_data/models/AbstractionPatterns/uncompute_reach_8.qam",
+          "line": 144
+        },
+        {
+          "property_id": "p_uncompute_mark_cleared_final",
+          "path": "experiment_data/models/AbstractionPatterns/uncompute_reach_8.qprop",
+          "line": 2
+        }
+      ]
+    },
+    {
+      "row": 19,
+      "model_label": "Uncompute counter",
+      "model": "experiment_data/models/AbstractionPatterns/uncompute_counter_8.qam",
+      "source_files": [
+        {
+          "path": "experiment_data/models/AbstractionPatterns/uncompute_counter_8.qam",
+          "sha256": "d73e145a9b677b38b3d7806ca8c4f40135fcf8698cb39e8a3c12cc4e5a7b3b82"
+        }
+      ],
+      "related_source_property_ids": [
+        "p_midway_mark_reachable"
+      ],
+      "expected_satisfied": false,
+      "assertions": [
+        {
+          "id": "paper_uncompute_counter",
+          "kind": "reachability",
+          "nodes": [
+            "a0",
+            "a1",
+            "a2",
+            "a3",
+            "f4"
+          ],
+          "mode": "pointwise_any",
+          "qubits": [
+            "q2"
+          ],
+          "basis": "Z",
+          "outcome": 1,
+          "threshold": 0
+        }
+      ],
+      "source_property_locations": [
+        {
+          "property_id": "p_midway_mark_reachable",
+          "path": "experiment_data/models/AbstractionPatterns/uncompute_counter_8.qam",
+          "line": 104
+        }
+      ]
+    },
+    {
+      "row": 20,
+      "model_label": "GHZ faulty",
+      "model": "experiment_data/models/FaultyVariants/GHZ/ghz_faulty_missing_tail.qam",
+      "source_files": [
+        {
+          "path": "experiment_data/models/FaultyVariants/GHZ/ghz_faulty_missing_tail.qam",
+          "sha256": "6a6bcf2367c523d3879086d2899b580cb4b629629f18f3639f0c92af26679643"
+        }
+      ],
+      "related_source_property_ids": [
+        "p_ghz_state_distribution"
+      ],
+      "expected_satisfied": false,
+      "assertions": [
+        {
+          "id": "paper_ghz_faulty",
+          "kind": "distribution",
+          "nodes": [
+            "f9"
+          ],
+          "mode": "pointwise_all",
+          "qubits": [
+            "q0",
+            "q1",
+            "q2",
+            "q3",
+            "q4",
+            "q5",
+            "q6",
+            "q7",
+            "q8",
+            "q9"
+          ],
+          "basis": "Z",
+          "expected_probabilities": {
+            "0000000000": 0.5,
+            "1111111111": 0.5
+          }
+        }
+      ],
+      "source_property_locations": [
+        {
+          "property_id": "p_ghz_state_distribution",
+          "path": "experiment_data/models/FaultyVariants/GHZ/ghz_faulty_missing_tail.qam",
+          "line": 66
+        }
+      ]
+    },
+    {
+      "row": 21,
+      "model_label": "Adder faulty",
+      "model": "experiment_data/models/FaultyVariants/Adder/adder_faulty_sum.qam",
+      "source_files": [
+        {
+          "path": "experiment_data/models/FaultyVariants/Adder/adder_faulty_sum.qam",
+          "sha256": "c35549657034f461d2da1191d6af04281864a671c0cc0c83c8118a870327fc15"
+        }
+      ],
+      "related_source_property_ids": [
+        "p_adder_output_probability"
+      ],
+      "expected_satisfied": false,
+      "assertions": [
+        {
+          "id": "paper_adder_faulty",
+          "kind": "distribution",
+          "nodes": [
+            "f28"
+          ],
+          "mode": "pointwise_all",
+          "qubits": [
+            "q0",
+            "q1",
+            "q2",
+            "q3",
+            "q4",
+            "q5",
+            "q6",
+            "q7",
+            "q8",
+            "q9"
+          ],
+          "basis": "Z",
+          "expected_probabilities": {
+            "0101000010": 1.0
+          }
+        }
+      ],
+      "source_property_locations": [
+        {
+          "property_id": "p_adder_output_probability",
+          "path": "experiment_data/models/FaultyVariants/Adder/adder_faulty_sum.qam",
+          "line": 161
+        }
+      ]
+    },
+    {
+      "row": 22,
+      "model_label": "BV faulty",
+      "model": "experiment_data/models/FaultyVariants/BV/bv_faulty_hidden_bit.qam",
+      "source_files": [
+        {
+          "path": "experiment_data/models/FaultyVariants/BV/bv_faulty_hidden_bit.qam",
+          "sha256": "aadb813ec8a2964e543c0eddf085ce3f96e6f0dd6c70d89c195047340f70c8aa"
+        }
+      ],
+      "related_source_property_ids": [
+        "p_bv_hidden_string_probability"
+      ],
+      "expected_satisfied": false,
+      "assertions": [
+        {
+          "id": "paper_bv_faulty",
+          "kind": "distribution",
+          "nodes": [
+            "f22"
+          ],
+          "mode": "pointwise_all",
+          "qubits": [
+            "q0",
+            "q1",
+            "q2",
+            "q3",
+            "q4",
+            "q5",
+            "q6",
+            "q7",
+            "q8"
+          ],
+          "basis": "Z",
+          "expected_probabilities": {
+            "100010001": 1.0
+          }
+        }
+      ],
+      "source_property_locations": [
+        {
+          "property_id": "p_bv_hidden_string_probability",
+          "path": "experiment_data/models/FaultyVariants/BV/bv_faulty_hidden_bit.qam",
+          "line": 131
+        }
+      ]
+    }
+  ]
+}

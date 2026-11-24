@@ -1,0 +1,38 @@
+{
+  "properties": [
+    {
+      "id": "p_single_excitation_support",
+      "kind": "relation",
+      "scope_kind": "anchors",
+      "scope_value": ["a1"],
+      "mode": "aggregate",
+      "expectation": [
+        "support_subset",
+        [
+          [1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 1, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 1, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 1, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0, 0, 1]
+        ]
+      ],
+      "observable": {
+        "kind": "quantum",
+        "qubits": ["q0", "q1", "q2", "q3", "q4", "q5", "q6", "q7", "q8", "q9"],
+        "basis": "Z"
+      }
+    }
+  ],
+  "temporal_properties": [
+    {
+      "id": "tp_single_excitation_until_uniform_middle",
+      "interval": ["a1", "f11"],
+      "formula": "p_single_excitation_support U p_middle_qubit_marginal"
+    }
+  ]
+}

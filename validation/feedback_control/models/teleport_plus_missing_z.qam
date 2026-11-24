@@ -1,0 +1,140 @@
+model teleport_plus
+
+qubits q0..q2
+gates H, CX, MZ, ID, X, Z
+
+state S0 initial {
+  active all
+  units {
+    unit_completion singletons
+  }
+}
+
+state S1 {
+  active all
+  units {
+    unit_completion singletons
+  }
+}
+
+state S2 {
+  active all
+  units {
+    unit_completion singletons
+  }
+}
+
+state S3 {
+  active all
+  units {
+    unit_completion singletons
+    bell: q1, q2
+  }
+}
+
+state S4 {
+  active all
+  units {
+    unit_completion remainder
+  }
+}
+
+state S5 {
+  active all
+  units {
+    unit_completion remainder
+  }
+}
+
+state S6 {
+  active -q0
+  units {
+    unit_completion remainder
+  }
+  measurement m0
+}
+
+state S7 {
+  active -q0, -q1
+  units {
+    unit_completion singletons
+  }
+  measurement m0, m1
+}
+
+state S8 {
+  active -q0, -q1
+  units {
+    unit_completion singletons
+  }
+  measurement m0, m1
+}
+
+state S9 {
+  active -q0, -q1
+  units {
+    unit_completion singletons
+  }
+  measurement m0, m1
+}
+
+transition t_prepare_source_plus: S0 -> S1 {
+  H(q0)
+}
+
+transition t_prepare_bell_h: S1 -> S2 {
+  H(q1)
+}
+
+transition t_prepare_bell_cx: S2 -> S3 {
+  CX(q1, q2)
+}
+
+transition t_bell_measure_cx: S3 -> S4 {
+  CX(q0, q1)
+}
+
+transition t_bell_measure_h: S4 -> S5 {
+  H(q0)
+}
+
+transition t_measure_source: S5 -> S6 {
+  MZ(q0) as m0
+}
+
+transition t_measure_pair: S6 -> S7 {
+  MZ(q1) as m1
+}
+
+transition t_correct_x: S7 {
+  when m1 == 0 -> S8: ID(q2)
+  when m1 == 1 -> S8: X(q2)
+}
+
+transition t_correct_z: S8 {
+  when m0 == 0 -> S9: ID(q2)
+  when m0 == 1 -> S9: ID(q2)
+}
+
+trace main {
+  a0: S0 initial
+  a0 --t_prepare_source_plus--> a1: S1
+  a1 --t_prepare_bell_h--> a2: S2
+  a2 --t_prepare_bell_cx--> a3: S3
+  a3 --t_bell_measure_cx--> a4: S4
+  a4 --t_bell_measure_h--> a5: S5
+  a5 --t_measure_source--> a6: S6
+  a6 --t_measure_pair--> a7: S7
+  a7 --t_correct_x--> a8: S8
+  a8 --t_correct_z--> f9: terminal S9
+}
+
+execution run_main {
+  trace main
+}
+
+property p_teleported_plus distribution {
+  anchors f9
+  observe dist(q2, X)
+  expect {0: 1}
+}

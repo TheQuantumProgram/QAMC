@@ -1,0 +1,4 @@
+[[temporal_properties]]
+id = "tp_route_selection_persistent"
+interval = ["a0", "f10"]
+formula = "G [route == 2]"

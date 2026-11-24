@@ -1,0 +1,161 @@
+model bit_flip_syndrome_q1
+
+qubits q0..q4
+gates X, CX, MZ, ID
+
+state S0 initial {
+  active all
+  units {
+    unit_completion singletons
+  }
+}
+
+state S1 {
+  active all
+  units {
+    unit_completion singletons
+  }
+}
+
+state S2 {
+  active all
+  units {
+    unit_completion singletons
+  }
+}
+
+state S3 {
+  active all
+  units {
+    unit_completion singletons
+  }
+}
+
+state S4 {
+  active all
+  units {
+    unit_completion singletons
+  }
+}
+
+state S5 {
+  active all
+  units {
+    unit_completion singletons
+  }
+}
+
+state S6 {
+  active all
+  units {
+    unit_completion singletons
+  }
+}
+
+state S7 {
+  active all
+  units {
+    unit_completion singletons
+  }
+}
+
+state S8 {
+  active all
+  units {
+    unit_completion singletons
+  }
+}
+
+state S9 {
+  active -q3
+  units {
+    unit_completion singletons
+  }
+  measurement m0
+}
+
+state S10 {
+  active -q3, -q4
+  units {
+    unit_completion singletons
+  }
+  measurement m0, m1
+}
+
+state S11 {
+  active -q3, -q4
+  units {
+    unit_completion singletons
+  }
+  measurement m0, m1
+}
+
+transition t_set_logical_one: S0 -> S1 {
+  X(q0)
+}
+
+transition t_encode_copy_q1: S1 -> S2 {
+  CX(q0, q1)
+}
+
+transition t_encode_copy_q2: S2 -> S3 {
+  CX(q0, q2)
+}
+
+transition t_inject_q1_error: S3 -> S4 {
+  X(q1)
+}
+
+transition t_syndrome_01_a: S4 -> S5 {
+  CX(q0, q3)
+}
+
+transition t_syndrome_01_b: S5 -> S6 {
+  CX(q1, q3)
+}
+
+transition t_syndrome_12_a: S6 -> S7 {
+  CX(q1, q4)
+}
+
+transition t_syndrome_12_b: S7 -> S8 {
+  CX(q2, q4)
+}
+
+transition t_measure_s0: S8 -> S9 {
+  MZ(q3) as m0
+}
+
+transition t_measure_s1: S9 -> S10 {
+  MZ(q4) as m1
+}
+
+transition t_correct_q1: S10 {
+  when m0 == 0 -> S11: ID(q1)
+  when m0 == 1 -> S11: X(q1)
+}
+
+trace main {
+  a0: S0 initial
+  a0 --t_set_logical_one--> a1: S1
+  a1 --t_encode_copy_q1--> a2: S2
+  a2 --t_encode_copy_q2--> a3: S3
+  a3 --t_inject_q1_error--> a4: S4
+  a4 --t_syndrome_01_a--> a5: S5
+  a5 --t_syndrome_01_b--> a6: S6
+  a6 --t_syndrome_12_a--> a7: S7
+  a7 --t_syndrome_12_b--> a8: S8
+  a8 --t_measure_s0--> a9: S9
+  a9 --t_measure_s1--> a10: S10
+  a10 --t_correct_q1--> f11: terminal S11
+}
+
+execution run_main {
+  trace main
+}
+
+property p_corrected_logical_one distribution {
+  anchors f11
+  observe dist(q0, q1, q2, Z)
+  expect {(1, 1, 1): 1}
+}

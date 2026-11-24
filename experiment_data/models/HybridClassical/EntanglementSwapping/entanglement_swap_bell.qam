@@ -1,0 +1,155 @@
+model entanglement_swap_bell
+
+qubits q0..q3
+gates H, CX, MZ, ID, X, Z
+
+state S0 initial {
+  active all
+  units {
+    unit_completion singletons
+  }
+}
+
+state S1 {
+  active all
+  units {
+    unit_completion singletons
+  }
+}
+
+state S2 {
+  active all
+  units {
+    unit_completion singletons
+    left: q0, q1
+  }
+}
+
+state S3 {
+  active all
+  units {
+    unit_completion singletons
+    left: q0, q1
+  }
+}
+
+state S4 {
+  active all
+  units {
+    unit_completion singletons
+    left: q0, q1
+    right: q2, q3
+  }
+}
+
+state S5 {
+  active all
+  units {
+    unit_completion remainder
+  }
+}
+
+state S6 {
+  active all
+  units {
+    unit_completion remainder
+  }
+}
+
+state S7 {
+  active -q1
+  units {
+    unit_completion remainder
+  }
+  measurement m0
+}
+
+state S8 {
+  active -q1, -q2
+  units {
+    unit_completion remainder
+  }
+  measurement m0, m1
+}
+
+state S9 {
+  active -q1, -q2
+  units {
+    unit_completion remainder
+  }
+  measurement m0, m1
+}
+
+state S10 {
+  active -q1, -q2
+  units {
+    unit_completion remainder
+  }
+  measurement m0, m1
+}
+
+transition t_prepare_left_h: S0 -> S1 {
+  H(q0)
+}
+
+transition t_prepare_left_cx: S1 -> S2 {
+  CX(q0, q1)
+}
+
+transition t_prepare_right_h: S2 -> S3 {
+  H(q2)
+}
+
+transition t_prepare_right_cx: S3 -> S4 {
+  CX(q2, q3)
+}
+
+transition t_bell_measure_cx: S4 -> S5 {
+  CX(q1, q2)
+}
+
+transition t_bell_measure_h: S5 -> S6 {
+  H(q1)
+}
+
+transition t_measure_left: S6 -> S7 {
+  MZ(q1) as m0
+}
+
+transition t_measure_right: S7 -> S8 {
+  MZ(q2) as m1
+}
+
+transition t_correct_x: S8 {
+  when m1 == 0 -> S9: ID(q3)
+  when m1 == 1 -> S9: X(q3)
+}
+
+transition t_correct_z: S9 {
+  when m0 == 0 -> S10: ID(q3)
+  when m0 == 1 -> S10: Z(q3)
+}
+
+trace main {
+  a0: S0 initial
+  a0 --t_prepare_left_h--> a1: S1
+  a1 --t_prepare_left_cx--> a2: S2
+  a2 --t_prepare_right_h--> a3: S3
+  a3 --t_prepare_right_cx--> a4: S4
+  a4 --t_bell_measure_cx--> a5: S5
+  a5 --t_bell_measure_h--> a6: S6
+  a6 --t_measure_left--> a7: S7
+  a7 --t_measure_right--> a8: S8
+  a8 --t_correct_x--> a9: S9
+  a9 --t_correct_z--> f10: terminal S10
+}
+
+execution run_main {
+  trace main
+}
+
+property p_swapped_pair_distribution distribution {
+  anchors f10
+  observe dist(q0, q3, Z)
+  expect {(0,0): 0.5, (1,1): 0.5}
+}

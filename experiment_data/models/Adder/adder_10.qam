@@ -1,0 +1,718 @@
+model adder_10
+
+qubits q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+gates CCX, CX, X
+state s0 initial {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u4: q4
+    u5: q5
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s1 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u4: q4
+    u5: q5
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s2 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u4: q4
+    u5: q5
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s3 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u4: q4
+    u5: q5
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s4 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u4: q4
+    u5: q5
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s5 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    pair_0: q1, q5
+    u0: q0
+    u2: q2
+    u3: q3
+    u4: q4
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s6 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    carry_0: q0, q1, q5
+    u2: q2
+    u3: q3
+    u4: q4
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s7 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u4: q4
+    u5: q5
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s8 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    pair_1: q2, q6
+    u0: q0
+    u1: q1
+    u3: q3
+    u4: q4
+    u5: q5
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s9 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    carry_1: q1, q2, q6
+    u0: q0
+    u3: q3
+    u4: q4
+    u5: q5
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s10 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u4: q4
+    u5: q5
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s11 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    pair_2: q3, q7
+    u0: q0
+    u1: q1
+    u2: q2
+    u4: q4
+    u5: q5
+    u6: q6
+    u8: q8
+    u9: q9
+  }
+}
+
+state s12 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    carry_2: q2, q3, q7
+    u0: q0
+    u1: q1
+    u4: q4
+    u5: q5
+    u6: q6
+    u8: q8
+    u9: q9
+  }
+}
+
+state s13 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u4: q4
+    u5: q5
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s14 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    pair_3: q4, q8
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u5: q5
+    u6: q6
+    u7: q7
+    u9: q9
+  }
+}
+
+state s15 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    carry_3: q3, q4, q8
+    u0: q0
+    u1: q1
+    u2: q2
+    u5: q5
+    u6: q6
+    u7: q7
+    u9: q9
+  }
+}
+
+state s16 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u4: q4
+    u5: q5
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s17 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u4: q4
+    u5: q5
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s18 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    carry_3: q3, q4, q8
+    u0: q0
+    u1: q1
+    u2: q2
+    u5: q5
+    u6: q6
+    u7: q7
+    u9: q9
+  }
+}
+
+state s19 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    carry_3: q3, q4, q8
+    u0: q0
+    u1: q1
+    u2: q2
+    u5: q5
+    u6: q6
+    u7: q7
+    u9: q9
+  }
+}
+
+state s20 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u4: q4
+    u5: q5
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s21 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    carry_2: q2, q3, q7
+    u0: q0
+    u1: q1
+    u4: q4
+    u5: q5
+    u6: q6
+    u8: q8
+    u9: q9
+  }
+}
+
+state s22 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    carry_2: q2, q3, q7
+    u0: q0
+    u1: q1
+    u4: q4
+    u5: q5
+    u6: q6
+    u8: q8
+    u9: q9
+  }
+}
+
+state s23 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u4: q4
+    u5: q5
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s24 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    carry_1: q1, q2, q6
+    u0: q0
+    u3: q3
+    u4: q4
+    u5: q5
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s25 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    carry_1: q1, q2, q6
+    u0: q0
+    u3: q3
+    u4: q4
+    u5: q5
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s26 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u4: q4
+    u5: q5
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s27 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    carry_0: q0, q1, q5
+    u2: q2
+    u3: q3
+    u4: q4
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s28 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    carry_0: q0, q1, q5
+    u2: q2
+    u3: q3
+    u4: q4
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s29 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u4: q4
+    u5: q5
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+transition t000_x: s0 -> s1 {
+  X(q1)
+}
+
+transition t001_x: s1 -> s2 {
+  X(q3)
+}
+
+transition t002_x: s2 -> s3 {
+  X(q5)
+}
+
+transition t003_x: s3 -> s4 {
+  X(q6)
+}
+
+transition t004_cx: s4 -> s5 {
+  CX(q1, q5)
+}
+
+transition t005_cx: s5 -> s6 {
+  CX(q1, q0)
+}
+
+transition t006_ccx: s6 -> s7 {
+  CCX(q0, q5, q1)
+}
+
+transition t007_cx: s7 -> s8 {
+  CX(q2, q6)
+}
+
+transition t008_cx: s8 -> s9 {
+  CX(q2, q1)
+}
+
+transition t009_ccx: s9 -> s10 {
+  CCX(q1, q6, q2)
+}
+
+transition t010_cx: s10 -> s11 {
+  CX(q3, q7)
+}
+
+transition t011_cx: s11 -> s12 {
+  CX(q3, q2)
+}
+
+transition t012_ccx: s12 -> s13 {
+  CCX(q2, q7, q3)
+}
+
+transition t013_cx: s13 -> s14 {
+  CX(q4, q8)
+}
+
+transition t014_cx: s14 -> s15 {
+  CX(q4, q3)
+}
+
+transition t015_ccx: s15 -> s16 {
+  CCX(q3, q8, q4)
+}
+
+transition t016_cx: s16 -> s17 {
+  CX(q4, q9)
+}
+
+transition t017_ccx: s17 -> s18 {
+  CCX(q3, q8, q4)
+}
+
+transition t018_cx: s18 -> s19 {
+  CX(q4, q3)
+}
+
+transition t019_cx: s19 -> s20 {
+  CX(q3, q8)
+}
+
+transition t020_ccx: s20 -> s21 {
+  CCX(q2, q7, q3)
+}
+
+transition t021_cx: s21 -> s22 {
+  CX(q3, q2)
+}
+
+transition t022_cx: s22 -> s23 {
+  CX(q2, q7)
+}
+
+transition t023_ccx: s23 -> s24 {
+  CCX(q1, q6, q2)
+}
+
+transition t024_cx: s24 -> s25 {
+  CX(q2, q1)
+}
+
+transition t025_cx: s25 -> s26 {
+  CX(q1, q6)
+}
+
+transition t026_ccx: s26 -> s27 {
+  CCX(q0, q5, q1)
+}
+
+transition t027_cx: s27 -> s28 {
+  CX(q1, q0)
+}
+
+transition t028_cx: s28 -> s29 {
+  CX(q0, q5)
+}
+
+trace main {
+  a0: s0 initial
+  a0 --t000_x--> a1: s1
+  a1 --t001_x--> a2: s2
+  a2 --t002_x--> a3: s3
+  a3 --t003_x--> a4: s4
+  a4 --t004_cx--> a5: s5
+  a5 --t005_cx--> a6: s6
+  a6 --t006_ccx--> a7: s7
+  a7 --t007_cx--> a8: s8
+  a8 --t008_cx--> a9: s9
+  a9 --t009_ccx--> a10: s10
+  a10 --t010_cx--> a11: s11
+  a11 --t011_cx--> a12: s12
+  a12 --t012_ccx--> a13: s13
+  a13 --t013_cx--> a14: s14
+  a14 --t014_cx--> a15: s15
+  a15 --t015_ccx--> a16: s16
+  a16 --t016_cx--> a17: s17
+  a17 --t017_ccx--> a18: s18
+  a18 --t018_cx--> a19: s19
+  a19 --t019_cx--> a20: s20
+  a20 --t020_ccx--> a21: s21
+  a21 --t021_cx--> a22: s22
+  a22 --t022_cx--> a23: s23
+  a23 --t023_ccx--> a24: s24
+  a24 --t024_cx--> a25: s25
+  a25 --t025_cx--> a26: s26
+  a26 --t026_ccx--> a27: s27
+  a27 --t027_cx--> a28: s28
+  a28 --t028_cx--> f29: terminal s29
+}
+
+execution run_main {
+  trace main
+}
+
+property p_adder_output_probability_q0 reachability {
+  anchors f29
+  mode pointwise_any
+  observe dist(q0, Z)
+  expect 0
+  threshold 0.999999
+}
+
+property p_adder_output_probability_q1 reachability {
+  anchors f29
+  mode pointwise_any
+  observe dist(q1, Z)
+  expect 1
+  threshold 0.999999
+}
+
+property p_adder_output_probability_q2 reachability {
+  anchors f29
+  mode pointwise_any
+  observe dist(q2, Z)
+  expect 0
+  threshold 0.999999
+}
+
+property p_adder_output_probability_q3 reachability {
+  anchors f29
+  mode pointwise_any
+  observe dist(q3, Z)
+  expect 1
+  threshold 0.999999
+}
+
+property p_adder_output_probability_q4 reachability {
+  anchors f29
+  mode pointwise_any
+  observe dist(q4, Z)
+  expect 0
+  threshold 0.999999
+}
+
+property p_adder_output_probability_q5 reachability {
+  anchors f29
+  mode pointwise_any
+  observe dist(q5, Z)
+  expect 0
+  threshold 0.999999
+}
+
+property p_adder_output_probability_q6 reachability {
+  anchors f29
+  mode pointwise_any
+  observe dist(q6, Z)
+  expect 0
+  threshold 0.999999
+}
+
+property p_adder_output_probability_q7 reachability {
+  anchors f29
+  mode pointwise_any
+  observe dist(q7, Z)
+  expect 0
+  threshold 0.999999
+}
+
+property p_adder_output_probability_q8 reachability {
+  anchors f29
+  mode pointwise_any
+  observe dist(q8, Z)
+  expect 1
+  threshold 0.999999
+}
+
+property p_adder_output_probability_q9 reachability {
+  anchors f29
+  mode pointwise_any
+  observe dist(q9, Z)
+  expect 0
+  threshold 0.999999
+}

@@ -1,0 +1,4 @@
+[[temporal_properties]]
+id = "tp_focus_preserved_during_transient_bridge"
+interval = ["a2", "f7"]
+formula = "G [rel(q0,q1,Z) == equal_bits] && F [rel(q4,q5,Z) == equal_bits]"

@@ -1,0 +1,169 @@
+model ccx_ladder_counter_9
+
+qubits q0, q1, q2, q3, q4, q5, q6, q7, q8
+gates CCX, CX, X
+state s0 initial {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8
+  units {
+    unit_completion singletons
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u4: q4
+    u5: q5
+    u6: q6
+    u7: q7
+    u8: q8
+  }
+}
+
+state s1 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8
+  units {
+    unit_completion singletons
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u4: q4
+    u5: q5
+    u6: q6
+    u7: q7
+    u8: q8
+  }
+}
+
+state s2 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8
+  units {
+    unit_completion singletons
+    w012: q0, q1, q2
+    u3: q3
+    u4: q4
+    u5: q5
+    u6: q6
+    u7: q7
+    u8: q8
+  }
+}
+
+state s3 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8
+  units {
+    unit_completion singletons
+    u0: q0
+    w123: q1, q2, q3
+    u4: q4
+    u5: q5
+    u6: q6
+    u7: q7
+    u8: q8
+  }
+}
+
+state s4 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8
+  units {
+    unit_completion singletons
+    u0: q0
+    u1: q1
+    w234: q2, q3, q4
+    u5: q5
+    u6: q6
+    u7: q7
+    u8: q8
+  }
+}
+
+state s5 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8
+  units {
+    unit_completion singletons
+    u0: q0
+    u1: q1
+    w234: q2, q3, q4
+    u5: q5
+    u6: q6
+    u7: q7
+    u8: q8
+  }
+}
+
+state s6 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8
+  units {
+    unit_completion singletons
+    u0: q0
+    u1: q1
+    w234: q2, q3, q4
+    u5: q5
+    u67: q6, q7
+    u8: q8
+  }
+}
+
+state s7 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8
+  units {
+    unit_completion singletons
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u5: q5
+    u6: q6
+    w478: q4, q7, q8
+  }
+}
+
+transition t000_x: s0 -> s1 {
+  X(q0)
+}
+
+transition t001_ccx: s1 -> s2 {
+  CCX(q0, q1, q2)
+}
+
+transition t002_ccx: s2 -> s3 {
+  CCX(q1, q2, q3)
+}
+
+transition t003_ccx: s3 -> s4 {
+  CCX(q2, q3, q4)
+}
+
+transition t004_x: s4 -> s5 {
+  X(q6)
+}
+
+transition t005_cx: s5 -> s6 {
+  CX(q6, q7)
+}
+
+transition t006_ccx: s6 -> s7 {
+  CCX(q4, q7, q8)
+}
+
+trace main {
+  a0: s0 initial
+  a0 --t000_x--> a1: s1
+  a1 --t001_ccx--> a2: s2
+  a2 --t002_ccx--> a3: s3
+  a3 --t003_ccx--> a4: s4
+  a4 --t004_x--> a5: s5
+  a5 --t005_cx--> a6: s6
+  a6 --t006_ccx--> f7: terminal s7
+}
+
+execution run_main {
+  trace main
+}
+
+property p_ladder_flag_reachable reachability {
+  anchors a0, a1, a2, a3, a4, a5, a6, f7
+  mode pointwise_any
+  observe dist(q8, Z)
+  expect 1
+  threshold 0
+}

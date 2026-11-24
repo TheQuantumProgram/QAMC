@@ -1,0 +1,180 @@
+model w10_rbs
+
+qubits q0..q9
+gates X, RBS, ID
+
+state S0 initial {
+  active all
+  units {
+    unit_completion singletons
+  }
+}
+
+state S1 {
+  active all
+  units {
+    unit_completion singletons
+  }
+}
+
+state S2 {
+  active all
+  units {
+    unit_completion singletons
+    prefix01: q0, q1
+  }
+}
+
+state S3 {
+  active all
+  units {
+    unit_completion singletons
+    prefix012: q0, q1, q2
+  }
+}
+
+state S4 {
+  active all
+  units {
+    unit_completion singletons
+    prefix0123: q0, q1, q2, q3
+  }
+}
+
+state S5 {
+  active all
+  units {
+    unit_completion singletons
+    prefix01234: q0, q1, q2, q3, q4
+  }
+}
+
+state S6 {
+  active all
+  units {
+    unit_completion singletons
+    prefix012345: q0, q1, q2, q3, q4, q5
+  }
+}
+
+state S7 {
+  active all
+  units {
+    unit_completion singletons
+    prefix0123456: q0, q1, q2, q3, q4, q5, q6
+  }
+}
+
+state S8 {
+  active all
+  units {
+    unit_completion singletons
+    prefix01234567: q0, q1, q2, q3, q4, q5, q6, q7
+  }
+}
+
+state S9 {
+  active all
+  units {
+    unit_completion singletons
+    prefix012345678: q0, q1, q2, q3, q4, q5, q6, q7, q8
+  }
+}
+
+state S10 {
+  active all
+  units {
+    unit_completion singletons
+    w: q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  }
+}
+
+state S11 {
+  active all
+  units {
+    unit_completion singletons
+    edge01: q0, q1
+    edge89: q8, q9
+  }
+}
+
+transition t_seed_excitation: S0 -> S1 {
+  X(q0)
+}
+
+transition t_split_10: S1 -> S2 {
+  RBS(q0, q1, 1.2490457723982544)
+}
+
+transition t_split_9: S2 -> S3 {
+  RBS(q1, q2, 1.2309594173407747)
+}
+
+transition t_split_8: S3 -> S4 {
+  RBS(q2, q3, 1.2094292028881888)
+}
+
+transition t_split_7: S4 -> S5 {
+  RBS(q3, q4, 1.183199640139716)
+}
+
+transition t_split_6: S5 -> S6 {
+  RBS(q4, q5, 1.1502619915109316)
+}
+
+transition t_split_5: S6 -> S7 {
+  RBS(q5, q6, 1.1071487177940904)
+}
+
+transition t_split_4: S7 -> S8 {
+  RBS(q6, q7, 1.0471975511965979)
+}
+
+transition t_split_3: S8 -> S9 {
+  RBS(q7, q8, 0.9553166181245092)
+}
+
+transition t_split_2: S9 -> S10 {
+  RBS(q8, q9, 0.7853981633974484)
+}
+
+transition t_release_local_summaries: S10 -> S11 {
+  ID(q0)
+}
+
+trace main {
+  a0: S0 initial
+  a0 --t_seed_excitation--> a1: S1
+  a1 --t_split_10--> a2: S2
+  a2 --t_split_9--> a3: S3
+  a3 --t_split_8--> a4: S4
+  a4 --t_split_7--> a5: S5
+  a5 --t_split_6--> a6: S6
+  a6 --t_split_5--> a7: S7
+  a7 --t_split_4--> a8: S8
+  a8 --t_split_3--> a9: S9
+  a9 --t_split_2--> a10: S10
+  a10 --t_release_local_summaries--> f11: terminal S11
+}
+
+execution run_main {
+  trace main
+}
+
+property p_middle_qubit_marginal distribution {
+  anchors f11
+  observe dist(q4, Z)
+  expect {0: 0.9, 1: 0.1}
+}
+
+property p_first_edge_marginal distribution {
+  anchors f11
+  observe dist(q0, q1, Z)
+  expect {(0, 0): 0.8, (0, 1): 0.1, (1, 0): 0.1, (1, 1): 0}
+}
+
+property p_last_edge_marginal distribution {
+  anchors f11
+  observe dist(q8, q9, Z)
+  expect {(0, 0): 0.8, (0, 1): 0.1, (1, 0): 0.1, (1, 1): 0}
+}

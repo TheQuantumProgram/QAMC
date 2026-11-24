@@ -1,0 +1,70 @@
+model ghz_faulty_missing_tail
+
+qubits q0..q9
+gates H, CX
+
+state S initial {
+  active all
+  units {
+    unit_completion singletons
+  }
+}
+
+transition t_h0: S -> S {
+  H(q0)
+}
+
+transition t_cx01: S -> S {
+  CX(q0, q1)
+}
+
+transition t_cx12: S -> S {
+  CX(q1, q2)
+}
+
+transition t_cx23: S -> S {
+  CX(q2, q3)
+}
+
+transition t_cx34: S -> S {
+  CX(q3, q4)
+}
+
+transition t_cx45: S -> S {
+  CX(q4, q5)
+}
+
+transition t_cx56: S -> S {
+  CX(q5, q6)
+}
+
+transition t_cx67: S -> S {
+  CX(q6, q7)
+}
+
+transition t_cx78: S -> S {
+  CX(q7, q8)
+}
+
+trace main {
+  a0: S initial
+  a0 --t_h0--> a1: S
+  a1 --t_cx01--> a2: S
+  a2 --t_cx12--> a3: S
+  a3 --t_cx23--> a4: S
+  a4 --t_cx34--> a5: S
+  a5 --t_cx45--> a6: S
+  a6 --t_cx56--> a7: S
+  a7 --t_cx67--> a8: S
+  a8 --t_cx78--> f9: terminal S
+}
+
+execution run_main {
+  trace main
+}
+
+property p_ghz_state_distribution distribution {
+  anchors f9
+  observe dist(q0, q1, q2, q3, q4, q5, q6, q7, q8, q9, Z)
+  expect {(0,0,0,0,0,0,0,0,0,0): 0.5, (1,1,1,1,1,1,1,1,1,1): 0.5}
+}

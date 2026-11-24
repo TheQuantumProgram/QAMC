@@ -1,0 +1,83 @@
+model ccx_ladder_5
+
+qubits q0..q4
+gates H, CX, CCX
+
+state S0 initial {
+  active q0..q4
+}
+
+state S012 {
+  active q0..q4
+  units {
+    unit_completion singletons
+    u012: q0, q1, q2
+    q3: q3
+    q4: q4
+  }
+}
+
+state S23 {
+  active q0..q4
+  units {
+    unit_completion singletons
+    u012: q0, q1, q2
+    u23: q2, q3
+    q4: q4
+  }
+}
+
+state S34 {
+  active q0..q4
+  units {
+    unit_completion singletons
+    u012: q0, q1, q2
+    u23: q2, q3
+    u34: q3, q4
+  }
+}
+
+transition t_h0: S0 -> S0 {
+  H(q0)
+}
+
+transition t_h1: S0 -> S0 {
+  H(q1)
+}
+
+transition t_ccx012: S0 -> S012 {
+  CCX(q0, q1, q2)
+}
+
+transition t_cx23: S012 -> S23 {
+  CX(q2, q3)
+}
+
+transition t_cx34: S23 -> S34 {
+  CX(q3, q4)
+}
+
+trace main {
+  a0: S0 initial
+  a0 --t_h0--> a1: S0
+  a1 --t_h1--> a2: S0
+  a2 --t_ccx012--> a3: S012
+  a3 --t_cx23--> a4: S23
+  a4 --t_cx34--> f5: terminal S34
+}
+
+execution run_main {
+  trace main
+}
+
+property p_ladder_tail_relation relation {
+  anchors f5
+  observe dist(q2, q3, q4, Z)
+  expect equal_bits
+}
+
+property p_ladder_core_distribution distribution {
+  anchors f5
+  observe dist(q2, q3, Z)
+  expect {(0,0): 0.75, (1,1): 0.25}
+}

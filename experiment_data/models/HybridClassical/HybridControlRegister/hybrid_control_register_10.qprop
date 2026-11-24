@@ -1,0 +1,9 @@
+[[temporal_properties]]
+id = "tp_enable_persistent"
+interval = ["a0", "f11"]
+formula = "G [enable == 1]"
+
+[[temporal_properties]]
+id = "tp_measurement_record_visible"
+interval = ["a0", "f11"]
+formula = "F [m0 in {0,1}]"

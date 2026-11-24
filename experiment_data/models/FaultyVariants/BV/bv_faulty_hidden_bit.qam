@@ -1,0 +1,135 @@
+model bv_faulty_hidden_bit
+
+qubits q0..q9
+gates X, H, CX
+
+state S initial {
+  active all
+  units {
+    unit_completion singletons
+  }
+}
+
+transition t_prepare_minus_x: S -> S {
+  X(q9)
+}
+
+transition t_prepare_minus_h: S -> S {
+  H(q9)
+}
+
+transition t_h0: S -> S {
+  H(q0)
+}
+
+transition t_h1: S -> S {
+  H(q1)
+}
+
+transition t_h2: S -> S {
+  H(q2)
+}
+
+transition t_h3: S -> S {
+  H(q3)
+}
+
+transition t_h4: S -> S {
+  H(q4)
+}
+
+transition t_h5: S -> S {
+  H(q5)
+}
+
+transition t_h6: S -> S {
+  H(q6)
+}
+
+transition t_h7: S -> S {
+  H(q7)
+}
+
+transition t_h8: S -> S {
+  H(q8)
+}
+
+transition t_oracle_q0: S -> S {
+  CX(q0, q9)
+}
+
+transition t_oracle_q4: S -> S {
+  CX(q4, q9)
+}
+
+transition t_final_h0: S -> S {
+  H(q0)
+}
+
+transition t_final_h1: S -> S {
+  H(q1)
+}
+
+transition t_final_h2: S -> S {
+  H(q2)
+}
+
+transition t_final_h3: S -> S {
+  H(q3)
+}
+
+transition t_final_h4: S -> S {
+  H(q4)
+}
+
+transition t_final_h5: S -> S {
+  H(q5)
+}
+
+transition t_final_h6: S -> S {
+  H(q6)
+}
+
+transition t_final_h7: S -> S {
+  H(q7)
+}
+
+transition t_final_h8: S -> S {
+  H(q8)
+}
+
+trace main {
+  a0: S initial
+  a0 --t_prepare_minus_x--> a1: S
+  a1 --t_prepare_minus_h--> a2: S
+  a2 --t_h0--> a3: S
+  a3 --t_h1--> a4: S
+  a4 --t_h2--> a5: S
+  a5 --t_h3--> a6: S
+  a6 --t_h4--> a7: S
+  a7 --t_h5--> a8: S
+  a8 --t_h6--> a9: S
+  a9 --t_h7--> a10: S
+  a10 --t_h8--> a11: S
+  a11 --t_oracle_q0--> a12: S
+  a12 --t_oracle_q4--> a13: S
+  a13 --t_final_h0--> a14: S
+  a14 --t_final_h1--> a15: S
+  a15 --t_final_h2--> a16: S
+  a16 --t_final_h3--> a17: S
+  a17 --t_final_h4--> a18: S
+  a18 --t_final_h5--> a19: S
+  a19 --t_final_h6--> a20: S
+  a20 --t_final_h7--> a21: S
+  a21 --t_final_h8--> f22: terminal S
+}
+
+execution run_main {
+  trace main
+}
+
+property p_bv_hidden_string_probability distribution {
+  anchors f22
+  observe dist(q0, q1, q2, q3, q4, q5, q6, q7, q8, Z)
+  expect {(1, 0, 0, 0, 1, 0, 0, 0, 1): 1}
+}

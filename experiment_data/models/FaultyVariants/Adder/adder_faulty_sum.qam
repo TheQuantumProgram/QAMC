@@ -1,0 +1,165 @@
+model adder_faulty_sum
+
+qubits q0..q9
+gates X, CX, CCX
+
+state S initial {
+  active all
+  units {
+    unit_completion singletons
+  }
+}
+
+transition t000_x: S -> S {
+  X(q1)
+}
+
+transition t001_x: S -> S {
+  X(q2)
+}
+
+transition t002_x: S -> S {
+  X(q5)
+}
+
+transition t003_x: S -> S {
+  X(q6)
+}
+
+transition t004_cx: S -> S {
+  CX(q1, q5)
+}
+
+transition t005_cx: S -> S {
+  CX(q1, q0)
+}
+
+transition t006_ccx: S -> S {
+  CCX(q0, q5, q1)
+}
+
+transition t007_cx: S -> S {
+  CX(q2, q6)
+}
+
+transition t008_cx: S -> S {
+  CX(q2, q1)
+}
+
+transition t009_ccx: S -> S {
+  CCX(q1, q6, q2)
+}
+
+transition t010_cx: S -> S {
+  CX(q3, q7)
+}
+
+transition t011_cx: S -> S {
+  CX(q3, q2)
+}
+
+transition t012_ccx: S -> S {
+  CCX(q2, q7, q3)
+}
+
+transition t013_cx: S -> S {
+  CX(q4, q8)
+}
+
+transition t014_cx: S -> S {
+  CX(q4, q3)
+}
+
+transition t015_ccx: S -> S {
+  CCX(q3, q8, q4)
+}
+
+transition t016_cx: S -> S {
+  CX(q4, q9)
+}
+
+transition t017_ccx: S -> S {
+  CCX(q3, q8, q4)
+}
+
+transition t018_cx: S -> S {
+  CX(q4, q3)
+}
+
+transition t019_cx: S -> S {
+  CX(q3, q8)
+}
+
+transition t020_ccx: S -> S {
+  CCX(q2, q7, q3)
+}
+
+transition t021_cx: S -> S {
+  CX(q3, q2)
+}
+
+transition t022_cx: S -> S {
+  CX(q2, q7)
+}
+
+transition t023_ccx: S -> S {
+  CCX(q1, q6, q2)
+}
+
+transition t024_cx: S -> S {
+  CX(q2, q1)
+}
+
+transition t025_cx: S -> S {
+  CX(q1, q6)
+}
+
+transition t026_ccx: S -> S {
+  CCX(q0, q5, q1)
+}
+
+transition t027_cx: S -> S {
+  CX(q1, q0)
+}
+
+trace main {
+  a0: S initial
+  a0 --t000_x--> a1: S
+  a1 --t001_x--> a2: S
+  a2 --t002_x--> a3: S
+  a3 --t003_x--> a4: S
+  a4 --t004_cx--> a5: S
+  a5 --t005_cx--> a6: S
+  a6 --t006_ccx--> a7: S
+  a7 --t007_cx--> a8: S
+  a8 --t008_cx--> a9: S
+  a9 --t009_ccx--> a10: S
+  a10 --t010_cx--> a11: S
+  a11 --t011_cx--> a12: S
+  a12 --t012_ccx--> a13: S
+  a13 --t013_cx--> a14: S
+  a14 --t014_cx--> a15: S
+  a15 --t015_ccx--> a16: S
+  a16 --t016_cx--> a17: S
+  a17 --t017_ccx--> a18: S
+  a18 --t018_cx--> a19: S
+  a19 --t019_cx--> a20: S
+  a20 --t020_ccx--> a21: S
+  a21 --t021_cx--> a22: S
+  a22 --t022_cx--> a23: S
+  a23 --t023_ccx--> a24: S
+  a24 --t024_cx--> a25: S
+  a25 --t025_cx--> a26: S
+  a26 --t026_ccx--> a27: S
+  a27 --t027_cx--> f28: terminal S
+}
+
+execution run_main {
+  trace main
+}
+
+property p_adder_output_probability distribution {
+  anchors f28
+  observe dist(q0, q1, q2, q3, q4, q5, q6, q7, q8, q9, Z)
+  expect {(0, 1, 0, 1, 0, 0, 0, 0, 1, 0): 1}
+}

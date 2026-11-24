@@ -1,0 +1,9 @@
+[[temporal_properties]]
+id = "tp_bell_measurement_records_visible"
+interval = ["a0", "f10"]
+formula = "F [m0 in {0,1}] && F [m1 in {0,1}]"
+
+[[temporal_properties]]
+id = "tp_terminal_swapped_pair_correlated"
+interval = ["a0", "f10"]
+formula = "@final [rel(q0,q3,Z) == equal_bits]"

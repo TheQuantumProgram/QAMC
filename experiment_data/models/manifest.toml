@@ -1,0 +1,20 @@
+# Experiment-level metadata for the paper-facing benchmark suite.
+# Surface QAM files describe models and properties only; expected outcomes live here.
+
+[models."AbstractionPatterns/ccx_ladder_counter_9.qam"]
+expected_judgment = "violated"
+
+[models."AbstractionPatterns/split_merge_counter_8.qam"]
+expected_judgment = "violated"
+
+[models."AbstractionPatterns/uncompute_counter_8.qam"]
+expected_judgment = "violated"
+
+[models."FaultyVariants/GHZ/ghz_faulty_missing_tail.qam"]
+expected_judgment = "violated"
+
+[models."FaultyVariants/Adder/adder_faulty_sum.qam"]
+expected_judgment = "violated"
+
+[models."FaultyVariants/BV/bv_faulty_hidden_bit.qam"]
+expected_judgment = "violated"

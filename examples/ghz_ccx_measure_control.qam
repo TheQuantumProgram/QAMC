@@ -1,0 +1,93 @@
+# Complete QAM model accompanying Section 3.5.
+# The companion verifier compares the checker with independent full-state and
+# explicit-workspace calculations, including both assertion results.
+model ghz_ccx_measure_control
+
+qubits q0..q5
+gates H, ID, CX, CCX, MZ
+
+state s0 initial {
+  active q0..q5
+}
+
+state s1 {
+  units u01(q0,q1), u12(q1,q2), q3, q4, q5
+}
+
+state s2 {
+  units u01(q0,q1), u12(q1,q2), u234(q2,q3,q4), q5
+}
+
+state s3 {
+  units u01(q0,q1), u12(q1,q2), q4, q5
+  measurement m3
+}
+
+state s4 {
+  units u01(q0,q1), u12(q1,q2), u45(q4,q5)
+  measurement m3
+}
+
+transition t_h0: s0 -> s0 {
+  H(q0)
+}
+
+transition t_cx01: s0 -> s1 {
+  CX(q0, q1)
+}
+
+transition t_cx12: s1 -> s1 {
+  CX(q1, q2)
+}
+
+transition t_h3: s1 -> s1 {
+  H(q3)
+}
+
+transition t_ccx: s1 -> s2 {
+  CCX(q2, q3, q4)
+}
+
+transition t_measure_q3: s2 -> s3 {
+  MZ(q3) as m3
+}
+
+transition t_cond: s3 {
+  when m3 == 0 -> s3: ID(q5)
+  when m3 == 1 -> s3: H(q5)
+}
+
+transition t_cx54: s3 -> s4 {
+  CX(q5, q4)
+}
+
+trace main {
+  a0: s0 initial
+  a0 --t_h0--> a1: s0
+  a1 --t_cx01--> a2: s1
+  a2 --t_cx12--> a3: s1
+  a3 --t_h3--> a4: s1
+  a4 --t_ccx--> a5: s2
+  a5 --t_measure_q3--> f1: frontier s3
+  f1 --t_cond--> f2: frontier s3
+  f2 --t_cx54--> f3: terminal s4
+}
+
+execution run_main {
+  trace main
+  stop f3
+}
+
+property p_equal_results relation {
+  nodes f3
+  mode pointwise_all
+  observe dist(q0, q1, q2, Z)
+  expect equal_bits
+}
+
+property p_output_distribution distribution {
+  nodes f3
+  mode aggregate
+  observe dist(q4, q5, Z)
+  expect {(0,0): 0.625, (0,1): 0.125, (1,0): 0.125, (1,1): 0.125}
+}

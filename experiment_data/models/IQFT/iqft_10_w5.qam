@@ -1,0 +1,1288 @@
+model iqft_10_w5
+
+qubits q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+gates CP, H, P
+state s0 initial {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u4: q4
+    u5: q5
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s1 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u4: q4
+    u5: q5
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s2 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u4: q4
+    u5: q5
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s3 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u4: q4
+    u5: q5
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s4 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u4: q4
+    u5: q5
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s5 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u4: q4
+    u5: q5
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s6 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u4: q4
+    u5: q5
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s7 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u4: q4
+    u5: q5
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s8 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u4: q4
+    u5: q5
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s9 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u4: q4
+    u5: q5
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s10 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u4: q4
+    u5: q5
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s11 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u4: q4
+    u5: q5
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s12 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u4: q4
+    u5: q5
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s13 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u4: q4
+    u5: q5
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s14 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u4: q4
+    u5: q5
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s15 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u4: q4
+    u5: q5
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s16 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u4: q4
+    u5: q5
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s17 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u4: q4
+    u5: q5
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s18 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u4: q4
+    u5: q5
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s19 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u4: q4
+    u5: q5
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s20 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u4: q4
+    u5: q5
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s21 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    w_9_9: q9
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u4: q4
+    u5: q5
+    u6: q6
+    u7: q7
+    u8: q8
+  }
+}
+
+state s22 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    w_8_9: q8, q9
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u4: q4
+    u5: q5
+    u6: q6
+    u7: q7
+  }
+}
+
+state s23 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    w_8_9: q8, q9
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u4: q4
+    u5: q5
+    u6: q6
+    u7: q7
+  }
+}
+
+state s24 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    w_7_9: q7, q8, q9
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u4: q4
+    u5: q5
+    u6: q6
+  }
+}
+
+state s25 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    w_7_9: q7, q8, q9
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u4: q4
+    u5: q5
+    u6: q6
+  }
+}
+
+state s26 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    w_7_9: q7, q8, q9
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u4: q4
+    u5: q5
+    u6: q6
+  }
+}
+
+state s27 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    w_6_9: q6, q7, q8, q9
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u4: q4
+    u5: q5
+  }
+}
+
+state s28 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    w_6_9: q6, q7, q8, q9
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u4: q4
+    u5: q5
+  }
+}
+
+state s29 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    w_6_9: q6, q7, q8, q9
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u4: q4
+    u5: q5
+  }
+}
+
+state s30 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    w_6_9: q6, q7, q8, q9
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u4: q4
+    u5: q5
+  }
+}
+
+state s31 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    w_5_9: q5, q6, q7, q8, q9
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u4: q4
+  }
+}
+
+state s32 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    w_5_9: q5, q6, q7, q8, q9
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u4: q4
+  }
+}
+
+state s33 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    w_5_9: q5, q6, q7, q8, q9
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u4: q4
+  }
+}
+
+state s34 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    w_5_9: q5, q6, q7, q8, q9
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u4: q4
+  }
+}
+
+state s35 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    w_5_9: q5, q6, q7, q8, q9
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u4: q4
+  }
+}
+
+state s36 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    w_4_8: q4, q5, q6, q7, q8
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u9: q9
+  }
+}
+
+state s37 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    w_4_8: q4, q5, q6, q7, q8
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u9: q9
+  }
+}
+
+state s38 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    w_4_8: q4, q5, q6, q7, q8
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u9: q9
+  }
+}
+
+state s39 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    w_4_8: q4, q5, q6, q7, q8
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u9: q9
+  }
+}
+
+state s40 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    w_4_8: q4, q5, q6, q7, q8
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u9: q9
+  }
+}
+
+state s41 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    w_3_7: q3, q4, q5, q6, q7
+    u0: q0
+    u1: q1
+    u2: q2
+    u8: q8
+    u9: q9
+  }
+}
+
+state s42 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    w_3_7: q3, q4, q5, q6, q7
+    u0: q0
+    u1: q1
+    u2: q2
+    u8: q8
+    u9: q9
+  }
+}
+
+state s43 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    w_3_7: q3, q4, q5, q6, q7
+    u0: q0
+    u1: q1
+    u2: q2
+    u8: q8
+    u9: q9
+  }
+}
+
+state s44 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    w_3_7: q3, q4, q5, q6, q7
+    u0: q0
+    u1: q1
+    u2: q2
+    u8: q8
+    u9: q9
+  }
+}
+
+state s45 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    w_3_7: q3, q4, q5, q6, q7
+    u0: q0
+    u1: q1
+    u2: q2
+    u8: q8
+    u9: q9
+  }
+}
+
+state s46 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    w_2_6: q2, q3, q4, q5, q6
+    u0: q0
+    u1: q1
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s47 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    w_2_6: q2, q3, q4, q5, q6
+    u0: q0
+    u1: q1
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s48 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    w_2_6: q2, q3, q4, q5, q6
+    u0: q0
+    u1: q1
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s49 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    w_2_6: q2, q3, q4, q5, q6
+    u0: q0
+    u1: q1
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s50 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    w_2_6: q2, q3, q4, q5, q6
+    u0: q0
+    u1: q1
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s51 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    w_1_5: q1, q2, q3, q4, q5
+    u0: q0
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s52 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    w_1_5: q1, q2, q3, q4, q5
+    u0: q0
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s53 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    w_1_5: q1, q2, q3, q4, q5
+    u0: q0
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s54 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    w_1_5: q1, q2, q3, q4, q5
+    u0: q0
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s55 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    w_1_5: q1, q2, q3, q4, q5
+    u0: q0
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s56 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    w_0_4: q0, q1, q2, q3, q4
+    u5: q5
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s57 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    w_0_4: q0, q1, q2, q3, q4
+    u5: q5
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s58 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    w_0_4: q0, q1, q2, q3, q4
+    u5: q5
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s59 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    w_0_4: q0, q1, q2, q3, q4
+    u5: q5
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s60 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    w_0_4: q0, q1, q2, q3, q4
+    u5: q5
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+transition t000_h: s0 -> s1 {
+  H(q0)
+}
+
+transition t001_p: s1 -> s2 {
+  P(q0, 3.3440781175906977)
+}
+
+transition t002_h: s2 -> s3 {
+  H(q1)
+}
+
+transition t003_p: s3 -> s4 {
+  P(q1, 0.40497092800180928)
+}
+
+transition t004_h: s4 -> s5 {
+  H(q2)
+}
+
+transition t005_p: s5 -> s6 {
+  P(q2, 0.80994185600361857)
+}
+
+transition t006_h: s6 -> s7 {
+  H(q3)
+}
+
+transition t007_p: s7 -> s8 {
+  P(q3, 1.6198837120072371)
+}
+
+transition t008_h: s8 -> s9 {
+  H(q4)
+}
+
+transition t009_p: s9 -> s10 {
+  P(q4, 3.2397674240144743)
+}
+
+transition t010_h: s10 -> s11 {
+  H(q5)
+}
+
+transition t011_p: s11 -> s12 {
+  P(q5, 0.19634954084936207)
+}
+
+transition t012_h: s12 -> s13 {
+  H(q6)
+}
+
+transition t013_p: s13 -> s14 {
+  P(q6, 0.39269908169872414)
+}
+
+transition t014_h: s14 -> s15 {
+  H(q7)
+}
+
+transition t015_p: s15 -> s16 {
+  P(q7, 0.78539816339744828)
+}
+
+transition t016_h: s16 -> s17 {
+  H(q8)
+}
+
+transition t017_p: s17 -> s18 {
+  P(q8, 1.5707963267948966)
+}
+
+transition t018_h: s18 -> s19 {
+  H(q9)
+}
+
+transition t019_p: s19 -> s20 {
+  P(q9, 3.1415926535897931)
+}
+
+transition t020_h: s20 -> s21 {
+  H(q9)
+}
+
+transition t021_cp: s21 -> s22 {
+  CP(q9, q8, -1.5707963267948966)
+}
+
+transition t022_h: s22 -> s23 {
+  H(q8)
+}
+
+transition t023_cp: s23 -> s24 {
+  CP(q9, q7, -0.78539816339744828)
+}
+
+transition t024_cp: s24 -> s25 {
+  CP(q8, q7, -1.5707963267948966)
+}
+
+transition t025_h: s25 -> s26 {
+  H(q7)
+}
+
+transition t026_cp: s26 -> s27 {
+  CP(q9, q6, -0.39269908169872414)
+}
+
+transition t027_cp: s27 -> s28 {
+  CP(q8, q6, -0.78539816339744828)
+}
+
+transition t028_cp: s28 -> s29 {
+  CP(q7, q6, -1.5707963267948966)
+}
+
+transition t029_h: s29 -> s30 {
+  H(q6)
+}
+
+transition t030_cp: s30 -> s31 {
+  CP(q9, q5, -0.19634954084936207)
+}
+
+transition t031_cp: s31 -> s32 {
+  CP(q8, q5, -0.39269908169872414)
+}
+
+transition t032_cp: s32 -> s33 {
+  CP(q7, q5, -0.78539816339744828)
+}
+
+transition t033_cp: s33 -> s34 {
+  CP(q6, q5, -1.5707963267948966)
+}
+
+transition t034_h: s34 -> s35 {
+  H(q5)
+}
+
+transition t035_cp: s35 -> s36 {
+  CP(q8, q4, -0.19634954084936207)
+}
+
+transition t036_cp: s36 -> s37 {
+  CP(q7, q4, -0.39269908169872414)
+}
+
+transition t037_cp: s37 -> s38 {
+  CP(q6, q4, -0.78539816339744828)
+}
+
+transition t038_cp: s38 -> s39 {
+  CP(q5, q4, -1.5707963267948966)
+}
+
+transition t039_h: s39 -> s40 {
+  H(q4)
+}
+
+transition t040_cp: s40 -> s41 {
+  CP(q7, q3, -0.19634954084936207)
+}
+
+transition t041_cp: s41 -> s42 {
+  CP(q6, q3, -0.39269908169872414)
+}
+
+transition t042_cp: s42 -> s43 {
+  CP(q5, q3, -0.78539816339744828)
+}
+
+transition t043_cp: s43 -> s44 {
+  CP(q4, q3, -1.5707963267948966)
+}
+
+transition t044_h: s44 -> s45 {
+  H(q3)
+}
+
+transition t045_cp: s45 -> s46 {
+  CP(q6, q2, -0.19634954084936207)
+}
+
+transition t046_cp: s46 -> s47 {
+  CP(q5, q2, -0.39269908169872414)
+}
+
+transition t047_cp: s47 -> s48 {
+  CP(q4, q2, -0.78539816339744828)
+}
+
+transition t048_cp: s48 -> s49 {
+  CP(q3, q2, -1.5707963267948966)
+}
+
+transition t049_h: s49 -> s50 {
+  H(q2)
+}
+
+transition t050_cp: s50 -> s51 {
+  CP(q5, q1, -0.19634954084936207)
+}
+
+transition t051_cp: s51 -> s52 {
+  CP(q4, q1, -0.39269908169872414)
+}
+
+transition t052_cp: s52 -> s53 {
+  CP(q3, q1, -0.78539816339744828)
+}
+
+transition t053_cp: s53 -> s54 {
+  CP(q2, q1, -1.5707963267948966)
+}
+
+transition t054_h: s54 -> s55 {
+  H(q1)
+}
+
+transition t055_cp: s55 -> s56 {
+  CP(q4, q0, -0.19634954084936207)
+}
+
+transition t056_cp: s56 -> s57 {
+  CP(q3, q0, -0.39269908169872414)
+}
+
+transition t057_cp: s57 -> s58 {
+  CP(q2, q0, -0.78539816339744828)
+}
+
+transition t058_cp: s58 -> s59 {
+  CP(q1, q0, -1.5707963267948966)
+}
+
+transition t059_h: s59 -> s60 {
+  H(q0)
+}
+
+trace main {
+  a0: s0 initial
+  a0 --t000_h--> a1: s1
+  a1 --t001_p--> a2: s2
+  a2 --t002_h--> a3: s3
+  a3 --t003_p--> a4: s4
+  a4 --t004_h--> a5: s5
+  a5 --t005_p--> a6: s6
+  a6 --t006_h--> a7: s7
+  a7 --t007_p--> a8: s8
+  a8 --t008_h--> a9: s9
+  a9 --t009_p--> a10: s10
+  a10 --t010_h--> a11: s11
+  a11 --t011_p--> a12: s12
+  a12 --t012_h--> a13: s13
+  a13 --t013_p--> a14: s14
+  a14 --t014_h--> a15: s15
+  a15 --t015_p--> a16: s16
+  a16 --t016_h--> a17: s17
+  a17 --t017_p--> a18: s18
+  a18 --t018_h--> a19: s19
+  a19 --t019_p--> a20: s20
+  a20 --t020_h--> a21: s21
+  a21 --t021_cp--> a22: s22
+  a22 --t022_h--> a23: s23
+  a23 --t023_cp--> a24: s24
+  a24 --t024_cp--> a25: s25
+  a25 --t025_h--> a26: s26
+  a26 --t026_cp--> a27: s27
+  a27 --t027_cp--> a28: s28
+  a28 --t028_cp--> a29: s29
+  a29 --t029_h--> a30: s30
+  a30 --t030_cp--> a31: s31
+  a31 --t031_cp--> a32: s32
+  a32 --t032_cp--> a33: s33
+  a33 --t033_cp--> a34: s34
+  a34 --t034_h--> a35: s35
+  a35 --t035_cp--> a36: s36
+  a36 --t036_cp--> a37: s37
+  a37 --t037_cp--> a38: s38
+  a38 --t038_cp--> a39: s39
+  a39 --t039_h--> a40: s40
+  a40 --t040_cp--> a41: s41
+  a41 --t041_cp--> a42: s42
+  a42 --t042_cp--> a43: s43
+  a43 --t043_cp--> a44: s44
+  a44 --t044_h--> a45: s45
+  a45 --t045_cp--> a46: s46
+  a46 --t046_cp--> a47: s47
+  a47 --t047_cp--> a48: s48
+  a48 --t048_cp--> a49: s49
+  a49 --t049_h--> a50: s50
+  a50 --t050_cp--> a51: s51
+  a51 --t051_cp--> a52: s52
+  a52 --t052_cp--> a53: s53
+  a53 --t053_cp--> a54: s54
+  a54 --t054_h--> a55: s55
+  a55 --t055_cp--> a56: s56
+  a56 --t056_cp--> a57: s57
+  a57 --t057_cp--> a58: s58
+  a58 --t058_cp--> a59: s59
+  a59 --t059_h--> f60: terminal s60
+}
+
+execution run_main {
+  trace main
+}
+
+property p_recover_target_bits_q0 reachability {
+  anchors f60
+  mode pointwise_any
+  observe dist(q0, Z)
+  expect 1
+  threshold 0.997
+}
+
+property p_recover_target_bits_q1 reachability {
+  anchors f60
+  mode pointwise_any
+  observe dist(q1, Z)
+  expect 0
+  threshold 0.997
+}
+
+property p_recover_target_bits_q2 reachability {
+  anchors f60
+  mode pointwise_any
+  observe dist(q2, Z)
+  expect 0
+  threshold 0.997
+}
+
+property p_recover_target_bits_q3 reachability {
+  anchors f60
+  mode pointwise_any
+  observe dist(q3, Z)
+  expect 0
+  threshold 0.997
+}
+
+property p_recover_target_bits_q4 reachability {
+  anchors f60
+  mode pointwise_any
+  observe dist(q4, Z)
+  expect 1
+  threshold 0.997
+}
+
+property p_recover_target_bits_q5 reachability {
+  anchors f60
+  mode pointwise_any
+  observe dist(q5, Z)
+  expect 0
+  threshold 0.997
+}
+
+property p_recover_target_bits_q6 reachability {
+  anchors f60
+  mode pointwise_any
+  observe dist(q6, Z)
+  expect 0
+  threshold 0.997
+}
+
+property p_recover_target_bits_q7 reachability {
+  anchors f60
+  mode pointwise_any
+  observe dist(q7, Z)
+  expect 0
+  threshold 0.997
+}
+
+property p_recover_target_bits_q8 reachability {
+  anchors f60
+  mode pointwise_any
+  observe dist(q8, Z)
+  expect 0
+  threshold 0.997
+}
+
+property p_recover_target_bits_q9 reachability {
+  anchors f60
+  mode pointwise_any
+  observe dist(q9, Z)
+  expect 1
+  threshold 0.997
+}

@@ -1,0 +1,87 @@
+model recurrent_join_release
+
+qubits q0..q3
+gates H, CX
+
+state S0 initial {
+  active q0..q3
+}
+
+state S01 {
+  active q0..q3
+  units {
+    unit_completion singletons
+    u01: q0, q1
+    q2: q2
+    q3: q3
+  }
+}
+
+state S12 {
+  active q0..q3
+  units {
+    unit_completion singletons
+    u01: q0, q1
+    u12: q1, q2
+    q3: q3
+  }
+}
+
+state S23 {
+  active q0..q3
+  units {
+    unit_completion singletons
+    u01: q0, q1
+    u23: q2, q3
+  }
+}
+
+transition t_h0: S0 -> S0 {
+  H(q0)
+}
+
+transition t_cx01: S0 -> S01 {
+  CX(q0, q1)
+}
+
+transition t_cx12_a: S01 -> S12 {
+  CX(q1, q2)
+}
+
+transition t_cx23_a: S12 -> S23 {
+  CX(q2, q3)
+}
+
+transition t_cx12_b: S23 -> S12 {
+  CX(q1, q2)
+}
+
+transition t_cx23_b: S12 -> S23 {
+  CX(q2, q3)
+}
+
+trace main {
+  a0: S0 initial
+  a0 --t_h0--> a1: S0
+  a1 --t_cx01--> a2: S01
+  a2 --t_cx12_a--> a3: S12
+  a3 --t_cx23_a--> a4: S23
+  a4 --t_cx12_b--> a5: S12
+  a5 --t_cx23_b--> f6: terminal S23
+}
+
+execution run_main {
+  trace main
+}
+
+property p_recurrent_focus_relation relation {
+  anchors f6
+  observe dist(q0, q1, Z)
+  expect equal_bits
+}
+
+property p_recurrent_focus_distribution distribution {
+  anchors f6
+  observe dist(q0, q1, Z)
+  expect {(0,0): 0.5, (1,1): 0.5}
+}

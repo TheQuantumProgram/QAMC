@@ -1,0 +1,245 @@
+model ghz_10_staircase
+
+qubits q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+gates CX, H
+state s0 initial {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u4: q4
+    u5: q5
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s1 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    u0: q0
+    u1: q1
+    u2: q2
+    u3: q3
+    u4: q4
+    u5: q5
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s2 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    u01: q0, q1
+    u2: q2
+    u3: q3
+    u4: q4
+    u5: q5
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s3 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    u01: q0, q1
+    u12: q1, q2
+    u3: q3
+    u4: q4
+    u5: q5
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s4 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    u01: q0, q1
+    u12: q1, q2
+    u23: q2, q3
+    u4: q4
+    u5: q5
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s5 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    u01: q0, q1
+    u12: q1, q2
+    u23: q2, q3
+    u34: q3, q4
+    u5: q5
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s6 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    u01: q0, q1
+    u12: q1, q2
+    u23: q2, q3
+    u34: q3, q4
+    u45: q4, q5
+    u6: q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s7 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    u01: q0, q1
+    u12: q1, q2
+    u23: q2, q3
+    u34: q3, q4
+    u45: q4, q5
+    u56: q5, q6
+    u7: q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s8 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    u01: q0, q1
+    u12: q1, q2
+    u23: q2, q3
+    u34: q3, q4
+    u45: q4, q5
+    u56: q5, q6
+    u67: q6, q7
+    u8: q8
+    u9: q9
+  }
+}
+
+state s9 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    u01: q0, q1
+    u12: q1, q2
+    u23: q2, q3
+    u34: q3, q4
+    u45: q4, q5
+    u56: q5, q6
+    u67: q6, q7
+    u78: q7, q8
+    u9: q9
+  }
+}
+
+state s10 {
+  active q0, q1, q2, q3, q4, q5, q6, q7, q8, q9
+  units {
+    unit_completion singletons
+    u01: q0, q1
+    u12: q1, q2
+    u23: q2, q3
+    u34: q3, q4
+    u45: q4, q5
+    u56: q5, q6
+    u67: q6, q7
+    u78: q7, q8
+    u89: q8, q9
+  }
+}
+
+transition t000_h: s0 -> s1 {
+  H(q0)
+}
+
+transition t001_cx: s1 -> s2 {
+  CX(q0, q1)
+}
+
+transition t002_cx: s2 -> s3 {
+  CX(q1, q2)
+}
+
+transition t003_cx: s3 -> s4 {
+  CX(q2, q3)
+}
+
+transition t004_cx: s4 -> s5 {
+  CX(q3, q4)
+}
+
+transition t005_cx: s5 -> s6 {
+  CX(q4, q5)
+}
+
+transition t006_cx: s6 -> s7 {
+  CX(q5, q6)
+}
+
+transition t007_cx: s7 -> s8 {
+  CX(q6, q7)
+}
+
+transition t008_cx: s8 -> s9 {
+  CX(q7, q8)
+}
+
+transition t009_cx: s9 -> s10 {
+  CX(q8, q9)
+}
+
+trace main {
+  a0: s0 initial
+  a0 --t000_h--> a1: s1
+  a1 --t001_cx--> a2: s2
+  a2 --t002_cx--> a3: s3
+  a3 --t003_cx--> a4: s4
+  a4 --t004_cx--> a5: s5
+  a5 --t005_cx--> a6: s6
+  a6 --t006_cx--> a7: s7
+  a7 --t007_cx--> a8: s8
+  a8 --t008_cx--> a9: s9
+  a9 --t009_cx--> f10: terminal s10
+}
+
+execution run_main {
+  trace main
+}
+
+property p_ghz_state_distribution distribution {
+  anchors f10
+  observe dist(q0, q1, q2, q3, q4, q5, q6, q7, q8, q9, Z)
+  expect {(0,0,0,0,0,0,0,0,0,0): 0.5, (1,1,1,1,1,1,1,1,1,1): 0.5}
+}

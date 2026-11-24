@@ -1,0 +1,85 @@
+model program_measurement_mux
+
+qubits q0..q1
+gates H, MZ, ID, X
+classical flip: bit
+
+state S0 initial {
+  active all
+  units {
+    unit_completion singletons
+  }
+  program flip: bit
+}
+
+state S1 {
+  active all
+  units {
+    unit_completion singletons
+  }
+  program flip: bit
+}
+
+state S2 {
+  active -q0
+  units {
+    unit_completion singletons
+  }
+  program flip: bit
+  measurement m0
+}
+
+state S3 {
+  active -q0
+  units {
+    unit_completion singletons
+  }
+  program flip: bit
+  measurement m0
+}
+
+state S4 {
+  active -q0
+  units {
+    unit_completion singletons
+  }
+  program flip: bit
+  measurement m0
+}
+
+transition t_prepare_superposition: S0 -> S1 {
+  H(q0)
+}
+
+transition t_measure_control: S1 -> S2 {
+  MZ(q0) as m0
+}
+
+transition t_measurement_mirror: S2 {
+  when m0 == 0 -> S3: ID(q1)
+  when m0 == 1 -> S3: X(q1)
+}
+
+transition t_program_flip: S3 {
+  when flip == 0 -> S4: ID(q1)
+  when flip == 1 -> S4: X(q1)
+}
+
+trace main {
+  a0: S0 initial
+  a0 --t_prepare_superposition--> a1: S1
+  a1 --t_measure_control--> a2: S2
+  a2 --t_measurement_mirror--> a3: S3
+  a3 --t_program_flip--> f4: terminal S4
+}
+
+execution run_main {
+  trace main
+  program flip = 1
+}
+
+property p_mux_output_balanced distribution {
+  anchors f4
+  observe dist(q1, Z)
+  expect {0: 0.5, 1: 0.5}
+}

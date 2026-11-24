@@ -1,0 +1,89 @@
+model multiway_program_branch_10
+
+qubits q0..q9
+gates ID, X, H, Z
+classical route: int
+
+state S0 initial {
+  active all
+  units {
+    unit_completion singletons
+  }
+  program route: int
+}
+
+state S1 {
+  active all
+  units {
+    unit_completion singletons
+  }
+  program route: int
+}
+
+transition t_seed_q0: S0 -> S0 {
+  H(q0)
+}
+
+transition t_seed_q1: S0 -> S0 {
+  X(q1)
+}
+
+transition t_seed_q2: S0 -> S0 {
+  H(q2)
+}
+
+transition t_seed_q3: S0 -> S0 {
+  X(q3)
+}
+
+transition t_seed_q4: S0 -> S0 {
+  H(q4)
+}
+
+transition t_seed_q5: S0 -> S0 {
+  X(q5)
+}
+
+transition t_seed_q6: S0 -> S0 {
+  H(q6)
+}
+
+transition t_seed_q7: S0 -> S0 {
+  X(q7)
+}
+
+transition t_seed_q8: S0 -> S0 {
+  H(q8)
+}
+
+transition t_route: S0 {
+  when route == 0 -> S1: ID(q9)
+  when route == 1 -> S1: X(q9)
+  when route == 2 -> S1: H(q9)
+  when route == 3 -> S1: Z(q9)
+}
+
+trace main {
+  a0: S0 initial
+  a0 --t_seed_q0--> a1: S0
+  a1 --t_seed_q1--> a2: S0
+  a2 --t_seed_q2--> a3: S0
+  a3 --t_seed_q3--> a4: S0
+  a4 --t_seed_q4--> a5: S0
+  a5 --t_seed_q5--> a6: S0
+  a6 --t_seed_q6--> a7: S0
+  a7 --t_seed_q7--> a8: S0
+  a8 --t_seed_q8--> a9: S0
+  a9 --t_route--> f10: terminal S1
+}
+
+execution run_main {
+  trace main
+  program route = 2
+}
+
+property p_route_two_prepares_plus distribution {
+  anchors f10
+  observe dist(q9, X)
+  expect {0: 1}
+}
