@@ -5,9 +5,11 @@ from __future__ import annotations
 from dataclasses import dataclass
 from pathlib import Path
 
+from qamc.backend import StateVectorBackend
 from qamc.engine import TraceExecutor
 from qamc.external_properties.model import ExternalPropertyBundle, TemporalPropertyEvaluationResult
 from qamc.external_properties.temporal import TemporalPropertyEvaluator
+from qamc.ir.enums import SummaryKind
 from qamc.ir.model import QAMModel
 from qamc.loader import load_qam_file
 from qamc.property import PropertyEvaluationResult, PropertyEvaluator
@@ -64,6 +66,11 @@ def run_model(
             temporal_results=[],
         )
 
+    system = model.system_model
+    if backend is None and system.defaults.default_summary_kind is not SummaryKind.GROVER_SUBSPACE:
+        if any(unit.resolved_summary_kind(system.defaults) is SummaryKind.STATE_VECTOR
+               for state in system.state_classes.values() for unit in state.units):
+            backend = StateVectorBackend()
     executor = trace_executor or TraceExecutor(backend=backend)
     evaluator = property_evaluator or PropertyEvaluator(backend=backend)
     context = executor.run(model, execution_id=selected_execution_id)

@@ -68,6 +68,7 @@ class RQ3ScalabilityReport:
     full_qubit_limit: int
     repeat_count: int
     full_payload_cap_mib: float | None
+    trials: tuple[tuple[int, RQ3ScalabilityRow], ...] = ()
 
     @property
     def ok_rows(self) -> tuple[RQ3ScalabilityRow, ...]:
@@ -86,6 +87,7 @@ def run_rq3_scalability(
 
     selected = _selected_benchmarks(benchmark_names)
     rows: list[RQ3ScalabilityRow] = []
+    trials: list[tuple[int, RQ3ScalabilityRow]] = []
     for benchmark in selected:
         for qubit_count in sizes:
             for style in ("abstract", "full"):
@@ -118,13 +120,20 @@ def run_rq3_scalability(
                             )
                         )
                         continue
-                rows.append(_measure_model(benchmark, qubit_count, style, repeats=max(1, repeats)))
+                measurements = []
+                for trial in range(1, max(1, repeats) + 1):
+                    measurement = _measure_model_once(benchmark, qubit_count, style)
+                    measurements.append(measurement)
+                    trials.append((trial, measurement))
+                    gc.collect()
+                rows.append(_summarize_trials(measurements))
     return RQ3ScalabilityReport(
         rows=tuple(rows),
         sizes=tuple(int(size) for size in sizes),
         full_qubit_limit=full_qubit_limit,
         repeat_count=max(1, repeats),
         full_payload_cap_mib=full_payload_cap_mib,
+        trials=tuple(trials),
     )
 
 
@@ -344,6 +353,16 @@ def write_rq3_outputs(
     output_dir = Path(results_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
     (output_dir / "rq3_scalability.csv").write_text(render_rq3_csv(report) + "\n", encoding="utf-8")
+    with (output_dir / "rq3_trials.csv").open("w", newline="", encoding="utf-8") as stream:
+        writer = csv.writer(stream, lineterminator="\n")
+        writer.writerow(("benchmark_id", "style", "qubits", "trial", "gates", "status", "ok",
+                         "wall_time_ms", "payload_mib", "py_peak_mib", "runtime_nodes",
+                         "runtime_edges", "properties", "note"))
+        for trial, row in report.trials:
+            writer.writerow((row.benchmark_id, row.style, row.qubit_count, trial, row.gate_count,
+                             row.status, int(row.ok), row.wall_time_ms, row.payload_mib,
+                             row.py_peak_mib, row.runtime_node_count, row.runtime_edge_count,
+                             row.property_count, row.note))
     (output_dir / "rq3_scalability.md").write_text(
         render_rq3_markdown_summary(report) + "\n",
         encoding="utf-8",
@@ -460,18 +479,7 @@ def _selected_benchmarks(benchmark_names: Sequence[str] | None) -> tuple[RQ3Benc
     return tuple(RQ3_BENCHMARKS[name] for name in benchmark_names)
 
 
-def _measure_model(
-    benchmark: RQ3BenchmarkSpec,
-    qubit_count: int,
-    style: str,
-    *,
-    repeats: int,
-) -> RQ3ScalabilityRow:
-    measurements: list[RQ3ScalabilityRow] = []
-    for _trial in range(repeats):
-        measurements.append(_measure_model_once(benchmark, qubit_count, style))
-        gc.collect()
-
+def _summarize_trials(measurements: Sequence[RQ3ScalabilityRow]) -> RQ3ScalabilityRow:
     first_error = next((row for row in measurements if row.status != "ok"), None)
     if first_error is not None:
         return first_error
@@ -493,7 +501,7 @@ def _measure_model(
         runtime_node_count=representative.runtime_node_count,
         runtime_edge_count=representative.runtime_edge_count,
         property_count=representative.property_count,
-        repeat_count=repeats,
+        repeat_count=len(measurements),
         wall_time_min_ms=min(times),
         wall_time_max_ms=max(times),
         wall_time_stdev_ms=pstdev(times) if len(times) > 1 else 0.0,
